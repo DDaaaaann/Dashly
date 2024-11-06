@@ -1,0 +1,26 @@
+links:
+  jira:
+    sprint:
+      href: "https://socialeverzekeringsbank.atlassian.net/jira/software/c/projects/DMS/boards/1159"
+  confluence:
+    href: "https://www.atlassian.com/software/confluence"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/e/e5/Confluence_logo.svg"
+  dynatrace:
+    href: "https://www.dynatrace.com"
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/Dynatrace_logo.svg"
+  bitbucket:
+    href: "https://bitbucket-p.svb.org/projects/DMS"
+    logo: "https://img.icons8.com/ios-filled/50/bitbucket.png"
+  annotation_service:
+    test:
+      openshift: "#projectA-Test-Oshift"
+      splunk: "#projectA-Test-Splunk"
+      dynatrace: "#projectA-Test-Dynatrace"
+    acc:
+      openshift: "#projectA-ACC-Oshift"
+      splunk: "#projectA-ACC-Splunk"
+      dynatrace: "#projectA-ACC-Dynatrace"
+    prod:
+      openshift: "#projectA-Prod-Oshift"
+      splunk: "#projectA-Prod-Splunk"
+      dynatrace: "#projectA-Prod-Dynatrace"

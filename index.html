@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Startpage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+    <link rel="manifest" href="static/images/site.webmanifest">
+    <noscript>
+        <style>
+            #clock {
+                display: none;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+<main>
+    <div id="top-div">
+        <div id="alert">
+            <h1 id="alert1">...</h1>
+            <h2 id="alert2">...</h2>
+        </div>
+
+        <div id="clock-div">
+            <h1 id="clock">
+                00/00/0000
+                00:00:00
+            </h1>
+        </div>
+
+        <div class="search-bar-wrapper">
+            <input class="search-bar" id="search-bar-you" type="text" title="Search" placeholder="You.com"
+                   autofocus/>
+        </div>
+
+    </div>
+    <div id="links-container">
+        <section class="link-section">
+            <h2 class="link-section-title svbGreen4">Daily</h2>
+            <hr/>
+            <ul class="link-list">
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://socialeverzekeringsbank.atlassian.net/jira/software/c/projects/DMS/boards/1159">Sprint</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link" href="https://socialeverzekeringsbank.atlassian.net/jira/your-work">My work</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link" href="https://teams.microsoft.com/">Teams</a>
+                </li>
+            </ul>
+        </section>
+        <section class="link-section">
+            <h2 class="link-section-title svbGreen4">Dev</h2>
+            <hr/>
+            <ul class="link-list">
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://console-openshift-console.apps.ocp-dta.esp.svb.org/topology/ns/dms-dev">Openshift</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://totalapm.idm.atos.net/e/629d52ce-ab69-4d59-8702-a6fa8a3d1338">Dynatrace</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://jenkins-p.svb.org/dms/view/Feature%20to%20DEV/">Feature to DEV</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link" href="https://jenkins-p.svb.org/dms/view/Master%20to%20DEV-TST-ACC/">Master to OTA</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link" href="https://bitbucket-p.svb.org/projects/DMS">Projects</a>
+                </li>
+            </ul>
+        </section>
+        <section class="link-section">
+            <h2 class="link-section-title svbGreen3"><a href="https://myapplications.microsoft.com/">Annotation-service</a>
+            </h2>
+            <hr/>
+            <ul class="link-list">
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://bitbucket-p.svb.org/projects/DMS/repos/dms-annotation-service/pull-requests?showDrafts=true&state=OPEN">Pull
+                        Requests</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://jenkins-p.svb.org/dms/job/dms-annotation-service/">Build</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://jenkins-p.svb.org/dms/job/dms-annotation-service-CICD/">Deploy</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://sonarqube-p.svb.org/dashboard?id=DMS%3Adms-annotation-service">Sonar</a>
+                </li>
+            </ul>
+        </section>
+        <section class="link-section">
+            <h2 class="link-section-title svbGreen3"><a href="https://myapplications.microsoft.com/">CM8-Document-Service</a>
+            </h2>
+            <hr/>
+            <ul class="link-list">
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://bitbucket-p.svb.org/projects/DMS/repos/cm8-document-service/pull-requests?showDrafts=true&state=OPEN">Pull Requests</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://jenkins-p.svb.org/dms/view/Feature%20to%20DEV/job/cm8-document-service/">Build</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://jenkins-p.svb.org/dms/view/Master%20to%20DEV-TST-ACC/job/cm8-document-service-CICD/">Deploy</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://sonarqube-p.svb.org/dashboard?id=DMS%3Adms-annotation-service">Sonar</a>
+                </li>
+            </ul>
+        </section>
+        <!-- <section class="link-section">
+        <h2 class="link-section-title ingOrange">ING</h2>
+        <hr/>
+        <ul class="link-list">
+            <li class="link-list-item">
+                <a class="link"
+                   href="https://ace.ic.ing.net/home">ACE</a>
+            </li>
+            <li class="link-list-item">
+                <a class="link"
+                   href="https://ing.service-now.com/now/nav/ui/classic/params/target/incident_list.do">Incidents</a>
+            </li>
+            <li class="link-list-item">
+                <a class="link"
+                   href="https://ing.yourlearning.ibm.com/">Learning</a>
+            </li>
+            <li class="link-list-item">
+                <a class="link"
+                   href="https://theforge.ing.net/marketplace">Marketplace</a>
+            </li>
+        </ul>
+    </section> -->
+    </div>
+    <div id="links-container">
+        <section class="link-section">
+            <div class="header-wrapper">
+                <h2 class="link-section-title orange1">Annotation DEV</h2>
+<!--                <input id="search-bar-tst1" class="search-bar" name="q" type="text" title="Search"/>-->
+            </div>
+
+            <hr/>
+            <ul class="link-list">
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://console-openshift-console.apps.ocp-dta.esp.svb.org/topology/ns/dms-dev?view=graph">Openshift</a>
+                </li>
+                <li class="link-list-item">
+                    <a class="link"
+                       href="https://splunk.svb.org:8000/en-GB/app/E2EApp/search?earliest=-24h%40h&latest=now&q=search%20index%3D%22amos-dta-dms%22%20sourcetype%3D%22openshift%3Adms-dev%22%20container_name%3D%22dms-annotation-service%22&display.page.search.mode=smart&dispatch.sample_ratio=1&display.page.search.tab=events&display.events.type=list&display.events.fields=%5B%22container_name%22%2C%22eventtype%22%5D&display.prefs.fieldFilter=eve&sid=1727784979.1730677_82550318-BE5C-4261-B438-148E06738775&display.page.search.showFields=0">Splunk</a>
+                </li>
+<!--                <li class="link-list-item">-->
+<!--                    <a class="link"-->
+<!--                       href="https://redeliver.bmgt1.ing.net/ws-redeliver-messages/">Redelivery</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item">-->
+<!--                    <a class="link"-->
+<!--                       href="https://console-openshift-console.apps.cluster0016.non-prod.ichp.ing.net/">Cluster 16</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item">-->
+<!--                    <a class="link"-->
+<!--                       href="https://console-openshift-console.apps.cluster0017.non-prod.ichp.ing.net/">Cluster 17</a>-->
+<!--                </li>-->
+            </ul>
+        </section>
+        <section class="link-section">
+            <div class="header-wrapper">
+                <h2 class="link-section-title orange2">Annotation TST</h2>
+<!--                <input id="search-bar-tst2" class="search-bar" name="q" type="text" title="Search"/>-->
+            </div>
+            <hr/>
+<!--            <ul class="link-list">-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://log4all-acc.logs.ing.net/s/p16035/app/discover#/view/39b004c0-b6a5-11ee-931a-1f9ef3fab7d1?_g=()">Log4all</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://dcr.rtk2.mdpl.ing.net/rtk2024-prd/grafana/p16035-b85b/d/kk4sPEk4k/ais?orgId=1&var-namespace=bmgacin2-tst&var-pod=All">Grafana</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link" href="https://redeliver.bmgt2.ing.net/">Redelivery</a></li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0016.non-prod.ichp.ing.net/">Cluster-->
+<!--                    16</a></li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0017.non-prod.ichp.ing.net/">Cluster-->
+<!--                    17</a></li>-->
+<!--            </ul>-->
+        </section>
+        <section class="link-section">
+            <div class="header-wrapper">
+                <h2 class="link-section-title orange3">Annotation ACC</h2>
+<!--                <input id="search-bar-acc" class="search-bar" name="q" type="text" title="Search"/>-->
+            </div>
+            <hr/>
+<!--            <ul class="link-list">-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://log4all-acc.logs.ing.net/s/p16035/app/discover#/view/8f73d360-b3b1-11ee-931a-1f9ef3fab7d1?_g=()">Log4all</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://dcr.rtk2.mdpl.ing.net/rtk2024-prd/grafana/p16035-b85b/d/kk4sPEk4k/ais?orgId=1&var-namespace=bmgacin1-acc&var-pod=All">Grafana</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link" href="https://redeliver.bmga.ing.net/">Redelivery</a></li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0016.non-prod.ichp.ing.net/">Cluster-->
+<!--                    16</a></li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0017.non-prod.ichp.ing.net/">Cluster-->
+<!--                    17</a></li>-->
+<!--            </ul>-->
+        </section>
+        <section class="link-section">
+            <div class="header-wrapper">
+                <h2 class="link-section-title orange4">Annotation PRD</h2>
+<!--                <input id="search-bar-prd" class="search-bar" name="q" type="text" title="Search"/>-->
+            </div>
+            <hr/>
+<!--            <ul class="link-list">-->
+<!--                <li class="link-list-item"><a class="link" href="https://log4all.logs.ing.net/s/p16035/app/r/s/xC4hj">Log4all</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://dcr.rtk2.mdpl.ing.net/rtk2015-prd/grafana/p16035-9b9b/d/kk4sPEk4k/ais?orgId=1&var-namespace=bmgacin1-prd&var-pod=All">Grafana</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://redeliver.bmg.ing.net/">Redelivery</a>-->
+<!--                </li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0018.prod.ichp.ing.net/">Cluster-->
+<!--                    18</a></li>-->
+<!--                <li class="link-list-item"><a class="link"-->
+<!--                                              href="https://console-openshift-console.apps.cluster0019.prod.ichp.ing.net/">Cluster-->
+<!--                    19</a></li>-->
+<!--            </ul>-->
+        </section>
+    </div>
+</main>
+
+<script src="js/main.js"></script>
+</body>
+
+</html>
