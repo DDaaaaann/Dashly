@@ -24,3 +24,12 @@ links:
       openshift: "#projectA-Prod-Oshift"
       splunk: "#projectA-Prod-Splunk"
       dynatrace: "#projectA-Prod-Dynatrace"
+
+
+dashboard:
+  daily:
+    title:
+    openshift:
+      _link:
+        title:
+        href:

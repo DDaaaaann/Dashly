@@ -19,4 +19,8 @@
 
 ---
 
+`npm install fs-extra handlebars ajv yaml`
+`npx ts-node generate-html.ts`
+
+
 <p align="center"> Made with 🧡 by <a href="https://github.com/DDaaaaann">DDaaaaann</a></p>

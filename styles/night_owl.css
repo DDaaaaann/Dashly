@@ -1,0 +1,119 @@
+:root {
+  --primary-color: #bb86fc;
+  --background-color: #121212;
+  --secondary-background: #1e1e1e;
+  --text-color: #ffffff;
+  --accent-color: #fccb86;
+  --subtle-text: #9b91a7;
+  --input-bg: #272727;
+  --input-hover-bg: #2e2e2e;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.block {
+  background-color: var(--secondary-background);
+  border-radius: var(--border-radius);
+  padding: 0 20px 20px;
+  margin: 10px;
+  box-shadow: var(--box-shadow);
+  flex: 1 1 30%;
+  max-width: 30%;
+  box-sizing: border-box;
+}
+
+.group {
+  margin-left: 20px;
+  border-left: 2px solid var(--primary-color);
+  padding-left: 10px;
+}
+
+.group h4 {
+  margin-bottom: 10px;
+}
+
+.search-bar-wrapper {
+  width: 600px;
+  margin-top: 10px;
+}
+
+.search-bar {
+  width: 90%;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar:hover,
+.search-bar:focus,
+.search-bar:focus-visible {
+  background-color: var(--input-hover-bg);
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
+.group .search-bar {
+  margin: 0;
+  padding: 5px 10px;
+}
+
+#date {
+  margin-bottom: 20px;
+}
+
+#alerts {
+  text-align: center;
+  color: var(--accent-color);
+}
+
+#clock-div {
+  text-align: center;
+  color: var(--subtle-text);
+}
+
+#clock {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+#clock:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{{favicon}}}
+  <title>{{dashboard.title}}</title>
+  <style>
+      {{{inlineCss}}}
+  </style>
+</head>
+<body>
+<header>
+  <h1>{{dashboard.title}}</h1>
+  {{#if dashboard.clock}}
+    <div id="clock-div">
+      <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
+    </div>
+  {{/if}}
+  <!--    <div class="search-bar">-->
+  <!--      <input type="text" id="searchInput" placeholder="Search for projects...">-->
+  <!--    </div>-->
+</header>
+{{#each dashboard.sections}}
+  <section>
+    <!--    <h2>{{title}}</h2>-->
+    {{#each blocks}}
+      <div class="block">
+        <h3>{{title}}</h3>
+        {{> links_and_searchfields}}
+        {{#each groups}}
+          <div class="group">
+            <h4>{{title}}</h4>
+            {{> links_and_searchfields}}
+          </div>
+        {{/each}}
+
+      </div>
+    {{/each}}
+  </section>
+{{/each}}
+<script>
+    {{{inlineJs}}}
+    {{#if dashboard.clock}}
+      {{{clockJs}}}
+    {{/if}}
+    {{{searchJs}}}
+</script>
+</body>
+</html>
+
+
+{{#*inline "links_and_searchfields"}}
+  {{#if searchFields}}
+    <div class="search-fields">
+      {{#each searchFields}}
+        <div class="search-field">
+          <label>
+            <input class="search-bar" type="text" placeholder="{{title}}"
+                   data-url="{{href}}"/>
+          </label>
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if links}}
+    <div class="links">
+      {{#each links}}
+        <p><a href="{{href}}">{{title}}</a></p>
+      {{/each}}
+    </div>
+  {{/if}}
+{{/inline}}
