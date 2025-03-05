@@ -19,7 +19,7 @@
 
 ---
 
-`npm install fs-extra handlebars ajv yaml`
+`npm i`
 `npx ts-node generate-html.ts`
 
 
