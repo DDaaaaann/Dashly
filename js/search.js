@@ -15,7 +15,7 @@ Array.from(searchBars).forEach(function (searchBar) {
 
 function isTargetBlank(e) {
   var keyCode = e.keyCode;
-  return e.metaKey || keyCode === 93 || keyCode === 91 || keyCode === 224
+  return e.metaKey || e.ctrlKey || keyCode === 93 || keyCode === 91 || keyCode === 224
     || keyCode === 17;
 }
 
