@@ -9,14 +9,14 @@ function getInlineFavicon(): string {
   return `<link rel="icon" href="data:image/x-icon;base64,${base64Favicon}">`
 }
 
-function getCopyRigthYear(): string {
+function getCopyRightYear(): string {
   return new Date().getFullYear().toString();
 }
 
 function getMeta(): Meta {
   return {
     favicon: getInlineFavicon(),
-    copyRightYear: getCopyRigthYear()
+    copyRightYear: getCopyRightYear()
   }
 }
 

@@ -1,3 +1,7 @@
+const operaCtrlKeyCode = 17;
+const webkitCtrlLeftKeyCode = 91;
+const webkitCtrlRightKeyCode = 93;
+const firefoxCtrlKeyCode = 224;
 let searchBars = document.getElementsByClassName("search-bar");
 
 Array.from(searchBars).forEach(function (searchBar) {
@@ -15,8 +19,12 @@ Array.from(searchBars).forEach(function (searchBar) {
 
 function isTargetBlank(e) {
   var keyCode = e.keyCode;
-  return e.metaKey || e.ctrlKey || keyCode === 93 || keyCode === 91 || keyCode === 224
-    || keyCode === 17;
+  return e.metaKey
+    || e.ctrlKey
+    || keyCode === operaCtrlKeyCode
+    || keyCode === firefoxCtrlKeyCode
+    || keyCode === webkitCtrlLeftKeyCode
+    || keyCode === webkitCtrlRightKeyCode
 }
 
 function search(url, term, target) {

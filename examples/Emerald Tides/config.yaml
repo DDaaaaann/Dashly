@@ -41,8 +41,6 @@ sections:
         links:
           - title: To Do
             href: https://to-do.office.com/
-          - title: Mortgage
-            href: https://www.mortgage.com/
           - title: Groceries
             href: https://groceries.com/
       - title: Hobbies
