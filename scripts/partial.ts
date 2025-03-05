@@ -21,6 +21,14 @@ export function setFooter() {
   partial('footer')
 }
 
+export function setLinks() {
+  partial('links')
+}
+
+export function setSearchFields() {
+  partial('search-fields')
+}
+
 function partial(partialName: string) {
   // Construct the partial path
   const partialPath = path.join(process.cwd(), "partials", `${partialName}.hbs`);
@@ -33,4 +41,29 @@ function register(partialName: string, partialPath: string) {
 
   // Register the partial
   handlebars.registerPartial(partialName, partial)
+}
+
+export function mathOperators() {
+  handlebars.registerHelper({
+        mod: (v1, v2) => v1 % v2,
+        add: (v1, v2) => v1 + v2
+      }
+  )
+}
+
+export function booleanOperators() {
+  handlebars.registerHelper({
+    eq: (v1, v2) => v1 === v2,
+    ne: (v1, v2) => v1 !== v2,
+    lt: (v1, v2) => v1 < v2,
+    gt: (v1, v2) => v1 > v2,
+    lte: (v1, v2) => v1 <= v2,
+    gte: (v1, v2) => v1 >= v2,
+    and() {
+      return Array.prototype.every.call(arguments, Boolean);
+    },
+    or() {
+      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+    }
+  });
 }

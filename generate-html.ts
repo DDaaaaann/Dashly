@@ -4,8 +4,15 @@ import Ajv from 'ajv';
 import * as handlebars from "handlebars";
 import path from "path";
 import {DashboardConfig} from "./scripts/interface";
-import {setDashboard, setFooter, setHeader} from "./scripts/partial";
+import {
+  booleanOperators,
+  mathOperators,
+  setDashboard,
+  setFooter,
+  setHeader
+} from "./scripts/partial";
 import getMeta from "./scripts/meta";
+import {registerVariableStorage} from "./scripts/variable";
 
 // Load and parse the YAML configuration
 const configPath = './config.yaml';
@@ -17,6 +24,9 @@ const theme = (config.theme || "Night Owl").replaceAll(" ", "_").toLowerCase()
 setHeader()
 setDashboard(theme)
 setFooter()
+booleanOperators()
+mathOperators()
+registerVariableStorage()
 
 // Read the template file
 const templatePartialPath = path.join(process.cwd(), "partials", `template.hbs`);

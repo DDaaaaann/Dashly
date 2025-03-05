@@ -11,8 +11,8 @@
 </head>
 <body>
 <header>
-  <h1>{{dashboard.title}}</h1>
-  {{#if dashboard.clock}}
+  <h1>{{title}}</h1>
+  {{#if clock}}
     <div id="clock-div">
       <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
     </div>
@@ -21,7 +21,7 @@
   <!--      <input type="text" id="searchInput" placeholder="Search for projects...">-->
   <!--    </div>-->
 </header>
-{{#each dashboard.sections}}
+{{#each sections}}
   <section>
     <!--    <h2>{{title}}</h2>-->
     {{#each blocks}}
