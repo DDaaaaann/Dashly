@@ -1,0 +1,103 @@
+<header>
+  <h1>{{title}}</h1>
+  {{#if clock}}
+    <div id="clock-div">
+      <h2 id="clock">00:00:00</h2> <!-- Add a placeholder for the clock -->
+    </div>
+  {{/if}}
+</header>
+
+{{#if (gt sections.length 1)}}
+  <nav class="section-nav">
+    {{#each sections}}
+      <a href="#" class="section-link {{#if @first}}active{{/if}}"
+         data-target="section-{{@index}}">{{#if title}}{{title}}{{else}}
+        Section {{add @index 1}}{{/if}}</a>
+    {{/each}}
+  </nav>
+{{/if}}
+
+{{#each sections as |section sectionIndex|}}
+
+{{!-- Determine grid layout dynamically --}}
+  {{#if (eq (mod blocks.length 4) 0)}}
+  {{!-- Use 4-column layout --}}
+    {{setVar gridSize 4}}
+  {{else if (eq (mod blocks.length 3) 0)}}
+  {{!-- Use 3-column layout --}}
+    {{setVar gridSize 3}}
+  {{else}}
+  {{!-- Use default 4-column layout --}}
+    {{setVar gridSize 4}}
+  {{/if}}
+
+  <section id="section-{{@index}}"
+           class="section grid-{{getVar gridSize}} {{#if @first}}active{{/if}}">
+
+    {{#each blocks as |block blockIndex|}}
+      <div class="block">
+        <h3 class="block-title color-accent-green-{{mod blockIndex
+                                                        (getVar gridSize)}}">{{block.title}}</h3>
+        <hr>
+        {{#each searchFields}}
+          <div class="search-field">
+            <label>
+              <input class="search-bar" type="text" placeholder="{{title}}"
+                     data-url="{{href}}"/>
+            </label>
+          </div>
+        {{/each}}
+        {{#if links}}
+          <ul class="links">
+            {{#each links}}
+              <li class="link-list-item">
+                <a class="link" href="{{this.href}}">{{this.title}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+    {{/each}}
+  </section>
+{{/each}}
+
+<script>
+    {{{inlineJs}}}
+    {{#if clock}}
+      {{{clockJs}}}
+    {{/if}}
+    {{{searchJs}}}
+</script>
+<script>
+
+  // Automatically navigate to the correct section if there's a hash in the URL
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.hash) {
+      const section = document.querySelector(window.location.hash);
+      if (section) {
+        section.scrollIntoView();
+      }
+    }
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(".section-link");
+    const sections = document.querySelectorAll(".section");
+
+    links.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const targetId = e.target.getAttribute("data-target");
+
+        // Remove active class from all sections and links
+        sections.forEach(section => section.classList.remove("active"));
+        links.forEach(link => link.classList.remove("active"));
+
+        // Add active class to clicked link and target section
+        document.getElementById(targetId).classList.add("active");
+        e.target.classList.add("active");
+      });
+    });
+  });
+</script>
