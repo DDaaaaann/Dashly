@@ -20,7 +20,7 @@
 ---
 
 `npm i`
-`npx ts-node generate-html.ts`
+`npx ts-node src/generate-html.ts`
 
 
 <p align="center"> Made with 🧡 by <a href="https://github.com/DDaaaaann">DDaaaaann</a></p>

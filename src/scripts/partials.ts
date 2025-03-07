@@ -16,7 +16,7 @@ function registerHeader() {
 function registerDashboard(themeName: string) {
   // Read the dashboard file
   const theme = themeName.replaceAll(" ", "_").toLowerCase()
-  const dashboardPath = path.join(process.cwd(), "templating", "templates", `${theme}.hbs`);
+  const dashboardPath = path.join(process.cwd(), "src", "templates", `${theme}.hbs`);
 
   if (!fs.existsSync(dashboardPath)) {
     throw new Error(`Theme '${themeName}' does not exist.`);
@@ -30,7 +30,7 @@ function registerFooter() {
 
 function partials(partialName: string) {
   // Construct the partial path
-  const partialPath = path.join(process.cwd(), "templating", "partials", `${partialName}.hbs`);
+  const partialPath = path.join(process.cwd(), "src", "partials", `${partialName}.hbs`);
   register(partialName, partialPath)
 }
 

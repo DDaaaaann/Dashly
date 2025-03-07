@@ -3,16 +3,16 @@ import yaml from 'yaml';
 import Ajv, {ValidateFunction} from 'ajv';
 import * as handlebars from "handlebars";
 import path from "path";
-import {DashboardConfig} from "./templating/scripts/interface";
+import {DashboardConfig} from "./scripts/interface";
 
-import getMeta from "./templating/scripts/meta";
-import {registerPartials} from "./templating/scripts/partials";
-import {registerHelpers} from "./templating/scripts/helpers";
+import getMeta from "./scripts/meta";
+import {registerPartials} from "./scripts/partials";
+import {registerHelpers} from "./scripts/helpers";
 
 // Define constants for file paths
 const CONFIG_PATH = './config.yaml';
-const SCHEMA_PATH = './templating/schema.json';
-const TEMPLATE_PATH = path.resolve("templating", "partials", "template.hbs");
+const SCHEMA_PATH = './src/schema.json';
+const TEMPLATE_PATH = path.resolve("src", "partials", "template.hbs");
 const OUTPUT_PATH = './dist/index.html';
 
 try {
