@@ -1,17 +1,14 @@
 /**
  * Interval which the clock will be updated (in milliseconds).
  */
-const dateTime = new Date();
 const clockInterval = 100;
-const tabKeyCode = 9;
-const enterKeyCode = 13;
-const escapeKeyCode = 27;
 const clockElement = document.getElementById('clock');
 
 /**
  * Return a string containing the formatted current date and time.
  */
 function getDateTime() {
+  const dateTime = new Date();
   let day = dateTime.getDate();
   let month = dateTime.getMonth() + 1;
   let hour = dateTime.getHours();
