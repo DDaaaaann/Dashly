@@ -100,10 +100,20 @@ section.active {
 }
 
 /* ========== Grid Layouts ========== */
+.grid-1,
+.grid-2,
 .grid-3,
 .grid-4 {
   grid-column-gap: 3vw;
   row-gap: 5vh;
+}
+
+.grid-1 {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-3 {
@@ -135,6 +145,21 @@ section.active {
   margin: 0;
   font-weight: normal;
   min-width: 100px;
+}
+
+/* ========== Groups ========== */
+h4 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  color: var(--color-accent-green-0);
+}
+
+.group {
+  background-color: #4d4d4d;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-y: auto;
 }
 
 /* ========== Links ========== */
