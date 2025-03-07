@@ -35,8 +35,6 @@ header {
 /* ========== Sections & Blocks ========== */
 section {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
 }
 
 .block {
@@ -46,8 +44,11 @@ section {
   margin: 10px;
   box-shadow: var(--box-shadow);
   flex: 1 1 30%;
-  max-width: 30%;
   box-sizing: border-box;
+}
+
+.block.shrink {
+  flex-shrink: 5;
 }
 
 .group {
