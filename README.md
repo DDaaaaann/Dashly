@@ -1,7 +1,7 @@
 # Dashly 🚀
 
 <div align="center">
-  <img src="./logo.png" alt="Dashly Logo" width="200"/>
+  <img src="./assets/logo.png" alt="Dashly Logo" width="200"/>
 </div>
 
 <p align="center">

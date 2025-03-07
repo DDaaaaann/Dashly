@@ -3,16 +3,16 @@ import yaml from 'yaml';
 import Ajv, {ValidateFunction} from 'ajv';
 import * as handlebars from "handlebars";
 import path from "path";
-import {DashboardConfig} from "./scripts/interface";
+import {DashboardConfig} from "./templating/scripts/interface";
 
-import getMeta from "./scripts/meta";
-import {registerPartials} from "./scripts/partials";
-import {registerHelpers} from "./scripts/helpers";
+import getMeta from "./templating/scripts/meta";
+import {registerPartials} from "./templating/scripts/partials";
+import {registerHelpers} from "./templating/scripts/helpers";
 
 // Define constants for file paths
 const CONFIG_PATH = './config.yaml';
-const SCHEMA_PATH = './schema.json';
-const TEMPLATE_PATH = path.resolve("partials", "template.hbs");
+const SCHEMA_PATH = './templating/schema.json';
+const TEMPLATE_PATH = path.resolve("templating", "partials", "template.hbs");
 const OUTPUT_PATH = './dist/index.html';
 
 try {
@@ -60,9 +60,9 @@ function loadConfig(): DashboardConfig {
 
   return {
     ...config,
-    inlineCss: readFile(`./styles/${theme}.css`, "CSS file"),
-    clockJs: readFile('./js/clock.js', "Clock JS"),
-    searchJs: readFile('./js/search.js', "Search JS"),
+    inlineCss: readFile(`./assets/styles/${theme}.css`, "CSS file"),
+    clockJs: readFile('./assets/js/clock.js', "Clock JS"),
+    searchJs: readFile('./assets/js/search.js', "Search JS"),
     meta: getMeta(),
   };
 }
