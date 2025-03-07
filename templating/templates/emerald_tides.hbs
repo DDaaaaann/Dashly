@@ -29,33 +29,40 @@
     {{setVar gridSize 4}}
   {{/if}}
 
-  <section id="section-{{@index}}"
-           class="section grid-{{getVar gridSize}} {{#if @first}}active{{/if}}">
+  <section id="section-{{@index}}" class=" {{#if @first}}active{{/if}}">
+    {{#if (and title (eq ../sections.length 1))}}
+      <h2>{{title}}</h2>
+      <hr>
+    {{/if}}
 
-    {{#each blocks as |block blockIndex|}}
-      <div class="block">
-        <h3 class="block-title color-accent-green-{{mod blockIndex
-                                                        (getVar gridSize)}}">{{block.title}}</h3>
-        <hr>
-        {{#each searchFields}}
-          <div class="search-field">
-            <label>
-              <input class="search-bar" type="text" placeholder="{{title}}"
-                     data-url="{{href}}"/>
-            </label>
+    {{#if blocks}}
+      <div class="blocks grid-{{getVar gridSize}}">
+        {{#each blocks as |block blockIndex|}}
+          <div class="block">
+            <h3 class="block-title color-accent-green-{{mod blockIndex
+                                                            (getVar gridSize)}}">{{block.title}}</h3>
+            <hr>
+            {{#each searchFields}}
+              <div class="search-field">
+                <label>
+                  <input class="search-bar" type="text" placeholder="{{title}}"
+                         data-url="{{href}}"/>
+                </label>
+              </div>
+            {{/each}}
+            {{#if links}}
+              <ul class="links">
+                {{#each links}}
+                  <li class="link-list-item">
+                    <a class="link" href="{{this.href}}">{{this.title}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+            {{/if}}
           </div>
         {{/each}}
-        {{#if links}}
-          <ul class="links">
-            {{#each links}}
-              <li class="link-list-item">
-                <a class="link" href="{{this.href}}">{{this.title}}</a>
-              </li>
-            {{/each}}
-          </ul>
-        {{/if}}
       </div>
-    {{/each}}
+    {{/if}}
   </section>
 {{/each}}
 
@@ -81,7 +88,7 @@
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const links = document.querySelectorAll(".section-link");
-    const sections = document.querySelectorAll(".section");
+    const sections = document.querySelectorAll("section");
 
     links.forEach(link => {
       link.addEventListener("click", (e) => {
