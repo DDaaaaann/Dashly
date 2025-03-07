@@ -1,4 +1,4 @@
-$schema: "schema.json"
+$schema: "/templating/schema.json"
 
 title: My StartPage
 theme: Emerald Tides

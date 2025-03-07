@@ -1,5 +1,3 @@
-$schema: "schema.json"
-
 title: My Dashboard
 theme: Night Owl
 clock: true
