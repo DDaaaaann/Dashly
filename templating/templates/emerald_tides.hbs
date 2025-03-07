@@ -24,6 +24,12 @@
   {{else if (eq (mod blocks.length 3) 0)}}
   {{!-- Use 3-column layout --}}
     {{setVar gridSize 3}}
+  {{else if (eq (mod blocks.length 2) 0)}}
+  {{!-- Use 2-column layout --}}
+    {{setVar gridSize 2}}
+  {{else if (eq blocks.length 1)}}
+  {{!-- Use 1-column layout --}}
+    {{setVar gridSize 1}}
   {{else}}
   {{!-- Use default 4-column layout --}}
     {{setVar gridSize 4}}
@@ -42,23 +48,13 @@
             <h3 class="block-title color-accent-green-{{mod blockIndex
                                                             (getVar gridSize)}}">{{block.title}}</h3>
             <hr>
-            {{#each searchFields}}
-              <div class="search-field">
-                <label>
-                  <input class="search-bar" type="text" placeholder="{{title}}"
-                         data-url="{{href}}"/>
-                </label>
+            {{> links_and_searchfields}}
+            {{#each groups}}
+              <div class="group">
+                <h4>{{title}}</h4>
+                {{> links_and_searchfields}}
               </div>
             {{/each}}
-            {{#if links}}
-              <ul class="links">
-                {{#each links}}
-                  <li class="link-list-item">
-                    <a class="link" href="{{this.href}}">{{this.title}}</a>
-                  </li>
-                {{/each}}
-              </ul>
-            {{/if}}
           </div>
         {{/each}}
       </div>
@@ -106,3 +102,23 @@
     });
   });
 </script>
+
+{{#*inline "links_and_searchfields"}}
+  {{#each searchFields}}
+    <div class="search-field">
+      <label>
+        <input class="search-bar" type="text" placeholder="{{title}}"
+               data-url="{{href}}"/>
+      </label>
+    </div>
+  {{/each}}
+  {{#if links}}
+    <ul class="links">
+      {{#each links}}
+        <li class="link-list-item">
+          <a class="link" href="{{this.href}}">{{this.title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/inline}}
