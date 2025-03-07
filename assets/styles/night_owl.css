@@ -1,26 +1,27 @@
+/* ========== Global Variables ========== */
 :root {
-  --primary-color: #bb86fc;
-  --background-color: #121212;
-  --secondary-bg: #1e1e1e;
-  --text-color: #ffffff;
-  --accent-color: #fccb86;
-  --subtle-text: #9b91a7;
-  --input-bg: #272727;
-  --input-hover-bg: #2e2e2e;
+  --color-background-primary: #121212;
+  --color-background-secondary: #1e1e1e;
+  --color-text-primary: #bb86fc;
+  --color-text-secondary: #ffffff;
+  --color-text-subtle: #9b91a7;
+  --color-input: #272727;
+  --color-input-hover: #2e2e2e;
   --border-radius: 8px;
   --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* ========== Colors ========== */
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--color-background-primary);
+  color: var(--color-text-secondary);
 }
 
 a {
   text-decoration: none;
-  color: var(--primary-color);
+  color: var(--color-text-primary);
 }
 
 header {
@@ -31,6 +32,7 @@ header {
   margin-bottom: 20px;
 }
 
+/* ========== Sections & Blocks ========== */
 section {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +40,7 @@ section {
 }
 
 .block {
-  background-color: var(--secondary-bg);
+  background-color: var(--color-background-secondary);
   border-radius: var(--border-radius);
   padding: 0 20px 20px;
   margin: 10px;
@@ -50,7 +52,7 @@ section {
 
 .group {
   margin-left: 20px;
-  border-left: 2px solid var(--primary-color);
+  border-left: 2px solid var(--color-text-primary);
   padding-left: 10px;
 }
 
@@ -58,19 +60,15 @@ section {
   margin-bottom: 10px;
 }
 
-.search-bar-wrapper {
-  width: 600px;
-  margin-top: 10px;
-}
-
+/* ========== Search Fields ========== */
 .search-bar {
   width: 90%;
   margin: 10px 0;
   padding: 10px 15px;
   border: 1px solid transparent;
   border-radius: 20px;
-  background-color: var(--input-bg);
-  color: var(--text-color);
+  background-color: var(--color-input);
+  color: var(--color-text-secondary);
   font-size: 16px;
   box-shadow: var(--box-shadow);
   cursor: pointer;
@@ -80,9 +78,9 @@ section {
 .search-bar:hover,
 .search-bar:focus,
 .search-bar:focus-visible {
-  background-color: var(--input-hover-bg);
+  background-color: var(--color-input-hover);
   outline: none;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--color-text-primary);
 }
 
 .group .search-bar {
@@ -90,34 +88,19 @@ section {
   padding: 5px 10px;
 }
 
-#date {
-  margin-bottom: 20px;
-}
-
-#alerts {
-  text-align: center;
-  color: var(--accent-color);
-}
-
-#clock-div {
-  text-align: center;
-  color: var(--subtle-text);
-}
-
+/* ========== Clock ========== */
 #clock {
   font-size: 24px;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--color-text-primary);
   padding: 15px 20px;
+  cursor: default;
   border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  text-align: center;
   transition: box-shadow 0.3s ease;
 }
 
-#clock:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
+/* ========== Footer ========== */
 footer {
   justify-content: center;
   text-align: center;
@@ -126,6 +109,6 @@ footer {
 }
 
 .copyright {
-  color: var(--subtle-text);
+  color: var(--color-text-subtle);
   font-size: 0.8em;
 }

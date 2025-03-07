@@ -10,14 +10,14 @@
 
   <style>
     :root {
-      --primary-color: #bb86fc;
-      --background-color: #121212;
-      --secondary-bg: #1e1e1e;
-      --text-color: #ffffff;
+      --color-text-primary: #bb86fc;
+      --color-background-primary: #121212;
+      --color-background-secondary: #1e1e1e;
+      --color-text-secondary: #ffffff;
       --accent-color: #fccb86;
-      --subtle-text: #9b91a7;
-      --input-bg: #272727;
-      --input-hover-bg: #2e2e2e;
+      --color-text-subtle: #9b91a7;
+      --color-input: #272727;
+      --color-input-hover: #2e2e2e;
       --border-radius: 8px;
       --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -25,13 +25,13 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background-color: var(--color-background-primary);
+      color: var(--color-text-secondary);
     }
 
     a {
       text-decoration: none;
-      color: var(--primary-color);
+      color: var(--color-text-primary);
     }
 
     header {
@@ -49,7 +49,7 @@
     }
 
     .block {
-      background-color: var(--secondary-bg);
+      background-color: var(--color-background-secondary);
       border-radius: var(--border-radius);
       padding: 0 20px 20px;
       margin: 10px;
@@ -61,7 +61,7 @@
 
     .group {
       margin-left: 20px;
-      border-left: 2px solid var(--primary-color);
+      border-left: 2px solid var(--color-text-primary);
       padding-left: 10px;
     }
 
@@ -80,8 +80,8 @@
       padding: 10px 15px;
       border: 1px solid transparent;
       border-radius: 20px;
-      background-color: var(--input-bg);
-      color: var(--text-color);
+      background-color: var(--color-input);
+      color: var(--color-text-secondary);
       font-size: 16px;
       box-shadow: var(--box-shadow);
       cursor: pointer;
@@ -91,9 +91,9 @@
     .search-bar:hover,
     .search-bar:focus,
     .search-bar:focus-visible {
-      background-color: var(--input-hover-bg);
+      background-color: var(--color-input-hover);
       outline: none;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--color-text-primary);
     }
 
     .group .search-bar {
@@ -112,13 +112,13 @@
 
     #clock-div {
       text-align: center;
-      color: var(--subtle-text);
+      color: var(--color-text-subtle);
     }
 
     #clock {
       font-size: 24px;
       font-weight: bold;
-      color: var(--primary-color);
+      color: var(--color-text-primary);
       padding: 15px 20px;
       border-radius: 10px;
       box-shadow: var(--box-shadow);
@@ -137,7 +137,7 @@
     }
 
     .copyright {
-      color: var(--subtle-text);
+      color: var(--color-text-subtle);
       font-size: 0.8em;
     }
 
@@ -154,14 +154,14 @@
   <title></title>
   <style>
     :root {
-      --primary-color: #bb86fc;
-      --background-color: #121212;
-      --secondary-bg: #1e1e1e;
-      --text-color: #ffffff;
+      --color-text-primary: #bb86fc;
+      --color-background-primary: #121212;
+      --color-background-secondary: #1e1e1e;
+      --color-text-secondary: #ffffff;
       --accent-color: #fccb86;
-      --subtle-text: #9b91a7;
-      --input-bg: #272727;
-      --input-hover-bg: #2e2e2e;
+      --color-text-subtle: #9b91a7;
+      --color-input: #272727;
+      --color-input-hover: #2e2e2e;
       --border-radius: 8px;
       --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
@@ -169,13 +169,13 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      background-color: var(--color-background-primary);
+      color: var(--color-text-secondary);
     }
 
     a {
       text-decoration: none;
-      color: var(--primary-color);
+      color: var(--color-text-primary);
     }
 
     header {
@@ -193,7 +193,7 @@
     }
 
     .block {
-      background-color: var(--secondary-bg);
+      background-color: var(--color-background-secondary);
       border-radius: var(--border-radius);
       padding: 0 20px 20px;
       margin: 10px;
@@ -205,7 +205,7 @@
 
     .group {
       margin-left: 20px;
-      border-left: 2px solid var(--primary-color);
+      border-left: 2px solid var(--color-text-primary);
       padding-left: 10px;
     }
 
@@ -224,8 +224,8 @@
       padding: 10px 15px;
       border: 1px solid transparent;
       border-radius: 20px;
-      background-color: var(--input-bg);
-      color: var(--text-color);
+      background-color: var(--color-input);
+      color: var(--color-text-secondary);
       font-size: 16px;
       box-shadow: var(--box-shadow);
       cursor: pointer;
@@ -235,9 +235,9 @@
     .search-bar:hover,
     .search-bar:focus,
     .search-bar:focus-visible {
-      background-color: var(--input-hover-bg);
+      background-color: var(--color-input-hover);
       outline: none;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--color-text-primary);
     }
 
     .group .search-bar {
@@ -256,13 +256,13 @@
 
     #clock-div {
       text-align: center;
-      color: var(--subtle-text);
+      color: var(--color-text-subtle);
     }
 
     #clock {
       font-size: 24px;
       font-weight: bold;
-      color: var(--primary-color);
+      color: var(--color-text-primary);
       padding: 15px 20px;
       border-radius: 10px;
       box-shadow: var(--box-shadow);
@@ -281,7 +281,7 @@
     }
 
     .copyright {
-      color: var(--subtle-text);
+      color: var(--color-text-subtle);
       font-size: 0.8em;
     }
 

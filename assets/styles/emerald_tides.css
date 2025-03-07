@@ -1,18 +1,23 @@
+/* ========== Global Variables ========== */
 :root {
-  --background: #333333;
-  --secondary-bg: #444444;
-  --tertiary-bg: #888888;
-  --text-color: #FFFFFF;
-  --primary-color: #FFFFFF;
-  --subtle-text: #797979;
+  --color-background-primary: #333333;
+  --color-background-secondary: #444444;
+  --color-background-tertiary: #888888;
+  --color-text-secondary: #ffffff;
+  --color-text-subtle: #797979;
 
   --color-accent-green-0: #81d3be;
   --color-accent-green-1: #70c1ac;
   --color-accent-green-2: #00ad8b;
   --color-accent-green-3: #059d7f;
+
+  --color-accent-primary: #81d3be;
+
+  --border-radius: 5px;
+  --box-shadow: 0 0 12px 1px rgba(17, 17, 17, 0.3);
 }
 
-/* Colors */
+/* ========== Colors ========== */
 .color-accent-green-0 {
   color: var(--color-accent-green-0);
 }
@@ -30,8 +35,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--text-color);
+  background: var(--color-background-primary);
+  color: var(--color-text-secondary);
   font-family: Arial, sans-serif;
   padding: 20px;
 }
@@ -50,10 +55,10 @@ hr {
 }
 
 h1 {
-  color: var(--primary-color);
+  color: var(--color-text-secondary);
 }
 
-/* Navigation */
+/* ========== Navigation ========== */
 .section-nav {
   display: flex;
   gap: 10px;
@@ -62,15 +67,15 @@ h1 {
 
 .section-link {
   padding: 10px;
-  background: var(--secondary-bg);
-  color: var(--text-color);
+  background: var(--color-background-secondary);
+  color: var(--color-text-secondary);
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 
 .section-link:hover {
-  background: var(--tertiary-bg);
+  background: var(--color-background-tertiary);
 }
 
 .section-link.active {
@@ -78,7 +83,7 @@ h1 {
   color: #101010;
 }
 
-/* Section */
+/* ========== Section Visibility ========== */
 .section {
   display: none;
 }
@@ -87,31 +92,31 @@ h1 {
   display: grid;
 }
 
-.grid-3 {
+/* ========== Grid Layouts ========== */
+.grid-3,
+.grid-4 {
   padding: 2vh 5%;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
   grid-column-gap: 3vw;
   row-gap: 5vh;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .grid-4 {
-  padding: 2vh 5%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 3vw;
-  row-gap: 5vh;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-/* Block */
+/* ========== Blocks & Containers ========== */
 .block {
-  background-color: var(--secondary-bg);
+  background-color: var(--color-background-secondary);
   padding: 10px;
   width: 95%;
   margin: 0 auto;
   border-radius: 4px;
   overflow-y: auto;
-  box-shadow: 0 0 12px 1px rgba(17, 17, 17, 0.3);
+  box-shadow: var(--box-shadow);
 }
 
 .block-title {
@@ -121,13 +126,13 @@ h1 {
   min-width: 100px;
 }
 
-/* Link */
+/* ========== Links ========== */
 .links {
   padding: 0;
 }
 
 .link {
-  color: #FFFFFF;
+  color: var(--color-text-secondary);
   display: block;
   width: 100%;
   height: 100%;
@@ -147,10 +152,10 @@ h1 {
 }
 
 .link-list-item:hover {
-  background-color: var(--tertiary-bg);
+  background-color: var(--color-background-tertiary);
 }
 
-/* Search Field */
+/* ========== Search Fields ========== */
 .search-fields form {
   margin-top: 10px;
 }
@@ -160,11 +165,11 @@ input {
   margin-top: 10px;
   padding: 5px;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   outline: none;
 }
 
-/* Footer */
+/* ========== Footer ========== */
 footer {
   justify-content: center;
   text-align: center;
@@ -173,11 +178,11 @@ footer {
 }
 
 .copyright {
-  color: var(--subtle-text);
+  color: var(--color-text-subtle);
   font-size: 0.8em;
 }
 
-/* Responsive adjustments */
+/* ========== Responsive Design ========== */
 @media (max-width: 1024px) {
   .block {
     flex: 1 1 calc(50% - 1rem); /* 2 blocks per row */

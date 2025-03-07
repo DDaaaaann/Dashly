@@ -10,12 +10,12 @@
 
   <style>
     :root {
-      --background: #333333;
-      --secondary-bg: #444444;
-      --tertiary-bg: #888888;
-      --text-color: #FFFFFF;
-      --primary-color: #FFFFFF;
-      --subtle-text: #797979;
+      --color-background-primary: #333333;
+      --color-background-secondary: #444444;
+      --color-background-tertiary: #888888;
+      --color-text-secondary: #FFFFFF;
+      --color-text-primary: #FFFFFF;
+      --color-text-subtle: #797979;
 
       --color-accent-green-0: #81d3be;
       --color-accent-green-1: #70c1ac;
@@ -41,8 +41,8 @@
     }
 
     body {
-      background: var(--background);
-      color: var(--text-color);
+      background: var(--color-background-primary);
+      color: var(--color-text-secondary);
       font-family: Arial, sans-serif;
       padding: 20px;
     }
@@ -61,7 +61,7 @@
     }
 
     h1 {
-      color: var(--primary-color);
+      color: var(--color-text-primary);
     }
 
     /* Navigation */
@@ -73,15 +73,15 @@
 
     .section-link {
       padding: 10px;
-      background: var(--secondary-bg);
-      color: var(--text-color);
+      background: var(--color-background-secondary);
+      color: var(--color-text-secondary);
       text-decoration: none;
       border-radius: 5px;
       cursor: pointer;
     }
 
     .section-link:hover {
-      background: var(--tertiary-bg);
+      background: var(--color-background-tertiary);
     }
 
     .section-link.active {
@@ -116,7 +116,7 @@
 
     /* Block */
     .block {
-      background-color: var(--secondary-bg);
+      background-color: var(--color-background-secondary);
       padding: 10px;
       width: 95%;
       margin: 0 auto;
@@ -158,7 +158,7 @@
     }
 
     .link-list-item:hover {
-      background-color: var(--tertiary-bg);
+      background-color: var(--color-background-tertiary);
     }
 
     /* Search Field */
@@ -184,7 +184,7 @@
     }
 
     .copyright {
-      color: var(--subtle-text);
+      color: var(--color-text-subtle);
       font-size: 0.8em;
     }
 
