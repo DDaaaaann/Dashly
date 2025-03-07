@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{{favicon}}}
+  {{{meta.favicon}}}
   <title>{{dashboard.title}}</title>
   <style>
       {{{inlineCss}}}
@@ -11,17 +11,15 @@
 </head>
 <body>
 <header>
-  <h1>{{dashboard.title}}</h1>
-  {{#if dashboard.clock}}
-    <div id="clock-div">
-      <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
-    </div>
+  <h1>{{title}}</h1>
+  {{#if clock}}
+    <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
   {{/if}}
   <!--    <div class="search-bar">-->
   <!--      <input type="text" id="searchInput" placeholder="Search for projects...">-->
   <!--    </div>-->
 </header>
-{{#each dashboard.sections}}
+{{#each sections}}
   <section>
     <!--    <h2>{{title}}</h2>-->
     {{#each blocks}}
@@ -41,7 +39,7 @@
 {{/each}}
 <script>
     {{{inlineJs}}}
-    {{#if dashboard.clock}}
+    {{#if clock}}
       {{{clockJs}}}
     {{/if}}
     {{{searchJs}}}
@@ -71,3 +69,4 @@
     </div>
   {{/if}}
 {{/inline}}
+

@@ -1,0 +1,134 @@
+title: My Dashboard
+theme: Night Owl
+clock: true
+sections:
+  - blocks:
+      - title: Daily
+        links:
+          - title: Sprint
+            href: https://jira.com/
+          - title: My Work
+            href: https://jira.com/
+          - title: Stand Up
+            href: https://meet.google.com/
+      - title: Dev
+        links:
+          - title: GitLab
+            href: https://gitlab.com/
+          - title: Openshift
+            href: https://openshift.com/
+          - title: Dev pipeline
+            href: https://jenkins.io/
+      - title: Projects
+        links:
+          - title: Project A
+            href: https://gitlab.com
+          - title: Project B
+            href: https://gitlab.com
+  - blocks:
+      - title: Application A
+        links:
+          - title: Pull Requests
+            href: ""
+          - title: Pipeline
+            href: ""
+          - title: SonarQube
+            href: ""
+        groups:
+          - title: Dev
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Tst
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Acc
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Prd
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+      - title: Application B
+        links:
+          - title: Pull Requests
+            href: ""
+          - title: Pipeline
+            href: ""
+          - title: SonarQube
+            href: ""
+        groups:
+          - title: Dev
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Tst
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Acc
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
+          - title: Prd
+            searchFields:
+              - title: Search logs
+                href: ""
+            links:
+              - title: DashBoard
+                href: ""
+              - title: Openshift
+                href: ""
+              - title: Grafana
+                href: ""
