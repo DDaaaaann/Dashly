@@ -3,11 +3,11 @@ import yaml from 'yaml';
 import Ajv, {ValidateFunction} from 'ajv';
 import * as handlebars from "handlebars";
 import path from "path";
-import {DashboardConfig} from "./scripts/interface";
+import {DashboardConfig} from "./src/scripts/interface";
 
-import getMeta from "./scripts/meta";
-import {registerPartials} from "./scripts/partials";
-import {registerHelpers} from "./scripts/helpers";
+import getMeta from "./src/scripts/meta";
+import {registerPartials} from "./src/scripts/partials";
+import {registerHelpers} from "./src/scripts/helpers";
 
 // Define constants for file paths
 const CONFIG_PATH = './config.yaml';
