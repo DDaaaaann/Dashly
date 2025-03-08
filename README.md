@@ -1,26 +1,149 @@
-# Dashly 🚀
+# Dashly <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="25"/>
 
 <div align="center">
-  <img src="./assets/logo.png" alt="Dashly Logo" width="200"/>
+  <img src="./assets/logo.png" alt="Dashly Logo" width="300"/>
 </div>
 
 <p align="center">
-  <strong>A sleek and modern dashboard app that combines functionality with style.</strong>
+  <strong>Create Sleek and Modern Dashboards in a Blink of an Eye</strong>
 </p>
-
----
 
 ## Features
 
-- Intuitive, user-friendly interface
-- Real-time updates and live data feeds
-- Customizable widgets for your personal dashboard
-- Dark and Light mode options
+- **Multi-customizable**: Personalize your dashboard with ease. Just provide links or search fields
+  in a simple configuration file.
+- **Single HTML Output**: Everything packed in a single HTML file for simplicity and portability.
+- **Multiple Themes**: Switch between different themes.
+- **Customizable Search Fields**: Easily add and customize search fields to find what you need with
+  a click.
 
----
+## How It Works
 
-`npm i`
-`npx ts-node src/generate-html.ts`
+### 1. **Configure Your Dashboard**
 
+To get started, create a `config.yaml` file where you define the content and layout of your
+dashboard. Here’s an example of how the configuration file might look:
+
+```yaml
+title: My StartPage
+theme: Emerald Tides
+clock: true
+sections:
+  - title: Work
+    blocks:
+      - title: Communication
+        links:
+          - title: Teams
+            href: http://teams.microsoft.com
+          - title: Slack
+            href: https://slack.com
+          - title: Outlook
+            href: http://outlook.live.com
+      - title: Search
+        searchFields:
+          - title: Search on google
+            href: https://www.google.com/search?q=[search-term]
+        links:
+          - title: Wikipedia
+            href: https://wikipedia.com
+          - title: Translate
+            href: https://translate.google.com/
+  - title: Personal
+    blocks:
+      - title: Socials
+        links:
+          - href: https://www.instagram.com
+            title: Instagram
+          - href: https://www.facebook.com
+            title: Facebook
+```
+
+### 2. **Generate the HTML Dashboard**
+
+You can use **two** ways to generate the HTML dashboard:
+
+#### Option 1: Run the `generate-html.ts` script
+
+If you prefer running the TypeScript script directly, follow these steps:
+
+1. Clone the repository and install dependencies:
+
+    ```bash
+    git clone https://github.com/DDaaaaann/Dashly.git
+    cd Dashly
+    npm install
+    ```
+
+2. Fill out the `config.yaml` file with your desired dashboard settings.
+
+3. Run the TypeScript script `generate-html.ts` to generate the dashboard:
+
+    ```bash
+    ts-node generate-html.ts config.yaml
+    ```
+
+4. The generated `index.html` will be available in the `/dist` folder, ready to be deployed.
+
+#### Option 2: Use `npx` for Convenience
+
+For a faster, one-liner setup without needing to install the project globally, simply run the
+following command:
+
+```bash
+npx generate-dashboard config.yaml
+```
+
+This will automatically generate the dashboard HTML file using the provided `config.yaml` file and
+save it to `index.html`.
+
+### 3. **Use Your Dashboard**
+
+Once the HTML is generated, you can easily open it with you browser of choice. Make sure to set it
+as your homepage.
+
+## Themes
+
+You can choose between multiple pre-built themes, or create your own. The available themes are:
+
+- **Night Owl**
+- **Emerald Tides**
+
+### Night Owl
+
+Here’s an example of a generated dashboard with _Night Owl_ theme:
+![Night Owl Theme](https://github.com/user-attachments/assets/2f35018f-5abf-498f-9de7-d60bb9037d3f)
+
+<a href="/examples/Night Owl/index.html">Night Owl</a>
+
+### Emerald Tides
+
+Here’s an example of a generated dashboard with _Emerald Tides_ theme:
+![Emerald Tides Theme](https://github.com/user-attachments/assets/767ee69c-4e84-4e43-975d-41739e540391)
+
+<a href="/examples/Emerald Tides/index.html">Emerald Tides</a>
+
+## Customizable Search Fields
+
+Need to add custom search fields? Just include them in the `config.yaml` file, and the app will
+automatically add them to the generated dashboard.
+
+Place `[search-term]` in the URL where the query should go, and Dashly will automatically replace it
+whit your input.
+
+```yaml
+searchFields:
+  - title: Search on Wikipedia
+    href: https://nl.wikipedia.org/w/index.php?search=[search-term]
+```
+
+## License
+
+<div align="center">
+<p><a property="dct:title" rel="cc:attributionURL" href="https://github.com/DDaaaaann/Dashly">Dashly <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="20"/></a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://ddaaaaann.nl">DDaaaaann</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0</a>  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></p>
+</div>
+
+<br>
+<br>
+<br>
 
 <p align="center"> Made with 🧡 by <a href="https://github.com/DDaaaaann">DDaaaaann</a></p>
