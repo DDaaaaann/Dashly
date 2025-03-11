@@ -4,8 +4,8 @@ import * as handlebars from "handlebars";
 
 
 export function registerPartials(themeName: string) {
-  registerHeader();
   registerDashboard(themeName);
+  registerHeader();
   registerFooter();
 }
 
