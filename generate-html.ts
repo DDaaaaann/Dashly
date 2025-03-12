@@ -8,24 +8,30 @@ import {DashboardConfig} from "./src/scripts/interface";
 import getMeta from "./src/scripts/meta";
 import {registerPartials} from "./src/scripts/partials";
 import {registerHelpers} from "./src/scripts/helpers";
+import Logger from "./src/scripts/logger";
 
-// Define constants for file paths
+const log = new Logger({
+  verbose: true,
+});
+
 const CONFIG_PATH = './config.yaml';
 const SCHEMA_PATH = './src/schema.json';
 const TEMPLATE_PATH = path.resolve("src", "partials", "template.hbs");
 const OUTPUT_PATH = './dist/index.html';
 
-try {
-  const config = loadConfig();
-  const theme = getTheme(config);
+async function runDashboardGenerator() {
+  try {
+    const config = await loadConfig();
+    const theme = getTheme(config);
 
-  registerPartials(theme);
-  registerHelpers();
+    await registerPartials(theme);
+    await registerHelpers();
 
-  generateHtml(config);
-} catch (error) {
-  logError("Fatal error occurred:", error);
-  process.exit(1);
+    generateHtml(config);
+  } catch (error) {
+    log.error("Fatal error occurred:", error);
+    process.exit(1);
+  }
 }
 
 /**
@@ -36,9 +42,9 @@ function generateHtml(config: DashboardConfig): void {
     const template = compileTemplate();
     const html = template(config);
     fs.outputFileSync(OUTPUT_PATH, html);
-    logSuccess(`HTML page generated successfully at ${OUTPUT_PATH}`);
+    log.success(`HTML page generated successfully at ${OUTPUT_PATH}`);
   } catch (error) {
-    logError("Failed to generate HTML:", error);
+    log.error("Failed to generate HTML:", error);
   }
 }
 
@@ -52,7 +58,7 @@ function compileTemplate(): HandlebarsTemplateDelegate {
 /**
  * Loads configuration from YAML, enriches it with CSS, JS, and metadata.
  */
-function loadConfig(): DashboardConfig {
+async function loadConfig(): Promise<DashboardConfig> {
   const config: DashboardConfig = yaml.parse(readFile(CONFIG_PATH, "configuration file"));
   const theme = getTheme(config);
 
@@ -108,16 +114,8 @@ function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
-/**
- * Logs a success message in green.
- */
-function logSuccess(message: string): void {
-  console.log(`\x1b[32m✓ ${message}\x1b[0m`); // Green text
-}
-
-/**
- * Logs an error message in red.
- */
-function logError(message: string, error?: unknown): void {
-  console.error(`\x1b[31m✗ ${message}\x1b[0m`, getErrorMessage(error));
-}
+// Call the main function to run the generator
+runDashboardGenerator().catch(error => {
+  log.error("An error occurred while running the dashboard generator:", error);
+  process.exit(1);
+});
