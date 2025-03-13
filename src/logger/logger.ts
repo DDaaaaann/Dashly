@@ -10,7 +10,8 @@ interface LoggerOptions {
   verbose?: boolean;
 }
 
-class Logger {
+export class Logger {
+  private static instance: Logger;
   private verbose: boolean;
 
   constructor(options: LoggerOptions = {}) {
@@ -59,7 +60,6 @@ class Logger {
     return `${colorCode}${message}\x1b[0m`;
   }
 
-  // Logging methods
   public info(message: string): void {
     this.log(LogLevel.INFO, message);
   }
@@ -83,6 +83,12 @@ class Logger {
   public debug(message: string): void {
     this.log(LogLevel.DEBUG, message);
   }
+
+  public setVerbose(isVerbose: boolean): Logger {
+    this.verbose = isVerbose;
+    return this;
+  }
+
 }
 
 function getErrorMessage(error: unknown): string {
@@ -92,4 +98,5 @@ function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
-export default Logger;
+const log = new Logger({verbose: process.argv.includes('--verbose') || process.argv.includes('-v')});
+export default log;

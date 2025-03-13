@@ -11,8 +11,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "tests/**/*.ts",
-    "generate-html.ts"
+    "tests/**/*.ts"
   ],
   "exclude": [
     "node_modules",
