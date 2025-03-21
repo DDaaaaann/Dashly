@@ -1,9 +1,9 @@
 {
   "name": "dashly",
-  "version": "1.0.0",
-  "description": "<div align=\"center\">   <img src=\"./logo.png\" alt=\"Dashly Logo\" width=\"200\"/> </div>",
+  "version": "0.1.0",
+  "description": "A dashboard app to create stunning start pages",
   "bin": {
-    "dashly": "./src/index.ts"
+    "dashly": "./dist/index.js"
   },
   "main": "index.ts",
   "scripts": {
@@ -12,9 +12,11 @@
     "start": "node dist/index.js",
     "test": "jest --config jest.config.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "dashboard",
+    "startpage"
+  ],
+  "author": "DDaaaaann",
   "dependencies": {
     "ajv": "^8.17.1",
     "fs-extra": "^11.3.0",

@@ -1,4 +1,4 @@
-// src/index.ts
+#!/usr/bin/env node
 import log from './logger/logger';
 import {loadConfig} from './config/config';
 import {registerPartials} from './template/partials';
