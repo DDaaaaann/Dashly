@@ -1,8 +1,6 @@
 import log from "../../src/logger/logger";
 
-
 describe('Logger', () => {
-
   beforeEach(() => {
     console.log = jest.fn();
   });

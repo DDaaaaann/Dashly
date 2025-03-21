@@ -19,6 +19,7 @@ export async function loadConfig(): Promise<DashboardConfig> {
 
   return {
     ...config,
+    theme: config.theme || 'Night Owl',
     inlineCss: readFile(`./assets/styles/${theme}.css`, 'CSS file'),
     clockJs: readFile('./assets/js/clock.js', 'Clock JS'),
     searchJs: readFile('./assets/js/search.js', 'Search JS'),
@@ -26,7 +27,7 @@ export async function loadConfig(): Promise<DashboardConfig> {
   };
 }
 
-export function validateConfig(config: DashboardConfig): void {
+function validateConfig(config: DashboardConfig): void {
   log.debug('Validating configuration...');
   const schema = JSON.parse(readFile(SCHEMA_PATH, 'JSON schema'));
   const ajv = new Ajv();
@@ -38,9 +39,12 @@ export function validateConfig(config: DashboardConfig): void {
   log.debug('Configuration validated!');
 }
 
-export function getTheme(config: DashboardConfig): string {
+function getTheme(config: DashboardConfig): string {
   if (!config.theme) {
     log.debug("Using default theme")
   }
   return (config.theme || 'Night Owl').replace(/\s+/g, '_').toLowerCase();
 }
+
+// Exported for testing purposes
+export {validateConfig, getTheme};
