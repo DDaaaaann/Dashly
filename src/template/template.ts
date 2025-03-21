@@ -3,9 +3,10 @@ import * as handlebars from 'handlebars';
 import {DashboardConfig} from '../scripts/interface';
 import {readFile} from '../utils/file';
 import log from "../logger/logger";
+import path from "path";
 
-const OUTPUT_PATH = './dist/index.html';
-const TEMPLATE_PATH = './src/partials/template.hbs';
+const OUTPUT_PATH = './index.html';
+const TEMPLATE_PATH = '../partials/template.hbs';
 
 export function generateHtml(config: DashboardConfig): void {
   log.info("Generating dashboard...")
@@ -13,7 +14,7 @@ export function generateHtml(config: DashboardConfig): void {
     const template = compileTemplate();
     const html = template(config);
     fs.outputFileSync(OUTPUT_PATH, html);
-    log.info(`Dashboard available at ${OUTPUT_PATH}`);
+    log.info(`Dashboard available at ${path.join(process.cwd(), OUTPUT_PATH)}`);
   } catch (error) {
     log.error('Failed to generate HTML:', error);
   }
@@ -21,6 +22,6 @@ export function generateHtml(config: DashboardConfig): void {
 
 export function compileTemplate(): HandlebarsTemplateDelegate {
   log.info('Compiling template...');
-  const templateString = readFile(TEMPLATE_PATH, 'Handlebars template');
+  const templateString = readFile(__dirname, TEMPLATE_PATH, 'Handlebars template');
   return handlebars.compile(templateString);
 }

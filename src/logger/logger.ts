@@ -80,8 +80,8 @@ export class Logger {
     }
   }
 
-  public debug(message: string): void {
-    this.log(LogLevel.DEBUG, message);
+  public debug(message: string, ...optionalParams: any[]): void {
+    this.log(LogLevel.DEBUG, message, optionalParams);
   }
 
   public setVerbose(isVerbose: boolean): Logger {

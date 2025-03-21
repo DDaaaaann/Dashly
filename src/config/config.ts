@@ -5,14 +5,14 @@ import getMeta from '../scripts/meta';
 
 import log from "../logger/logger";
 import {readFile} from "../utils/file";
+import schema from "../schema.json";
 
 const CONFIG_PATH = './config.yaml';
-const SCHEMA_PATH = './src/schema.json';
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
-  log.debug(`Reading config from ${CONFIG_PATH}`)
-  const config: DashboardConfig = yaml.parse(readFile(CONFIG_PATH, 'configuration file'));
+
+  const config: DashboardConfig = yaml.parse(readFile(process.cwd(), CONFIG_PATH, 'configuration file'));
   const theme = getTheme(config);
 
   validateConfig(config);
@@ -20,16 +20,16 @@ export async function loadConfig(): Promise<DashboardConfig> {
   return {
     ...config,
     theme: config.theme || 'Night Owl',
-    inlineCss: readFile(`./assets/styles/${theme}.css`, 'CSS file'),
-    clockJs: readFile('./assets/js/clock.js', 'Clock JS'),
-    searchJs: readFile('./assets/js/search.js', 'Search JS'),
+    inlineCss: readFile(__dirname, `../../assets/styles/${theme}.css`, 'CSS file'),
+    clockJs: readFile(__dirname, '../../assets/js/clock.js', 'Clock JS'),
+    searchJs: readFile(__dirname, '../../assets/js/search.js', 'Search JS'),
     meta: getMeta(),
   };
 }
 
 function validateConfig(config: DashboardConfig): void {
   log.debug('Validating configuration...');
-  const schema = JSON.parse(readFile(SCHEMA_PATH, 'JSON schema'));
+  // const schema = JSON.parse(readFile(schema, 'JSON schema'));
   const ajv = new Ajv();
   const validate: ValidateFunction = ajv.compile(schema);
 
