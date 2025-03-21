@@ -62,7 +62,7 @@ sections:
 
 You can use **two** ways to generate the HTML dashboard:
 
-#### Option 1: Run the `generate-html.ts` script
+#### Option 1: Run the `index.ts` script
 
 If you prefer running the TypeScript script directly, follow these steps:
 
@@ -76,10 +76,10 @@ If you prefer running the TypeScript script directly, follow these steps:
 
 2. Fill out the `config.yaml` file with your desired dashboard settings.
 
-3. Run the TypeScript script `generate-html.ts` to generate the dashboard:
+3. Run the TypeScript script `index.ts` to generate the dashboard:
 
     ```bash
-    ts-node generate-html.ts config.yaml
+    ts-node index.ts config.yaml
     ```
 
 4. The generated `index.html` will be available in the `/dist` folder, ready to be deployed.

@@ -35,10 +35,10 @@ export interface Meta {
 
 export interface DashboardConfig {
   meta: Meta;
-  title: string;
-  theme: string;
-  clock: boolean;
   sections: Section[];
+  theme: string;
+  title?: string;
+  clock?: boolean;
   inlineCss?: string;
   clockJs?: string;
   searchJs?: string;
