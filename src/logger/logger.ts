@@ -37,7 +37,11 @@ export class Logger {
       formatted = `${message}`;
     }
 
-    console.log(this.colorize(formatted, color), ...optionalParams);
+    if (optionalParams && optionalParams.length > 0) {
+      console.log(this.colorize(formatted, color), ...optionalParams);
+    } else {
+      console.log(this.colorize(formatted, color));
+    }
   }
 
   private getColor(level: LogLevel): string {
@@ -81,7 +85,7 @@ export class Logger {
   }
 
   public debug(message: string, ...optionalParams: any[]): void {
-    this.log(LogLevel.DEBUG, message, optionalParams);
+    this.log(LogLevel.DEBUG, message, ...optionalParams);
   }
 
   public setVerbose(isVerbose: boolean): Logger {

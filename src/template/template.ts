@@ -3,7 +3,6 @@ import * as handlebars from 'handlebars';
 import {DashboardConfig} from '../scripts/interface';
 import {readFile} from '../utils/file';
 import log from "../logger/logger";
-import path from "path";
 
 const OUTPUT_PATH = './index.html';
 const TEMPLATE_PATH = '../partials/template.hbs';
@@ -14,7 +13,7 @@ export function generateHtml(config: DashboardConfig): void {
     const template = compileTemplate();
     const html = template(config);
     fs.outputFileSync(OUTPUT_PATH, html);
-    log.info(`Dashboard available at ${path.join(process.cwd(), OUTPUT_PATH)}`);
+    log.info(`Dashboard available at ${OUTPUT_PATH}`);
   } catch (error) {
     log.error('Failed to generate HTML:', error);
   }

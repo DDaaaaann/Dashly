@@ -29,7 +29,6 @@ export async function loadConfig(): Promise<DashboardConfig> {
 
 function validateConfig(config: DashboardConfig): void {
   log.debug('Validating configuration...');
-  // const schema = JSON.parse(readFile(schema, 'JSON schema'));
   const ajv = new Ajv();
   const validate: ValidateFunction = ajv.compile(schema);
 

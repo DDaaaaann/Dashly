@@ -21,10 +21,10 @@ describe('readFile', () => {
 
     (fs.readFileSync as jest.Mock).mockReturnValue(mockContent);
 
-    const result = readFile(filePath);
+    const result = readFile("basepath", filePath);
 
     expect(result).toBe(mockContent);
-    expect(fs.readFileSync).toHaveBeenCalledWith(filePath, 'utf8');
+    expect(fs.readFileSync).toHaveBeenCalledWith('basepath/test/file.txt', 'utf8');
     expect(log.debug).toHaveBeenCalledWith(`Reading ${filePath}`);
   });
 
@@ -37,8 +37,8 @@ describe('readFile', () => {
     });
     (getErrorMessage as jest.Mock).mockReturnValue('Custom error message');
 
-    expect(() => readFile(filePath, fileDescription)).toThrowError(
-        `Failed to read ${fileDescription} at ${filePath}: Custom error message`
+    expect(() => readFile("basepath", filePath, fileDescription)).toThrowError(
+        'Failed to read test file at basepath/test/file.txt: Custom error message'
     );
   });
 });
