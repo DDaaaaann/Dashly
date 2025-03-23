@@ -6,6 +6,7 @@ import getMeta from '../scripts/meta';
 import log from "../logger/logger";
 import {readFile} from "../utils/file";
 import schema from "../schema.json";
+import {getClockJs, getInlineCss, getSearchJs} from "../utils/paths";
 
 const CONFIG_PATH = './config.yaml';
 
@@ -20,9 +21,9 @@ export async function loadConfig(): Promise<DashboardConfig> {
   return {
     ...config,
     theme: config.theme || 'Night Owl',
-    inlineCss: readFile(__dirname, `../../assets/styles/${theme}.css`, 'CSS file'),
-    clockJs: readFile(__dirname, '../../assets/js/clock.js', 'Clock JS'),
-    searchJs: readFile(__dirname, '../../assets/js/search.js', 'Search JS'),
+    inlineCss: getInlineCss(theme),
+    clockJs: getClockJs(),
+    searchJs: getSearchJs(),
     meta: getMeta(),
   };
 }
