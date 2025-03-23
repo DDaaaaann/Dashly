@@ -1,20 +1,19 @@
-# Dashly <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="25"/>
-
+# Dashly <img src="https://github.com/user-attachments/assets/94ef8cf6-7831-431c-956c-9fbc22ea9675" alt="Dashly Logo" width="25"/>
 <div align="center">
-  <img src="./assets/logo.png" alt="Dashly Logo" width="300"/>
+  <img src="https://github.com/user-attachments/assets/254e87a3-97db-47a4-9016-937216512afa" alt="Dashly Logo" width="300"/>
 </div>
 
 <p align="center">
-  <strong>Create Sleek and Modern Dashboards in a Blink of an Eye</strong>
+  <strong>Generate beautiful dashboards from simple YAML configs.</strong>
 </p>
 
 ## Features
 
-- **Multi-customizable**: Personalize your dashboard with ease. Just provide links or search fields
+- 🛠️ **Multi-customizable**: Personalize your dashboard with ease. Just provide links or search fields
   in a simple configuration file.
-- **Single HTML Output**: Everything packed in a single HTML file for simplicity and portability.
-- **Multiple Themes**: Switch between different themes.
-- **Customizable Search Fields**: Easily add and customize search fields to find what you need with
+- 🗜️ **Single HTML Output**: Everything packed in a single HTML file for simplicity and portability.
+- 🎨 **Multiple Themes**: Switch between different themes.
+- 🔎 **Customizable Search Fields**: Easily add and customize search fields to find what you need with
   a click.
 
 ## How It Works
@@ -62,9 +61,24 @@ sections:
 
 You can use **two** ways to generate the HTML dashboard:
 
-#### Option 1: Run the `index.ts` script
+#### Option 1: Using npx
 
-If you prefer running the TypeScript script directly, follow these steps:
+For a faster, one-liner setup without needing to install the project locally, simply run the
+following command:
+
+```bash
+npx dashly
+```
+
+> [!IMPORTANT]  
+> Make sure your _config.yaml_ is available in the current directory
+
+This will automatically generate the dashboard HTML file using the provided `config.yaml` file and
+save it to `index.html`.
+
+#### Option 2: Build locally
+
+If you prefer building the TypeScript script locally, follow these steps:
 
 1. Clone the repository and install dependencies:
 
@@ -72,29 +86,20 @@ If you prefer running the TypeScript script directly, follow these steps:
     git clone https://github.com/DDaaaaann/Dashly.git
     cd Dashly
     npm install
+    npm run build
+    npm run link
     ```
 
 2. Fill out the `config.yaml` file with your desired dashboard settings.
 
-3. Run the TypeScript script `index.ts` to generate the dashboard:
+3. Run the script to generate the dashboard:
 
     ```bash
-    ts-node index.ts config.yaml
+    dashly
     ```
 
-4. The generated `index.html` will be available in the root folder, ready to be used.
+4. The generated `index.html` will be available in the current folder, ready to be used.
 
-#### Option 2: Use `npx` for Convenience
-
-For a faster, one-liner setup without needing to install the project globally, simply run the
-following command:
-
-```bash
-npx generate-dashboard config.yaml
-```
-
-This will automatically generate the dashboard HTML file using the provided `config.yaml` file and
-save it to `index.html`.
 
 ### 3. **Use Your Dashboard**
 
@@ -140,7 +145,7 @@ searchFields:
 <br>
 <br>
 <div align="center">
-    <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="25"/>
+    <img src="https://github.com/user-attachments/assets/94ef8cf6-7831-431c-956c-9fbc22ea9675" alt="Dashly Logo" width="25"/>
 </div>
 
 
