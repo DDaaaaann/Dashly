@@ -143,10 +143,9 @@ searchFields:
 
 <br>
 <br>
-<br>
 <div align="center">
     <img src="https://github.com/user-attachments/assets/94ef8cf6-7831-431c-956c-9fbc22ea9675" alt="Dashly Logo" width="25"/>
 </div>
-
+<br>
 
 <p align="center"> Made with 🧡 by <a href="https://github.com/DDaaaaann">DDaaaaann</a></p>
