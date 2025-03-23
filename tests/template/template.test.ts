@@ -37,7 +37,7 @@ describe('template.ts', () => {
 
       const result = compileTemplate();
 
-      expect(fileUtils.readFile).toHaveBeenCalledWith('./src/partials/template.hbs', 'Handlebars template');
+      expect(fileUtils.readFile).toHaveBeenCalledWith(expect.stringContaining('/src'), '../partials/template.hbs', 'Handlebars template');
       expect(handlebars.compile).toHaveBeenCalledWith(template);
       expect(result).toBe(compiledTemplate);
     });
@@ -53,9 +53,9 @@ describe('template.ts', () => {
 
       generateHtml(mockDashboardConfig);
 
-      expect(fs.outputFileSync).toHaveBeenCalledWith('./dist/index.html', html);
+      expect(fs.outputFileSync).toHaveBeenCalledWith('./index.html', html);
       expect(log.info).toHaveBeenCalledWith('Generating dashboard...');
-      expect(log.info).toHaveBeenCalledWith('Dashboard available at ./dist/index.html');
+      expect(log.info).toHaveBeenCalledWith('Dashboard available at ./index.html');
     });
 
     it('logs an error if template compilation throws', () => {

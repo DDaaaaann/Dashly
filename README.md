@@ -82,7 +82,7 @@ If you prefer running the TypeScript script directly, follow these steps:
     ts-node index.ts config.yaml
     ```
 
-4. The generated `index.html` will be available in the `/dist` folder, ready to be deployed.
+4. The generated `index.html` will be available in the root folder, ready to be used.
 
 #### Option 2: Use `npx` for Convenience
 
@@ -136,14 +136,12 @@ searchFields:
     href: https://nl.wikipedia.org/w/index.php?search=[search-term]
 ```
 
-## License
-
+<br>
+<br>
+<br>
 <div align="center">
-<p><a property="dct:title" rel="cc:attributionURL" href="https://github.com/DDaaaaann/Dashly">Dashly <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="20"/></a> by <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://ddaaaaann.nl">DDaaaaann</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-ND 4.0</a>  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="">  <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt=""></p>
+    <img src="./assets/favicon/favicon.svg" alt="Dashly Logo" width="25"/>
 </div>
 
-<br>
-<br>
-<br>
 
 <p align="center"> Made with 🧡 by <a href="https://github.com/DDaaaaann">DDaaaaann</a></p>

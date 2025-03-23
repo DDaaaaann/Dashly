@@ -1,4 +1,4 @@
-// src/index.ts
+#!/usr/bin/env node
 import log from './logger/logger';
 import {loadConfig} from './config/config';
 import {registerPartials} from './template/partials';
@@ -14,11 +14,13 @@ export async function runDashboardGenerator() {
   log.success('Dashboard generated successfully.');
 }
 
-// CLI entrypoint
 if (require.main === module) {
+  log.debug('Current working dir:', process.cwd());
+  log.debug('__dirname:', __dirname);
+
   runDashboardGenerator()
   .catch(error => {
     log.error("An error occurred while generating your dashboard:", error);
-    process.exit(1);  // Only the CLI cares about exiting
+    process.exit(1);
   });
 }

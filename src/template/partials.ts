@@ -18,12 +18,14 @@ function registerHeader() {
 
 function registerDashboard(themeName: string) {
   const theme = themeName.replaceAll(" ", "_").toLowerCase()
-  const dashboardPath = path.join(process.cwd(), "src", "templates", `${theme}.hbs`);
-  log.debug(`Registering ${themeName} template`)
+  const dashboardPath = path.join(__dirname, "..", "templates", `${theme}.hbs`);
+  log.debug(`Reading ${dashboardPath}`)
 
   if (!fs.existsSync(dashboardPath)) {
     throw new Error(`Theme '${themeName}' does not exist.`);
   }
+  log.debug(`Registering ${themeName} template`)
+
   register("dashboard", dashboardPath)
 }
 
@@ -34,7 +36,7 @@ function registerFooter() {
 
 function partials(partialName: string) {
   // Construct the partial path
-  const partialPath = path.join(process.cwd(), "src", "partials", `${partialName}.hbs`);
+  const partialPath = path.join(__dirname, "..", "partials", `${partialName}.hbs`);
   register(partialName, partialPath)
 }
 

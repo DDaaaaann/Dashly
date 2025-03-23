@@ -3,7 +3,7 @@ import * as path from "path";
 import {Meta} from "./interface";
 
 function getInlineFavicon(): string {
-  const faviconPath = path.join(process.cwd(), "assets", "favicon", "favicon.ico");
+  const faviconPath = path.join(__dirname, "..", "..", "assets", "favicon", "favicon.ico");
   const favicon = fs.readFileSync(faviconPath);
   const base64Favicon = favicon.toString('base64');
   return `<link rel="icon" href="data:image/x-icon;base64,${base64Favicon}">`

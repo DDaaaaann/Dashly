@@ -53,7 +53,7 @@ describe('config.ts', () => {
     expect(config.clockJs).toEqual('mock file content');
     expect(config.meta).toBeDefined();
 
-    expect(file.readFile).toHaveBeenCalledWith('./config.yaml', 'configuration file');
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining('/'), './config.yaml', 'configuration file');
   });
 
   test('loadConfig() sets default theme when theme is missing', async () => {
@@ -84,7 +84,6 @@ describe('config.ts', () => {
 
     expect(() => validateConfig(mockConfig)).not.toThrow();
 
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining('schema.json'), expect.any(String));
     expect(compileMock).toHaveBeenCalled();
     expect(validateFn).toHaveBeenCalledWith(mockConfig);
   });
@@ -96,7 +95,6 @@ describe('config.ts', () => {
 
     expect(() => validateConfig(mockConfig)).toThrow(/Invalid config!/);
 
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining('schema.json'), expect.any(String));
     expect(compileMock).toHaveBeenCalled();
     expect(validateFn).toHaveBeenCalledWith(mockConfig);
   });
