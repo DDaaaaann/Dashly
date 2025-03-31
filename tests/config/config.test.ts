@@ -108,7 +108,9 @@ describe('config.ts', () => {
   });
 
   test('validateConfig() throws if validation fails', () => {
-    const validateFn = jest.fn().mockReturnValue(false) as any;
+    const validateFn = jest.fn().mockReturnValue(false) as jest.Mock & {
+      errors?: { message: string }[]
+    };
     validateFn.errors = [{message: 'Invalid config!'}];
     compileMock.mockReturnValue(validateFn);
 

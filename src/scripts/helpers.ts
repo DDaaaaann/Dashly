@@ -30,7 +30,7 @@ function registerMathOperators() {
   )
 }
 
-function registerBooleanOperators() {
+function registerBooleanOperators(...args) {
   log.debug('Registering boolean operators')
   handlebars.registerHelper({
     eq: (v1, v2) => v1 === v2,
@@ -40,10 +40,10 @@ function registerBooleanOperators() {
     lte: (v1, v2) => v1 <= v2,
     gte: (v1, v2) => v1 >= v2,
     and() {
-      return Array.prototype.every.call(arguments, Boolean);
+      return Array.prototype.every.call(args, Boolean);
     },
     or() {
-      return Array.prototype.slice.call(arguments, 0, -1).some(Boolean);
+      return Array.prototype.slice.call(args, 0, -1).some(Boolean);
     }
   });
 }
