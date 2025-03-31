@@ -1,11 +1,11 @@
 import fs from 'fs-extra';
-import {readFile} from '../../src/utils/file';
-import log from '../../src/logger/logger';
-import {getErrorMessage} from '../../src/utils/error';
+import {readFile} from '../../../src/utils/file';
+import log from '../../../src/logger/logger';
+import {getErrorMessage} from '../../../src/utils/error';
 
 jest.mock('fs-extra');
-jest.mock('../../src/logger/logger');
-jest.mock('../../src/utils/error');
+jest.mock('../../../src/logger/logger');
+jest.mock('../../../src/utils/error');
 
 describe('readFile', () => {
   const filePath = 'test/file.txt';

@@ -7,12 +7,16 @@ import log from "../logger/logger";
 import {readFile} from "../utils/file";
 import schema from "../schema.json";
 import {getClockJs, getInlineCss, getSearchJs} from "../utils/paths";
+import path from "path";
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
   const CONFIG_PATH = process.env.INPUT_PATH || './config.yaml';
 
-  const config: DashboardConfig = yaml.parse(readFile(process.cwd(), CONFIG_PATH, 'configuration file'));
+  const configBasePath = path.dirname(CONFIG_PATH);
+  const configFileName = path.basename(CONFIG_PATH);
+  const config: DashboardConfig = yaml.parse(readFile(configBasePath, configFileName, 'configuration file'));
+
   const theme = getTheme(config);
 
   validateConfig(config);

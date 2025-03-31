@@ -1,5 +1,5 @@
 import * as handlebars from "handlebars";
-import {registerHelpers} from "../../src/scripts/helpers";
+import {registerHelpers} from "../../../src/scripts/helpers";
 
 describe("Handlebars Helpers", () => {
   beforeAll(() => {
