@@ -6,7 +6,7 @@ describe('Logger', () => {
   });
 
   afterEach(() => {
-    log.setVerbose(false);
+    process.env.VERBOSE = 'false';
     jest.restoreAllMocks();
   });
 
@@ -52,7 +52,8 @@ describe('Logger', () => {
   });
 
   test('logs debug if verbose is true', () => {
-    log.setVerbose(true).debug('Debug log');
+    process.env.VERBOSE = 'true';
+    log.debug('Debug log');
 
     expect(console.log).toHaveBeenCalledTimes(1);
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('Debug log'));
@@ -61,7 +62,8 @@ describe('Logger', () => {
   });
 
   test('logs with timestamp and level when verbose is true', () => {
-    log.setVerbose(true).info('Verbose info');
+    process.env.VERBOSE = 'true';
+    log.info('Verbose info');
 
     expect(console.log).toHaveBeenCalledWith(expect.stringMatching(/\[\d{4}-\d{2}-\d{2}T/));  // Timestamp pattern
     expect(console.log).toHaveBeenCalledWith(expect.stringContaining('[INFO]'));

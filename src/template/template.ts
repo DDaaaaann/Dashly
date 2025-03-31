@@ -4,10 +4,10 @@ import {DashboardConfig} from '../scripts/interface';
 import {readFile} from '../utils/file';
 import log from "../logger/logger";
 
-const OUTPUT_PATH = './index.html';
 const TEMPLATE_PATH = '../partials/template.hbs';
 
 export function generateHtml(config: DashboardConfig): void {
+  const OUTPUT_PATH = process.env.OUTPUT_PATH || './index.html';
   log.info("Generating dashboard...")
   try {
     const template = compileTemplate();
