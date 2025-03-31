@@ -16,7 +16,7 @@ export class Logger {
     return new Date().toISOString();
   }
 
-  private log(level: LogLevel, message: string, ...optionalParams: any[]): void {
+  private log(level: LogLevel, message: string, ...optionalParams: string[]): void {
     // Skip debug logs if verbose is disabled
     if (level === LogLevel.DEBUG && !this.isVerbose()) return;
 
@@ -78,7 +78,7 @@ export class Logger {
     }
   }
 
-  public debug(message: string, ...optionalParams: any[]): void {
+  public debug(message: string, ...optionalParams: string []): void {
     this.log(LogLevel.DEBUG, message, ...optionalParams);
   }
 }

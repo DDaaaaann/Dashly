@@ -17,8 +17,7 @@ describe('parseArgs', () => {
     const exitMock = jest.spyOn(process, 'exit').mockImplementation(() => {
       throw new Error('process.exit called');
     });
-    const consoleMock = jest.spyOn(console, 'log').mockImplementation(() => {
-    });
+    const consoleMock = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
     expect(() => parseArgs()).toThrow('process.exit called');
     expect(consoleMock).toHaveBeenCalledWith(expect.stringContaining('USAGE:'));
@@ -31,8 +30,7 @@ describe('parseArgs', () => {
     const exitMock = jest.spyOn(process, 'exit').mockImplementation(() => {
       throw new Error('process.exit called');
     });
-    const consoleMock = jest.spyOn(console, 'log').mockImplementation(() => {
-    });
+    const consoleMock = jest.spyOn(console, 'log').mockImplementation(jest.fn());
 
     expect(() => parseArgs()).toThrow('process.exit called');
     expect(consoleMock).toHaveBeenCalledWith(expect.stringContaining('dashly version'));
