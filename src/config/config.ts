@@ -8,10 +8,9 @@ import {readFile} from "../utils/file";
 import schema from "../schema.json";
 import {getClockJs, getInlineCss, getSearchJs} from "../utils/paths";
 
-const CONFIG_PATH = './config.yaml';
-
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
+  const CONFIG_PATH = process.env.INPUT_PATH || './config.yaml';
 
   const config: DashboardConfig = yaml.parse(readFile(process.cwd(), CONFIG_PATH, 'configuration file'));
   const theme = getTheme(config);

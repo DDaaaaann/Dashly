@@ -6,31 +6,25 @@ enum LogLevel {
   DEBUG = 'DEBUG',
 }
 
-interface LoggerOptions {
-  verbose?: boolean;
-}
 
 export class Logger {
-  private static instance: Logger;
-  private verbose: boolean;
-
-  constructor(options: LoggerOptions = {}) {
-    this.verbose = options.verbose ?? false;
+  private isVerbose(): boolean {
+    return process.env.VERBOSE === 'true';
   }
 
   private getTimestamp(): string {
     return new Date().toISOString();
   }
 
-  private log(level: LogLevel, message: string, ...optionalParams: any[]): void {
+  private log(level: LogLevel, message: string, ...optionalParams: string[]): void {
     // Skip debug logs if verbose is disabled
-    if (level === LogLevel.DEBUG && !this.verbose) return;
+    if (level === LogLevel.DEBUG && !this.isVerbose()) return;
 
     const color = this.getColor(level);
 
     let formatted;
 
-    if (this.verbose) {
+    if (this.isVerbose()) {
       const time = `[${this.getTimestamp()}] `;
       formatted = `${time}[${level}] ${message}`;
     } else {
@@ -84,15 +78,9 @@ export class Logger {
     }
   }
 
-  public debug(message: string, ...optionalParams: any[]): void {
+  public debug(message: string, ...optionalParams: string []): void {
     this.log(LogLevel.DEBUG, message, ...optionalParams);
   }
-
-  public setVerbose(isVerbose: boolean): Logger {
-    this.verbose = isVerbose;
-    return this;
-  }
-
 }
 
 function getErrorMessage(error: unknown): string {
@@ -102,5 +90,5 @@ function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
-const log = new Logger({verbose: process.argv.includes('--verbose') || process.argv.includes('-v')});
+const log = new Logger();
 export default log;

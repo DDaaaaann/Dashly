@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import log from './logger/logger';
 import {loadConfig} from './config/config';
 import {registerPartials} from './template/partials';
 import {generateHtml} from './template/template';
 import {registerHelpers} from './scripts/helpers';
+import {parseArgs} from "./utils/args";
+import log from './logger/logger';
 
 export async function runDashboardGenerator() {
   const config = await loadConfig();
@@ -11,12 +12,14 @@ export async function runDashboardGenerator() {
   registerHelpers();
   generateHtml(config);
 
-  log.success('Dashboard generated successfully.');
+  log.success(`Dashboard generated successfully.`);
 }
 
 if (require.main === module) {
   log.debug('Current working dir:', process.cwd());
   log.debug('__dirname:', __dirname);
+
+  parseArgs();
 
   runDashboardGenerator()
   .catch(error => {

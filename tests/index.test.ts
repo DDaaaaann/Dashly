@@ -37,12 +37,9 @@ describe('runDashboardGenerator', () => {
     };
 
     (loadConfig as jest.Mock).mockResolvedValue(dummyConfig);
-    (registerPartials as jest.Mock).mockImplementation(() => {
-    });
-    (registerHelpers as jest.Mock).mockImplementation(() => {
-    });
-    (generateHtml as jest.Mock).mockImplementation(() => {
-    });
+    (registerPartials as jest.Mock).mockImplementation(jest.fn());
+    (registerHelpers as jest.Mock).mockImplementation(jest.fn());
+    (generateHtml as jest.Mock).mockImplementation(jest.fn());
 
     await runDashboardGenerator();
 

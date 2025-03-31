@@ -5,7 +5,7 @@ import path from "path";
 
 export function readFile(basePath: string, filePath: string, fileDescription = 'file'): string {
   log.debug(`Reading ${filePath}`)
-  var absolutePath = path.join(basePath, filePath);
+  const absolutePath = path.join(basePath, filePath);
   try {
     return fs.readFileSync(absolutePath, 'utf8');
   } catch (error: unknown) {

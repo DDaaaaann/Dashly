@@ -31,11 +31,13 @@ describe('config.ts', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    jest.spyOn(file, 'readFile').mockImplementation((path: string) => {
-      if (path.endsWith('schema.json')) return JSON.stringify({});
-      if (path.endsWith('config.yaml')) return 'theme: My Theme';
+    jest.spyOn(file, 'readFile').mockImplementation((basePath: string, filePath: string) => {
+      if (filePath.endsWith('custom_config.yaml')) return 'theme: Custom Theme';
+      if (filePath.endsWith('schema.json')) return JSON.stringify({});
+      if (filePath.endsWith('config.yaml')) return 'theme: My Theme';
       return 'mock file content';
     });
+
   });
 
   afterEach(() => {
@@ -53,7 +55,24 @@ describe('config.ts', () => {
     expect(config.clockJs).toEqual('mock file content');
     expect(config.meta).toBeDefined();
 
+    expect(yaml.parse).toHaveBeenCalledWith("theme: My Theme")
     expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining('/'), './config.yaml', 'configuration file');
+  });
+
+  test('loadConfig() uses INPUT_PATH from environment variable', async () => {
+    process.env.INPUT_PATH = 'custom_config.yaml';
+    const validateFn = jest.fn().mockReturnValue(true);
+    compileMock.mockReturnValue(validateFn);
+
+    (yaml.parse as jest.Mock).mockReturnValue({theme: 'Custom Theme'});
+
+    const config = await loadConfig();
+
+    expect(config.theme).toEqual('Custom Theme');
+    expect(yaml.parse).toHaveBeenCalledWith("theme: Custom Theme")
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining('/'), 'custom_config.yaml', 'configuration file');
+
+    delete process.env.INPUT_PATH;
   });
 
   test('loadConfig() sets default theme when theme is missing', async () => {
@@ -89,7 +108,9 @@ describe('config.ts', () => {
   });
 
   test('validateConfig() throws if validation fails', () => {
-    const validateFn = jest.fn().mockReturnValue(false) as any;
+    const validateFn = jest.fn().mockReturnValue(false) as jest.Mock & {
+      errors?: { message: string }[]
+    };
     validateFn.errors = [{message: 'Invalid config!'}];
     compileMock.mockReturnValue(validateFn);
 
