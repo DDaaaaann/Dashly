@@ -29,9 +29,10 @@ describe('registerPartials', () => {
 
     registerPartials(themeName);
 
-    expect(path.join).toHaveBeenCalledWith(expect.stringContaining('/src/template'), '..', 'templates', 'night_owl.hbs');
-    expect(path.join).toHaveBeenCalledWith(expect.stringContaining('/src/template'), '..', 'partials', 'header.hbs');
-    expect(path.join).toHaveBeenCalledWith(expect.stringContaining('/src/template'), '..', 'partials', 'footer.hbs');
+    const expectedPath = `src${path.sep}template`;  // This will be 'src/template' on Unix and 'src\\template' on Windows
+    expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'templates', 'night_owl.hbs');
+    expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'partials', 'header.hbs');
+    expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'partials', 'footer.hbs');
 
     expect(fs.existsSync).toHaveBeenCalledWith(mockDashboardPath);
     expect(fs.readFileSync).toHaveBeenCalledWith('mock/partials/header.hbs', 'utf-8');
