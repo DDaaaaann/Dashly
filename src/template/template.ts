@@ -3,8 +3,9 @@ import * as handlebars from 'handlebars';
 import {DashboardConfig} from '../scripts/interface';
 import {readFile} from '../utils/file';
 import log from "../logger/logger";
+import path from "path";
 
-const TEMPLATE_PATH = '../partials/template.hbs';
+const TEMPLATE_PATH = `..${path.sep}partials${path.sep}template.hbs`;
 
 export function generateHtml(config: DashboardConfig): void {
   const OUTPUT_PATH = process.env.OUTPUT_PATH || './index.html';
