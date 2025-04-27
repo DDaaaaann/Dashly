@@ -39,6 +39,7 @@ export interface DashboardConfig {
   theme: string;
   title?: string;
   clock?: boolean;
+  liveSearch?: boolean;
   inlineCss?: string;
   clockJs?: string;
   searchJs?: string;
