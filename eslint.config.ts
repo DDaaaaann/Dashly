@@ -8,7 +8,10 @@ export default tseslint.config(
     tseslint.configs.strict,
     tseslint.configs.stylistic,
     {
-      files: ['**/*.js'],
+      ignores: ['dist/']
+    },
+    {
+      files: ['**/*.ts', '**/*.js'],
       languageOptions: {
         globals: {
           "document": "readonly",
