@@ -1,6 +1,6 @@
 {
   "name": "dashly",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A dashboard app to create stunning start pages",
   "bin": {
     "dashly": "./dist/src/index.js"
