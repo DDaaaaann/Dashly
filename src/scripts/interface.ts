@@ -1,4 +1,6 @@
 // Define types for configuration structure
+import {LookupItem} from "./search";
+
 interface Link {
   title: string;
   href: string;
@@ -43,4 +45,6 @@ export interface DashboardConfig {
   inlineCss?: string;
   clockJs?: string;
   searchJs?: string;
+  liveSearchJs?: string;
+  lookupTable?: LookupItem[];
 }

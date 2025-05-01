@@ -6,7 +6,8 @@ import getMeta from '../scripts/meta';
 import log from "../logger/logger";
 import {readFile} from "../utils/file";
 import schema from "../schema.json";
-import {getClockJs, getInlineCss, getSearchJs} from "../utils/paths";
+import {getClockJs, getInlineCss, getLiveSearchJs, getSearchJs} from "../utils/paths";
+import {generateLookupTable} from "../scripts/search";
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
@@ -24,6 +25,10 @@ export async function loadConfig(): Promise<DashboardConfig> {
     clockJs: getClockJs(),
     searchJs: getSearchJs(),
     meta: getMeta(),
+    ...(config.liveSearch && {
+      liveSearchJs: getLiveSearchJs(),
+      lookupTable: JSON.stringify(generateLookupTable(config)),
+    }),
   };
 }
 

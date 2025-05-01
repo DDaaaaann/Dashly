@@ -3,6 +3,16 @@
   {{#if clock}}
     <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
   {{/if}}
+  {{#if liveSearch}}
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search links, blocks, or sections..."
+      autocomplete="off"
+    />
+    <div id="searchResults"></div>
+  {{/if}}
+
   <!--    <div class="search-bar">-->
   <!--      <input type="text" id="searchInput" placeholder="Search for projects...">-->
   <!--    </div>-->
@@ -35,8 +45,11 @@
       {{{clockJs}}}
     {{/if}}
     {{{searchJs}}}
+    {{#if liveSearch}}
+    const lookupTable = {{{lookupTable}}};
+      {{{liveSearchJs}}}
+    {{/if}}
 </script>
-
 {{#*inline "links_and_searchfields"}}
   {{#if searchFields}}
     <div class="search-fields">

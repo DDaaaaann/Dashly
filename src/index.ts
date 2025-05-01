@@ -10,7 +10,6 @@ export async function runDashboardGenerator() {
   const config = await loadConfig();
   registerPartials(config.theme);
   registerHelpers();
-  generateLookupTable(config);
   generateHtml(config);
 
   log.success(`Dashboard generated successfully.`);
