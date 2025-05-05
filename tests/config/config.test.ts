@@ -11,8 +11,7 @@ const mockConfig: DashboardConfig = {
   clock: false,
   sections: [],
   inlineCss: '',
-  clockJs: '',
-  searchJs: '',
+  bundleJs: '',
 };
 
 const compileMock = jest.fn();
@@ -53,7 +52,7 @@ describe('config.ts', () => {
 
     expect(config.theme).toEqual('My Theme');
     expect(config.inlineCss).toEqual('mock file content');
-    expect(config.clockJs).toEqual('mock file content');
+    expect(config.bundleJs).toEqual('mock file content\nmock file content\nmock file content');
     expect(config.meta).toBeDefined();
 
     expect(yaml.parse).toHaveBeenCalledWith("theme: My Theme")

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 const operaCtrlKeyCode = 17;
 const webkitCtrlLeftKeyCode = 91;
 const webkitCtrlRightKeyCode = 93;

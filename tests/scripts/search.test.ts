@@ -1,4 +1,4 @@
-import {generateLookupTable, LookupItemType} from "../../src/scripts/search";
+import {generateLookupTable, LookupItem, LookupItemType} from "../../src/scripts/search";
 import {DashboardConfig} from "../../src/scripts/interface";
 
 const mockConfig: DashboardConfig = {
@@ -49,12 +49,11 @@ const mockConfig: DashboardConfig = {
     }
   ],
   inlineCss: '',
-  clockJs: '',
-  searchJs: '',
+  bundleJs: '',
 };
 
 describe("Search tools", () => {
-  let lookupTable: any;
+  let lookupTable: LookupItem[];
 
   beforeAll(() => {
     lookupTable = generateLookupTable(mockConfig);

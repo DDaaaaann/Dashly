@@ -10,7 +10,6 @@ let query = ""
 let searchFieldQuery = ""
 let results = []
 let selectedIndex = -1
-let isFocused = false
 let isSearchFieldActive = false
 let isTypingInMainSearch = false
 
@@ -45,7 +44,6 @@ function performSearch(searchQuery) {
 }
 
 function resetSearchField() {
-  isFocused = false
   searchBox.classList.remove("focused")
   searchInput.blur()
   searchContainer.classList.remove("focused")
@@ -311,7 +309,6 @@ searchInput.addEventListener("input", (e) => {
 })
 
 searchInput.addEventListener("focus", () => {
-  isFocused = true
   searchBox.classList.add("focused")
   searchContainer.classList.add("focused")
   if (query) {

@@ -13,52 +13,49 @@ export interface LookupItem {
 }
 
 export function generateLookupTable(dashboardConfig: DashboardConfig) {
+  const lookup: LookupItem[] = [];
 
-  if (dashboardConfig.liveSearch) {
-    let lookup: LookupItem[] = [];
+  dashboardConfig.sections.forEach(section => {
+    section.blocks.forEach(block => {
+      block.links?.forEach(link => {
+        lookup.push({
+          type: LookupItemType.LINK,
+          title: link.title,
+          href: link.href,
+          context: `${section.title} > ${block.title}`,
+        });
+      });
+      block.searchFields?.forEach(searchField => {
+        lookup.push({
+          type: LookupItemType.SEARCH_FIELD,
+          title: searchField.title,
+          href: searchField.href,
+          context: `${section.title} > ${block.title}`,
+        });
+      });
 
-    dashboardConfig.sections.forEach(section => {
-      section.blocks.forEach(block => {
-        block.links?.forEach(link => {
+      block.groups?.forEach(group => {
+        group.links?.forEach(groupLink => {
           lookup.push({
             type: LookupItemType.LINK,
-            title: link.title,
-            href: link.href,
-            context: `${section.title} > ${block.title}`,
+            title: groupLink.title,
+            href: groupLink.href,
+            context: `${section.title} > ${block.title} > ${group.title}`,
           });
         });
-        block.searchFields?.forEach(searchField => {
+
+        group.searchFields?.forEach(searchField => {
           lookup.push({
             type: LookupItemType.SEARCH_FIELD,
             title: searchField.title,
             href: searchField.href,
-            context: `${section.title} > ${block.title}`,
-          });
-        });
-
-        block.groups?.forEach(group => {
-          group.links?.forEach(groupLink => {
-            lookup.push({
-              type: LookupItemType.LINK,
-              title: groupLink.title,
-              href: groupLink.href,
-              context: `${section.title} > ${block.title} > ${group.title}`,
-            });
-          });
-
-          group.searchFields?.forEach(searchField => {
-            lookup.push({
-              type: LookupItemType.SEARCH_FIELD,
-              title: searchField.title,
-              href: searchField.href,
-              context: `${section.title} > ${block.title} > ${group.title}`,
-            });
+            context: `${section.title} > ${block.title} > ${group.title}`,
           });
         });
       });
     });
+  });
 
-    return lookup;
-  }
+  return lookup;
 }
 
