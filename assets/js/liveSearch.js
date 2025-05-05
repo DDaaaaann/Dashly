@@ -92,8 +92,8 @@ function renderResults() {
     icon.className = "result-title-icon"
     icon.innerHTML =
       result.type === "search-field"
-        ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>'
-        : '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>'
+        ? Icon.Search
+        : Icon.ArrowOut;
 
     const titleText = document.createElement("span")
     titleText.className = "result-title-text"
@@ -138,8 +138,8 @@ function renderResults() {
       if (searchFieldQuery) {
         const clearButton = document.createElement("button")
         clearButton.className = "search-field-clear"
-        clearButton.innerHTML =
-          '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
+        clearButton.innerHTML = Icon.Clear
+
         clearButton.addEventListener("click", (e) => {
           e.stopPropagation()
           searchFieldQuery = ""
@@ -155,14 +155,13 @@ function renderResults() {
     // Create arrow icon
     const resultArrow = document.createElement("span")
     resultArrow.className = "result-arrow"
-    resultArrow.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>'
-
+    resultArrow.innerHTML = Icon.ArrowRight
     resultItem.appendChild(resultContent)
     resultItem.appendChild(resultArrow)
 
     // Add click event
-    resultItem.addEventListener("click", () => handleResultClick(result, index))
+    resultItem.addEventListener("click",
+      (e) => handleResultClick(result, index, e))
 
     searchResults.appendChild(resultItem)
   })
@@ -200,14 +199,17 @@ function updateSelectedResult() {
 }
 
 // Handle result click
-function handleResultClick(result, index) {
+function handleResultClick(result, index, event) {
+
+  const isModifierPressed = isModifierKey(event);
+
   if (result.type === "search-field") {
     selectedIndex = index
     isSearchFieldActive = true
     searchFieldQuery = ""
     renderResults()
   } else {
-    window.open(result.href, "_self")
+    openUrl(result.href, isModifierPressed);
   }
 }
 
@@ -216,6 +218,7 @@ function handleKeyDown(e) {
   // Track if we're actively typing in the main search input
   isTypingInMainSearch = e.key.length === 1 && !e.ctrlKey && !e.altKey
     && !e.metaKey
+  const isModifierPressed = isModifierKey(e);
 
   if (e.key === "ArrowDown") {
     e.preventDefault()
@@ -238,14 +241,16 @@ function handleKeyDown(e) {
     const selected = results[selectedIndex]
     if (selected.type === "search-field" && isSearchFieldActive) {
       // If search field is active and has query, use that query
-      window.open(selected.href.replace("[search-term]",
-        encodeURIComponent(searchFieldQuery)), "_self")
+      // searchForField(selected.href, searchFieldQuery, "_blank")
+      var searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
+      openUrl(searchUrl, isModifierPressed);
     } else if (selected.type === "search-field") {
       // If search field is selected but not active, activate it
       isSearchFieldActive = true
       renderResults()
     } else {
-      window.open(selected.href, "_self")
+      openUrl(selected.href, isModifierPressed);
+      // window.open(selected.href, "_self")
     }
   } else if (
     selectedIndex >= 0 &&
@@ -268,6 +273,8 @@ function handleKeyDown(e) {
 
 // Handle key down in the search field input
 function handleSearchFieldKeyDown(e) {
+  const isModifierPressed = isModifierKey(e);
+
   if (e.key === "Escape") {
     e.preventDefault()
     isSearchFieldActive = false
@@ -276,8 +283,9 @@ function handleSearchFieldKeyDown(e) {
   } else if (e.key === "Enter" && selectedIndex >= 0) {
     e.preventDefault()
     const selected = results[selectedIndex]
-    window.open(selected.href.replace("[search-term]",
-      encodeURIComponent(searchFieldQuery)), "_self")
+    console.log("modifier pressed", isModifierPressed);
+    var searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
+    openUrl(searchUrl, isModifierPressed);
   }
 
   // Don't propagate the event to prevent triggering the main search input's handlers

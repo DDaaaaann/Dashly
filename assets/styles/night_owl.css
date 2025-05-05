@@ -107,6 +107,11 @@ section {
   color: var(--color-text-primary);
 }
 
+.icon-md svg {
+  width: 24px;
+  height: 24px;
+}
+
 .search-input {
   width: 100%;
   padding: 12px 16px;

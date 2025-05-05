@@ -9,6 +9,7 @@ export function registerPartials(themeName: string) {
   registerDashboard(themeName);
   registerHeader();
   registerFooter();
+  registerLiveSearch();
 }
 
 function registerHeader() {
@@ -32,6 +33,11 @@ function registerDashboard(themeName: string) {
 function registerFooter() {
   log.debug('Registering footer')
   partials('footer')
+}
+
+function registerLiveSearch() {
+  log.debug('Registering live-search')
+  partials('live-search')
 }
 
 function partials(partialName: string) {
