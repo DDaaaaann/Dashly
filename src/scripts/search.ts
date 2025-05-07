@@ -8,7 +8,9 @@ export enum LookupItemType {
 export interface LookupItem {
   title: string;
   href: string;
-  context: string;
+  section: string;
+  block: string;
+  group?: string;
   type: LookupItemType;
 }
 
@@ -22,7 +24,8 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
           type: LookupItemType.LINK,
           title: link.title,
           href: link.href,
-          context: `${section.title} > ${block.title}`,
+          section: section.title,
+          block: block.title,
         });
       });
       block.searchFields?.forEach(searchField => {
@@ -30,7 +33,8 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
           type: LookupItemType.SEARCH_FIELD,
           title: searchField.title,
           href: searchField.href,
-          context: `${section.title} > ${block.title}`,
+          section: section.title,
+          block: block.title,
         });
       });
 
@@ -40,7 +44,9 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
             type: LookupItemType.LINK,
             title: groupLink.title,
             href: groupLink.href,
-            context: `${section.title} > ${block.title} > ${group.title}`,
+            section: section.title,
+            block: block.title,
+            group: group.title,
           });
         });
 
@@ -49,7 +55,9 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
             type: LookupItemType.SEARCH_FIELD,
             title: searchField.title,
             href: searchField.href,
-            context: `${section.title} > ${block.title} > ${group.title}`,
+            section: section.title,
+            block: block.title,
+            group: group.title,
           });
         });
       });
