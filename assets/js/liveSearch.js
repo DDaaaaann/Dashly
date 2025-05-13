@@ -282,6 +282,9 @@ function handleKeyDown(e) {
       openUrl(selected.href, isModifierPressed);
       // window.open(selected.href, "_self")
     }
+  } else if (e.key === "Escape") {
+      resetSearchField();
+
   } else if (
     selectedIndex >= 0 &&
     results[selectedIndex]?.type === "search-field" &&
@@ -296,8 +299,6 @@ function handleKeyDown(e) {
       searchFieldQuery = key
       renderResults()
     }
-  } else if (e.key === "Escape") {
-    resetSearchField();
   }
 }
 
@@ -306,10 +307,7 @@ function handleSearchFieldKeyDown(e) {
   const isModifierPressed = isModifierKey(e);
 
   if (e.key === "Escape") {
-    e.preventDefault()
-    isSearchFieldActive = false
-    searchFieldQuery = ""
-    renderResults()
+    resetSearchField();
   } else if (e.key === "Enter" && selectedIndex >= 0) {
     e.preventDefault()
     const selected = results[selectedIndex]
