@@ -1,6 +1,9 @@
+$schema: "https://raw.githubusercontent.com/DDaaaaann/Dashly/main/src/schema.json"
+
 title: My StartPage
 theme: Emerald Tides
 clock: true
+liveSearch: true
 sections:
   - title: Work
     blocks:

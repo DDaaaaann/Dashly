@@ -1,6 +1,9 @@
+$schema: "https://raw.githubusercontent.com/DDaaaaann/Dashly/main/src/schema.json"
+
 title: My Dashboard
 theme: Night Owl
 clock: true
+liveSearch: true
 sections:
   - blocks:
       - title: Daily
