@@ -116,14 +116,15 @@ You can choose between multiple pre-built themes, or create your own. The availa
 ### Night Owl
 
 Here’s an example of a generated dashboard with _Night Owl_ theme:
-![Night Owl Theme](https://github.com/user-attachments/assets/2f35018f-5abf-498f-9de7-d60bb9037d3f)
+![Night Owl Theme](https://github.com/user-attachments/assets/60d43c86-075c-43b2-9c27-a07be6b3888a)
 
 <a href="/examples/Night Owl/index.html">Night Owl</a>
 
 ### Emerald Tides
 
 Here’s an example of a generated dashboard with _Emerald Tides_ theme:
-![Emerald Tides Theme](https://github.com/user-attachments/assets/767ee69c-4e84-4e43-975d-41739e540391)
+
+![Emerald Tides Theme](https://github.com/user-attachments/assets/d95a4d7b-8131-40fd-bd6b-e18bf0f1dc43)
 
 <a href="/examples/Emerald Tides/index.html">Emerald Tides</a>
 
