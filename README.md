@@ -13,6 +13,7 @@
   in a simple configuration file.
 - 🗜️ **Single HTML Output**: Everything packed in a single HTML file for simplicity and portability.
 - 🎨 **Multiple Themes**: Switch between different themes.
+- 🔍 **Live Search**: Quickly find what you need with a built-in search feature.
 - 🔎 **Customizable Search Fields**: Easily add and customize search fields to find what you need with
   a click.
 
@@ -27,6 +28,7 @@ dashboard. Here’s an example of how the configuration file might look:
 title: My StartPage
 theme: Emerald Tides
 clock: true
+liveSearch: true
 sections:
   - title: Work
     blocks:
