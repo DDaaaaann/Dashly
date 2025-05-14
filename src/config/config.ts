@@ -6,7 +6,15 @@ import getMeta from '../scripts/meta';
 import log from "../logger/logger";
 import {readFile} from "../utils/file";
 import schema from "../schema.json";
-import {getClockJs, getInlineCss, getSearchJs} from "../utils/paths";
+import {
+  getClockJs,
+  getIconJS,
+  getInlineCss,
+  getLinkJs,
+  getLiveSearchJs,
+  getSearchJs
+} from "../utils/paths";
+import {generateLookupTable} from "../scripts/search";
 import path from "path";
 
 export async function loadConfig(): Promise<DashboardConfig> {
@@ -24,10 +32,16 @@ export async function loadConfig(): Promise<DashboardConfig> {
   return {
     ...config,
     theme: config.theme || 'Night Owl',
-    inlineCss: getInlineCss(theme),
-    clockJs: getClockJs(),
-    searchJs: getSearchJs(),
     meta: getMeta(),
+    inlineCss: getInlineCss(theme),
+    bundleJs: [
+      getSearchJs(),
+      getLinkJs(),
+      getIconJS(),
+      ...(config.clock ? [getClockJs()] : []),
+      ...(config.liveSearch ? [getLiveSearchJs()] : []),
+      ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),
+    ].join('\n')
   };
 }
 

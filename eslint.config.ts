@@ -8,12 +8,23 @@ export default tseslint.config(
     tseslint.configs.strict,
     tseslint.configs.stylistic,
     {
-      files: ['**/*.js'],
+      ignores: ['dist/']
+    },
+    {
+      files: ['**/*.ts', '**/*.js'],
       languageOptions: {
         globals: {
           "document": "readonly",
           "setInterval": "readonly",
           "window": "readonly",
+          "setTimeout": "readonly",
+          "console": "readonly",
+          // internal globals
+          "Icon": "readonly",
+          "lookupTable": "readonly",
+          "openUrl": "readonly",
+          "replaceSearchTerm": "readonly",
+          "isModifierKey": "readonly",
         }
       }
     }

@@ -21,16 +21,18 @@ describe("registerPartials", () => {
       if (filePath.includes("header.hbs")) return "HEADER PARTIAL CONTENT";
       if (filePath.includes("footer.hbs")) return "FOOTER PARTIAL CONTENT";
       if (filePath.includes("my_theme.hbs")) return "DASHBOARD PARTIAL CONTENT";
+      if (filePath.includes("live-search.hbs")) return "LIVE SEARCH PARTIAL CONTENT";
       return "";
     });
 
     registerPartials("My Theme");
 
-    expect(handlebars.registerPartial).toHaveBeenCalledTimes(3);
+    expect(handlebars.registerPartial).toHaveBeenCalledTimes(4);
 
     expect(handlebars.registerPartial).toHaveBeenCalledWith("header", "HEADER PARTIAL CONTENT");
     expect(handlebars.registerPartial).toHaveBeenCalledWith("dashboard", "DASHBOARD PARTIAL CONTENT");
     expect(handlebars.registerPartial).toHaveBeenCalledWith("footer", "FOOTER PARTIAL CONTENT");
+    expect(handlebars.registerPartial).toHaveBeenCalledWith("live-search", "LIVE SEARCH PARTIAL CONTENT");
 
     const expectedDashboardPath = path.join(process.cwd(), "src", "templates", "my_theme.hbs");
     expect(fs.existsSync).toHaveBeenCalledWith(expectedDashboardPath);
