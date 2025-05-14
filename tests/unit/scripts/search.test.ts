@@ -1,5 +1,5 @@
-import {generateLookupTable, LookupItem, LookupItemType} from "../../src/scripts/search";
-import {DashboardConfig} from "../../src/scripts/interface";
+import {generateLookupTable, LookupItem, LookupItemType} from "../../../src/scripts/search";
+import {DashboardConfig} from "../../../src/scripts/interface";
 
 const mockConfig: DashboardConfig = {
   meta: {favicon: 'favicon.ico', copyRightYear: '2025'},

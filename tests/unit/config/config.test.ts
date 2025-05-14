@@ -56,7 +56,7 @@ describe('config.ts', () => {
     expect(config.meta).toBeDefined();
 
     expect(yaml.parse).toHaveBeenCalledWith("theme: My Theme")
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining(`${path.sep}`), './config.yaml', 'configuration file');
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining("."), 'config.yaml', 'configuration file');
   });
 
   test('loadConfig() uses INPUT_PATH from environment variable', async () => {
@@ -70,7 +70,7 @@ describe('config.ts', () => {
 
     expect(config.theme).toEqual('Custom Theme');
     expect(yaml.parse).toHaveBeenCalledWith("theme: Custom Theme")
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining(`${path.sep}`), 'custom_config.yaml', 'configuration file');
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining("."), 'custom_config.yaml', 'configuration file');
 
     delete process.env.INPUT_PATH;
   });
