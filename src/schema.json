@@ -15,6 +15,9 @@
     "clock": {
       "type": "boolean"
     },
+    "liveSearch": {
+      "type": "boolean"
+    },
     "sections": {
       "type": "array",
       "items": {

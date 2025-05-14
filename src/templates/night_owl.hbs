@@ -3,9 +3,9 @@
   {{#if clock}}
     <p id="clock">00:00:00</p> <!-- Add a placeholder for the clock -->
   {{/if}}
-  <!--    <div class="search-bar">-->
-  <!--      <input type="text" id="searchInput" placeholder="Search for projects...">-->
-  <!--    </div>-->
+  {{#if liveSearch}}
+    {{> live-search }}
+  {{/if}}
 </header>
 {{#each sections}}
   <section>
@@ -29,23 +29,17 @@
     {{/each}}
   </section>
 {{/each}}
-<script>
-    {{{inlineJs}}}
-    {{#if clock}}
-      {{{clockJs}}}
-    {{/if}}
-    {{{searchJs}}}
-</script>
 
 {{#*inline "links_and_searchfields"}}
   {{#if searchFields}}
     <div class="search-fields">
       {{#each searchFields}}
         <div class="search-field">
-          <label>
-            <input class="search-bar" type="text" placeholder="{{title}}"
-                   data-url="{{href}}"/>
-          </label>
+          <div class="search-icon icon-sm">
+            <icon name="search"/>
+          </div>
+          <input type="text" placeholder="{{title}}..." class="search-bar" autocomplete="off"
+                 data-url="{{href}}">
         </div>
       {{/each}}
     </div>

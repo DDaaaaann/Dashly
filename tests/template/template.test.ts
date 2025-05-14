@@ -3,6 +3,7 @@ import * as fileUtils from '../../src/utils/file';
 import log from '../../src/logger/logger';
 import * as handlebars from 'handlebars';
 import fs from 'fs-extra';
+import path from "path";
 
 jest.mock('fs-extra');
 jest.mock('handlebars');
@@ -37,7 +38,7 @@ describe('template.ts', () => {
 
       const result = compileTemplate();
 
-      expect(fileUtils.readFile).toHaveBeenCalledWith(expect.stringContaining('/src'), '../partials/template.hbs', 'Handlebars template');
+      expect(fileUtils.readFile).toHaveBeenCalledWith(expect.stringContaining(`${path.sep}src`), `..${path.sep}partials${path.sep}template.hbs`, 'Handlebars template');
       expect(handlebars.compile).toHaveBeenCalledWith(template);
       expect(result).toBe(compiledTemplate);
     });

@@ -8,6 +8,30 @@ enum LogLevel {
 
 
 export class Logger {
+  public info(message: string): void {
+    this.log(LogLevel.INFO, message);
+  }
+
+  public success(message: string): void {
+    this.log(LogLevel.SUCCESS, message);
+  }
+
+  public warn(message: string): void {
+    this.log(LogLevel.WARN, message);
+  }
+
+  public error(message: string, error?: unknown): void {
+    if (error !== undefined) {
+      this.log(LogLevel.ERROR, message, getErrorMessage(error));
+    } else {
+      this.log(LogLevel.ERROR, message);
+    }
+  }
+
+  public debug(message: string, ...optionalParams: string []): void {
+    this.log(LogLevel.DEBUG, message, ...optionalParams);
+  }
+
   private isVerbose(): boolean {
     return process.env.VERBOSE === 'true';
   }
@@ -56,30 +80,6 @@ export class Logger {
 
   private colorize(message: string, colorCode: string): string {
     return `${colorCode}${message}\x1b[0m`;
-  }
-
-  public info(message: string): void {
-    this.log(LogLevel.INFO, message);
-  }
-
-  public success(message: string): void {
-    this.log(LogLevel.SUCCESS, message);
-  }
-
-  public warn(message: string): void {
-    this.log(LogLevel.WARN, message);
-  }
-
-  public error(message: string, error?: unknown): void {
-    if (error !== undefined) {
-      this.log(LogLevel.ERROR, message, getErrorMessage(error));
-    } else {
-      this.log(LogLevel.ERROR, message);
-    }
-  }
-
-  public debug(message: string, ...optionalParams: string []): void {
-    this.log(LogLevel.DEBUG, message, ...optionalParams);
   }
 }
 

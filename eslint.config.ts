@@ -17,6 +17,14 @@ export default tseslint.config(
           "document": "readonly",
           "setInterval": "readonly",
           "window": "readonly",
+          "setTimeout": "readonly",
+          "console": "readonly",
+          // internal globals
+          "Icon": "readonly",
+          "lookupTable": "readonly",
+          "openUrl": "readonly",
+          "replaceSearchTerm": "readonly",
+          "isModifierKey": "readonly",
         }
       }
     }

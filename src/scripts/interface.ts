@@ -1,4 +1,5 @@
 // Define types for configuration structure
+
 interface Link {
   title: string;
   href: string;
@@ -39,7 +40,7 @@ export interface DashboardConfig {
   theme: string;
   title?: string;
   clock?: boolean;
+  liveSearch?: boolean;
   inlineCss?: string;
-  clockJs?: string;
-  searchJs?: string;
+  bundleJs?: string;
 }
