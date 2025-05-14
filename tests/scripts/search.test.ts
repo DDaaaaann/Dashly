@@ -73,28 +73,34 @@ describe("Search tools", () => {
       expect(lookupTable[0].type).toBe(LookupItemType.LINK);
       expect(lookupTable[0].title).toBe("Block Link 1");
       expect(lookupTable[0].href).toBe("http://block-link-1.com");
-      expect(lookupTable[0].context).toBe("Work > Block 1");
+      expect(lookupTable[0].section).toBe("Work");
+      expect(lookupTable[0].block).toBe("Block 1");
     });
 
     it("should have a correct block search", () => {
       expect(lookupTable[1].type).toBe(LookupItemType.SEARCH_FIELD);
       expect(lookupTable[1].title).toBe("Block Search 1");
       expect(lookupTable[1].href).toBe("http://block-search-1.com?search=[search-term]");
-      expect(lookupTable[1].context).toBe("Work > Block 1");
+      expect(lookupTable[1].section).toBe("Work");
+      expect(lookupTable[1].block).toBe("Block 1");
     });
 
     it("should have a correct group link", () => {
       expect(lookupTable[2].type).toBe(LookupItemType.LINK);
       expect(lookupTable[2].title).toBe("Group Link 1");
       expect(lookupTable[2].href).toBe("http://group-link-1.com");
-      expect(lookupTable[2].context).toBe("Work > Block 1 > Group 1");
+      expect(lookupTable[2].section).toBe("Work");
+      expect(lookupTable[2].block).toBe("Block 1");
+      expect(lookupTable[2].group).toBe("Group 1");
     });
 
     it("should have a correct group link", () => {
       expect(lookupTable[3].type).toBe(LookupItemType.SEARCH_FIELD);
       expect(lookupTable[3].title).toBe("Group Search 1");
       expect(lookupTable[3].href).toBe("http://group-search-1.com?search=[search-term]");
-      expect(lookupTable[3].context).toBe("Work > Block 1 > Group 1");
+      expect(lookupTable[3].section).toBe("Work");
+      expect(lookupTable[3].block).toBe("Block 1");
+      expect(lookupTable[3].group).toBe("Group 1");
     });
   });
 });
