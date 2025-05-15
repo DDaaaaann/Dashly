@@ -1,7 +1,7 @@
 import path from "path";
 import * as fs from "fs-extra";
 import * as handlebars from "handlebars";
-import {registerPartials} from "../../src/template/partials";
+import { registerPartials } from "../../../src/template/partials";
 
 jest.mock("fs-extra");
 jest.mock("handlebars");

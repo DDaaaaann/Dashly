@@ -1,12 +1,12 @@
-import * as file from '../../src/utils/file';
-import {getTheme, loadConfig, validateConfig} from '../../src/config/config';
-import {DashboardConfig} from "../../src/scripts/interface";
+import * as file from '../../../src/utils/file';
+import { getTheme, loadConfig, validateConfig } from '../../../src/config/config';
+import { DashboardConfig } from "../../../src/scripts/interface";
 import yaml from "yaml";
-import path from "path";
 
 const mockConfig: DashboardConfig = {
   meta: {favicon: 'favicon.ico', copyRightYear: '2025'},
   title: 'Mock Dashboard',
+  defaultTitle: true,
   theme: 'My Theme',
   clock: false,
   sections: [],
@@ -56,7 +56,7 @@ describe('config.ts', () => {
     expect(config.meta).toBeDefined();
 
     expect(yaml.parse).toHaveBeenCalledWith("theme: My Theme")
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining(`${path.sep}`), './config.yaml', 'configuration file');
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining("."), 'config.yaml', 'configuration file');
   });
 
   test('loadConfig() uses INPUT_PATH from environment variable', async () => {
@@ -70,7 +70,7 @@ describe('config.ts', () => {
 
     expect(config.theme).toEqual('Custom Theme');
     expect(yaml.parse).toHaveBeenCalledWith("theme: Custom Theme")
-    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining(`${path.sep}`), 'custom_config.yaml', 'configuration file');
+    expect(file.readFile).toHaveBeenCalledWith(expect.stringContaining("."), 'custom_config.yaml', 'configuration file');
 
     delete process.env.INPUT_PATH;
   });

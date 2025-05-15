@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
 import * as handlebars from 'handlebars';
-import {registerPartials} from '../../src/template/partials';
+import { registerPartials } from '../../../src/template/partials';
 
 jest.mock('fs-extra');
 jest.mock('path');
@@ -21,9 +21,9 @@ describe('registerPartials', () => {
     const mockPartialContent = 'partial content';
 
     (path.join as jest.Mock)
-    .mockReturnValueOnce(mockDashboardPath)
-    .mockReturnValueOnce('mock/partials/header.hbs')
-    .mockReturnValueOnce('mock/partials/footer.hbs');
+      .mockReturnValueOnce(mockDashboardPath)
+      .mockReturnValueOnce('mock/partials/header.hbs')
+      .mockReturnValueOnce('mock/partials/footer.hbs');
     (fs.existsSync as jest.Mock).mockReturnValue(true);
     (fs.readFileSync as jest.Mock).mockReturnValue(mockPartialContent);
 
@@ -50,6 +50,6 @@ describe('registerPartials', () => {
     (fs.existsSync as jest.Mock).mockReturnValue(false);
 
     expect(() => registerPartials(themeName))
-    .toThrowError(`Theme '${themeName}' does not exist.`);
+      .toThrowError(`Theme '${themeName}' does not exist.`);
   });
 });

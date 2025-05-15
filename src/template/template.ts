@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 import * as handlebars from 'handlebars';
-import {DashboardConfig} from '../scripts/interface';
-import {readFile} from '../utils/file';
+import { DashboardConfig } from '../scripts/interface';
+import { readFile } from '../utils/file';
 import log from "../logger/logger";
 import path from "path";
 

@@ -1,14 +1,14 @@
-import {compileTemplate, generateHtml} from '../../src/template/template';
-import * as fileUtils from '../../src/utils/file';
-import log from '../../src/logger/logger';
+import { compileTemplate, generateHtml } from '../../../src/template/template';
+import * as fileUtils from '../../../src/utils/file';
+import log from '../../../src/logger/logger';
 import * as handlebars from 'handlebars';
 import fs from 'fs-extra';
 import path from "path";
 
 jest.mock('fs-extra');
 jest.mock('handlebars');
-jest.mock('../../src/logger/logger');
-jest.mock('../../src/utils/file', () => ({
+jest.mock('../../../src/logger/logger');
+jest.mock('../../../src/utils/file', () => ({
   readFile: jest.fn(),
 }));
 
@@ -16,6 +16,7 @@ describe('template.ts', () => {
   const mockDashboardConfig = {
     meta: {favicon: 'favicon.ico', copyRightYear: '2025'},
     title: 'Mock Dashboard',
+    defaultTitle: true,
     theme: 'dark',
     clock: false,
     sections: [],

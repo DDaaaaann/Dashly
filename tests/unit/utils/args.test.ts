@@ -1,4 +1,4 @@
-import {parseArgs} from '../../src/utils/args';
+import { parseArgs } from '../../../src/utils/args';
 
 describe('parseArgs', () => {
   let originalArgv: string[];

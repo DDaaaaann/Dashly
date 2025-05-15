@@ -22,48 +22,48 @@ function performSearch(searchQuery) {
   }
 
   results = lookupTable
-  .map((item) => {
-    const title = item.title.toLowerCase();
-    const section = item.section.toLowerCase();
-    const block = item.block.toLowerCase();
-    const group = item.group ? item.group.toLowerCase() : "";
+    .map((item) => {
+      const title = item.title.toLowerCase();
+      const section = item.section.toLowerCase();
+      const block = item.block.toLowerCase();
+      const group = item.group ? item.group.toLowerCase() : "";
 
-    const tokens = searchQuery.toLowerCase().trim().split(/\s+/);
+      const tokens = searchQuery.toLowerCase().trim().split(/\s+/);
 
-    const allTokensMatch = tokens.every(token =>
-      title.split(" ").some(word => word.startsWith(token)) ||
-      section.split(" ").some(word => word.startsWith(token)) ||
-      block.split(" ").some(word => word.startsWith(token)) ||
-      group.split(" ").some(word => word.startsWith(token))
-    );
+      const allTokensMatch = tokens.every(token =>
+        title.split(" ").some(word => word.startsWith(token)) ||
+        (section && section.split(" ").some(word => word.startsWith(token))) ||
+        block.split(" ").some(word => word.startsWith(token)) ||
+        group.split(" ").some(word => word.startsWith(token))
+      );
 
-    if (!allTokensMatch) {
-      return {...item, score: 0};
-    }
-
-    // Score calculation
-    let score = 0;
-
-    for (const token of tokens) {
-      if (title.split(" ").some(word => word.startsWith(token))) {
-        score += 4;
+      if (!allTokensMatch) {
+        return {...item, score: 0};
       }
-      if (section.split(" ").some(word => word.startsWith(token))) {
-        score += 3;
-      }
-      if (block.split(" ").some(word => word.startsWith(token))) {
-        score += 2;
-      }
-      if (group.split(" ").some(word => word.startsWith(token))) {
-        score += 1;
-      }
-    }
 
-    return {...item, score};
-  })
-  .filter((item) => item.score > 0)
-  .sort((a, b) => b.score - a.score)
-  .slice(0, 8);
+      // Score calculation
+      let score = 0;
+
+      for (const token of tokens) {
+        if (title.split(" ").some(word => word.startsWith(token))) {
+          score += 4;
+        }
+        if (section && section.split(" ").some(word => word.startsWith(token))) {
+          score += 3;
+        }
+        if (block.split(" ").some(word => word.startsWith(token))) {
+          score += 2;
+        }
+        if (group.split(" ").some(word => word.startsWith(token))) {
+          score += 1;
+        }
+      }
+
+      return {...item, score};
+    })
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 8);
 
   renderResults()
 
@@ -135,7 +135,7 @@ function renderResults() {
     // Create context
     const resultContext = document.createElement("span")
     resultContext.className = "result-context"
-    resultContext.textContent = result.section + " > " + result.block
+    resultContext.textContent = (result.section && result.section + " > ") + result.block
       + (result.group ? " > " + result.group : "");
 
     // Add search prompt if this is a selected search field
@@ -283,7 +283,7 @@ function handleKeyDown(e) {
       // window.open(selected.href, "_self")
     }
   } else if (e.key === "Escape") {
-      resetSearchField();
+    resetSearchField();
 
   } else if (
     selectedIndex >= 0 &&

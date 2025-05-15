@@ -1,12 +1,12 @@
 import fs from 'fs-extra';
-import {readFile} from '../../src/utils/file';
-import log from '../../src/logger/logger';
-import {getErrorMessage} from '../../src/utils/error';
+import { readFile } from '../../../src/utils/file';
+import log from '../../../src/logger/logger';
+import { getErrorMessage } from '../../../src/utils/error';
 import path from "path";
 
 jest.mock('fs-extra');
-jest.mock('../../src/logger/logger');
-jest.mock('../../src/utils/error');
+jest.mock('../../../src/logger/logger');
+jest.mock('../../../src/utils/error');
 
 describe('readFile', () => {
   const filePath = `test${path.sep}file.txt`;
@@ -39,7 +39,7 @@ describe('readFile', () => {
     (getErrorMessage as jest.Mock).mockReturnValue('Custom error message');
 
     expect(() => readFile("basepath", filePath, fileDescription)).toThrowError(
-        `Failed to read test file at basepath${path.sep}test${path.sep}file.txt: Custom error message`
+      `Failed to read test file at basepath${path.sep}test${path.sep}file.txt: Custom error message`
     );
   });
 });

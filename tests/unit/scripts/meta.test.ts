@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import * as path from "path";
-import getMeta from "../../src/scripts/meta";
+import getMeta from "../../../src/scripts/meta";
 
 jest.mock("fs-extra");
 

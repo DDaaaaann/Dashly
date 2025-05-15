@@ -1,4 +1,5 @@
 # Dashly <img src="https://github.com/user-attachments/assets/94ef8cf6-7831-431c-956c-9fbc22ea9675" alt="Dashly Logo" width="25"/>
+
 <div align="center">
   <img src="https://github.com/user-attachments/assets/254e87a3-97db-47a4-9016-937216512afa" alt="Dashly Logo" width="300"/>
 </div>
@@ -101,7 +102,6 @@ If you prefer building the TypeScript script locally, follow these steps:
     ```
 
 4. The generated `index.html` will be available in the current folder, ready to be used.
-
 
 ### 3. **Use Your Dashboard**
 

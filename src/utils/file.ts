@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import {getErrorMessage} from './error';
+import { getErrorMessage } from './error';
 import log from "../logger/logger";
 import path from "path";
 

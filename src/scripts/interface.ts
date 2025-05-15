@@ -24,8 +24,8 @@ interface Block {
   groups?: Group[];
 }
 
-interface Section {
-  title: string;
+export interface Section {
+  title?: string;
   blocks: Block[];
 }
 
@@ -39,6 +39,7 @@ export interface DashboardConfig {
   sections: Section[];
   theme: string;
   title?: string;
+  defaultTitle: boolean;
   clock?: boolean;
   liveSearch?: boolean;
   inlineCss?: string;

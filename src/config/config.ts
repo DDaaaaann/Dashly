@@ -1,26 +1,26 @@
 import yaml from 'yaml';
-import Ajv, {ValidateFunction} from 'ajv';
-import {DashboardConfig} from '../scripts/interface';
+import Ajv, { ValidateFunction } from 'ajv';
+import { DashboardConfig } from '../scripts/interface';
 import getMeta from '../scripts/meta';
 
 import log from "../logger/logger";
-import {readFile} from "../utils/file";
+import { readFile } from "../utils/file";
 import schema from "../schema.json";
-import {
-  getClockJs,
-  getIconJS,
-  getInlineCss,
-  getLinkJs,
-  getLiveSearchJs,
-  getSearchJs
-} from "../utils/paths";
-import {generateLookupTable} from "../scripts/search";
+import { getClockJs, getIconJS, getInlineCss, getLinkJs, getLiveSearchJs, getSearchJs } from "../utils/paths";
+import { generateLookupTable } from "../scripts/search";
+import path from "path";
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
   const CONFIG_PATH = process.env.INPUT_PATH || './config.yaml';
 
-  const config: DashboardConfig = yaml.parse(readFile(process.cwd(), CONFIG_PATH, 'configuration file'));
+  const configBasePath = path.dirname(CONFIG_PATH);
+  const configFileName = path.basename(CONFIG_PATH);
+  const config: DashboardConfig = yaml.parse(readFile(configBasePath, configFileName, 'configuration file'));
+
+  // For theme Emerald Tides, set defaultTitle to true
+  config.defaultTitle = config.theme == 'Emerald Tides';
+
   const theme = getTheme(config);
 
   validateConfig(config);
@@ -60,4 +60,4 @@ function getTheme(config: DashboardConfig): string {
 }
 
 // Exported for testing purposes
-export {validateConfig, getTheme};
+export { validateConfig, getTheme };

@@ -1,27 +1,27 @@
-import {runDashboardGenerator} from '../src';
-import {loadConfig} from '../src/config/config';
-import {registerPartials} from '../src/template/partials';
-import {registerHelpers} from '../src/scripts/helpers';
-import {generateHtml} from '../src/template/template';
-import log from '../src/logger/logger';
+import { runDashboardGenerator } from '../../src';
+import { loadConfig } from '../../src/config/config';
+import { registerPartials } from '../../src/template/partials';
+import { registerHelpers } from '../../src/scripts/helpers';
+import { generateHtml } from '../../src/template/template';
+import log from '../../src/logger/logger';
 
-jest.mock('../src/config/config', () => ({
+jest.mock('../../src/config/config', () => ({
   loadConfig: jest.fn(),
 }));
 
-jest.mock('../src/template/partials', () => ({
+jest.mock('../../src/template/partials', () => ({
   registerPartials: jest.fn(),
 }));
 
-jest.mock('../src/template/template', () => ({
+jest.mock('../../src/template/template', () => ({
   generateHtml: jest.fn(),
 }));
 
-jest.mock('../src/scripts/helpers', () => ({
+jest.mock('../../src/scripts/helpers', () => ({
   registerHelpers: jest.fn(),
 }));
 
-jest.mock('../src/logger/logger', () => ({
+jest.mock('../../src/logger/logger', () => ({
   success: jest.fn(),
   error: jest.fn(),
 }));

@@ -1,4 +1,4 @@
-import log from "../../src/logger/logger";
+import log from "../../../src/logger/logger";
 
 describe('Logger', () => {
   beforeEach(() => {
