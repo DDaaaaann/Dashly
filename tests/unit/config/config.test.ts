@@ -1,8 +1,7 @@
 import * as file from '../../../src/utils/file';
-import {getTheme, loadConfig, validateConfig} from '../../../src/config/config';
-import {DashboardConfig} from "../../../src/scripts/interface";
+import { getTheme, loadConfig, validateConfig } from '../../../src/config/config';
+import { DashboardConfig } from "../../../src/scripts/interface";
 import yaml from "yaml";
-import path from "path";
 
 const mockConfig: DashboardConfig = {
   meta: {favicon: 'favicon.ico', copyRightYear: '2025'},

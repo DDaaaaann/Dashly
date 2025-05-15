@@ -1,4 +1,4 @@
-import {compileTemplate, generateHtml} from '../../../src/template/template';
+import { compileTemplate, generateHtml } from '../../../src/template/template';
 import * as fileUtils from '../../../src/utils/file';
 import log from '../../../src/logger/logger';
 import * as handlebars from 'handlebars';

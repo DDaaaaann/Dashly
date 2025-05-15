@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
-import {readFile} from '../../../src/utils/file';
+import { readFile } from '../../../src/utils/file';
 import log from '../../../src/logger/logger';
-import {getErrorMessage} from '../../../src/utils/error';
+import { getErrorMessage } from '../../../src/utils/error';
 import path from "path";
 
 jest.mock('fs-extra');

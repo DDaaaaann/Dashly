@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import * as path from "path";
-import {Meta} from "./interface";
+import { Meta } from "./interface";
 
 function getInlineFavicon(): string {
   const faviconPath = path.join(__dirname, "..", "..", "assets", "favicon", "favicon.ico");

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import {loadConfig} from './config/config';
-import {registerPartials} from './template/partials';
-import {generateHtml} from './template/template';
-import {registerHelpers} from './scripts/helpers';
-import {parseArgs} from "./utils/args";
+import { loadConfig } from './config/config';
+import { registerPartials } from './template/partials';
+import { generateHtml } from './template/template';
+import { registerHelpers } from './scripts/helpers';
+import { parseArgs } from "./utils/args";
 import log from './logger/logger';
 
 export async function runDashboardGenerator() {

@@ -1,20 +1,13 @@
 import yaml from 'yaml';
-import Ajv, {ValidateFunction} from 'ajv';
-import {DashboardConfig} from '../scripts/interface';
+import Ajv, { ValidateFunction } from 'ajv';
+import { DashboardConfig } from '../scripts/interface';
 import getMeta from '../scripts/meta';
 
 import log from "../logger/logger";
-import {readFile} from "../utils/file";
+import { readFile } from "../utils/file";
 import schema from "../schema.json";
-import {
-  getClockJs,
-  getIconJS,
-  getInlineCss,
-  getLinkJs,
-  getLiveSearchJs,
-  getSearchJs
-} from "../utils/paths";
-import {generateLookupTable} from "../scripts/search";
+import { getClockJs, getIconJS, getInlineCss, getLinkJs, getLiveSearchJs, getSearchJs } from "../utils/paths";
+import { generateLookupTable } from "../scripts/search";
 import path from "path";
 
 export async function loadConfig(): Promise<DashboardConfig> {

@@ -1,5 +1,5 @@
 import path from 'path';
-import {readFile} from "./file";
+import { readFile } from "./file";
 
 export const getInlineCss = (theme: string) =>
     readFile(__dirname, path.join('..', '..', 'assets', 'styles', `${theme}.css`), 'CSS file');

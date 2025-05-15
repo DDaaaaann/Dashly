@@ -1,8 +1,8 @@
-import {runDashboardGenerator} from '../../src';
-import {loadConfig} from '../../src/config/config';
-import {registerPartials} from '../../src/template/partials';
-import {registerHelpers} from '../../src/scripts/helpers';
-import {generateHtml} from '../../src/template/template';
+import { runDashboardGenerator } from '../../src';
+import { loadConfig } from '../../src/config/config';
+import { registerPartials } from '../../src/template/partials';
+import { registerHelpers } from '../../src/scripts/helpers';
+import { generateHtml } from '../../src/template/template';
 import log from '../../src/logger/logger';
 
 jest.mock('../../src/config/config', () => ({

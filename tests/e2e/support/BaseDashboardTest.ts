@@ -1,5 +1,5 @@
-import {Browser, BrowserContext, expect, Page} from '@playwright/test';
-import {execSync} from 'child_process';
+import { Browser, BrowserContext, expect, Page } from '@playwright/test';
+import { execSync } from 'child_process';
 import path from 'path';
 import fs from "fs-extra";
 

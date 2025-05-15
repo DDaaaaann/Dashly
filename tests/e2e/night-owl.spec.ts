@@ -1,4 +1,4 @@
-import {expect, test} from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import BaseDashboardTest from './support/BaseDashboardTest';
 import LiveSearchTest from './support/LiveSearchTest';
 
