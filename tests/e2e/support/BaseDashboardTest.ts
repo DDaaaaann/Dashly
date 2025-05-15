@@ -3,14 +3,14 @@ import {execSync} from 'child_process';
 import path from 'path';
 import fs from "fs-extra";
 
-const INDEX_PATH = path.join(__dirname, '../../dist/src/index.js');
-const FIXTURES_PATH = path.join(__dirname, '../fixtures');
+const INDEX_PATH = path.join(__dirname, '../../../dist/src/index.js');
+const FIXTURES_PATH = path.join(__dirname, '../../fixtures');
 const OUTPUT_PATH = path.join(__dirname, '../output');
 
 class BaseDashboardTest {
   protected static DASHBOARD_PATH: string;
   protected context: BrowserContext;
-  protected page: Page;
+  public page: Page;
 
   constructor(protected theme: string) {
     const CONFIG_PATH = path.join(FIXTURES_PATH, theme + ".yaml");

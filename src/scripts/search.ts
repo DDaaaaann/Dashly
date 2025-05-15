@@ -1,4 +1,4 @@
-import {DashboardConfig} from "./interface";
+import { DashboardConfig, Section } from "./interface";
 
 export enum LookupItemType {
   LINK = 'link',
@@ -14,17 +14,21 @@ export interface LookupItem {
   type: LookupItemType;
 }
 
+function determineSectionTitle(section: Section, dashboardConfig: DashboardConfig, index: number) {
+  return section.title || (dashboardConfig.defaultTitle ? `Section ${index + 1}` : '');
+}
+
 export function generateLookupTable(dashboardConfig: DashboardConfig) {
   const lookup: LookupItem[] = [];
 
-  dashboardConfig.sections.forEach(section => {
+  dashboardConfig.sections.forEach((section, index) => {
     section.blocks.forEach(block => {
       block.links?.forEach(link => {
         lookup.push({
           type: LookupItemType.LINK,
           title: link.title,
           href: link.href,
-          section: section.title,
+          section: determineSectionTitle(section, dashboardConfig, index),
           block: block.title,
         });
       });
@@ -33,7 +37,7 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
           type: LookupItemType.SEARCH_FIELD,
           title: searchField.title,
           href: searchField.href,
-          section: section.title,
+          section: determineSectionTitle(section, dashboardConfig, index),
           block: block.title,
         });
       });
@@ -44,7 +48,7 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
             type: LookupItemType.LINK,
             title: groupLink.title,
             href: groupLink.href,
-            section: section.title,
+            section: determineSectionTitle(section, dashboardConfig, index),
             block: block.title,
             group: group.title,
           });
@@ -55,7 +59,7 @@ export function generateLookupTable(dashboardConfig: DashboardConfig) {
             type: LookupItemType.SEARCH_FIELD,
             title: searchField.title,
             href: searchField.href,
-            section: section.title,
+            section: determineSectionTitle(section, dashboardConfig, index),
             block: block.title,
             group: group.title,
           });

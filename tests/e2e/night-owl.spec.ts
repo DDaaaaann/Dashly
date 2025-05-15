@@ -1,5 +1,6 @@
 import {expect, test} from '@playwright/test';
-import BaseDashboardTest from './BaseDashboardTest';
+import BaseDashboardTest from './support/BaseDashboardTest';
+import LiveSearchTest from './support/LiveSearchTest';
 
 class NightOwlTest extends BaseDashboardTest {
   async testNavigationSection() {
@@ -12,10 +13,13 @@ class NightOwlTest extends BaseDashboardTest {
 
 test.describe('Night Owl Dashboard', () => {
   let nightOwl: NightOwlTest;
+  let liveSearchTest: LiveSearchTest;
 
   test.beforeAll(async ({browser}) => {
     nightOwl = new NightOwlTest('theme_night_owl_full');
     await nightOwl.setup(browser);
+    liveSearchTest = new LiveSearchTest(nightOwl.page);
+    
   });
 
   test.afterAll(async () => {
@@ -49,4 +53,32 @@ test.describe('Night Owl Dashboard', () => {
   test('Footer is rendered correctly', async () => {
     await nightOwl.testFooter();
   });
+
+  // ##### Live Search #####
+  test('Live search is visible', async () => {
+    await liveSearchTest.testLiveSearchVisibility();
+  });
+
+  test('Live search links work correctly', async () => {
+    await liveSearchTest.testLiveSearchFunctionality('title link 8', [
+      { 
+        title: 'Title Link 8',
+        context: 'Title Block 3 > Title Group 1'
+      }
+    ]);
+  });
+  
+  test('Live search searchfields work correctly', async () => {
+    await liveSearchTest.testLiveSearchFunctionality('title search field', [
+      { 
+        title: 'Title Search Field 1',
+        context: 'Custom Title Section 1 > Search'
+      },
+      { 
+        title: 'Title Search Field 2',
+        context: 'Custom Title Section 1 > Search'
+      },
+    ]);
+  });
+
 });

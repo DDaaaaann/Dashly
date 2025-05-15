@@ -25,6 +25,9 @@ export async function loadConfig(): Promise<DashboardConfig> {
   const configFileName = path.basename(CONFIG_PATH);
   const config: DashboardConfig = yaml.parse(readFile(configBasePath, configFileName, 'configuration file'));
 
+  // For theme Emerald Tides, set defaultTitle to true
+  config.defaultTitle = config.theme == 'Emerald Tides';
+
   const theme = getTheme(config);
 
   validateConfig(config);

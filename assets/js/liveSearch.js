@@ -32,7 +32,7 @@ function performSearch(searchQuery) {
 
     const allTokensMatch = tokens.every(token =>
       title.split(" ").some(word => word.startsWith(token)) ||
-      section.split(" ").some(word => word.startsWith(token)) ||
+      (section && section.split(" ").some(word => word.startsWith(token))) ||
       block.split(" ").some(word => word.startsWith(token)) ||
       group.split(" ").some(word => word.startsWith(token))
     );
@@ -48,7 +48,7 @@ function performSearch(searchQuery) {
       if (title.split(" ").some(word => word.startsWith(token))) {
         score += 4;
       }
-      if (section.split(" ").some(word => word.startsWith(token))) {
+      if (section && section.split(" ").some(word => word.startsWith(token))) {
         score += 3;
       }
       if (block.split(" ").some(word => word.startsWith(token))) {
@@ -135,7 +135,7 @@ function renderResults() {
     // Create context
     const resultContext = document.createElement("span")
     resultContext.className = "result-context"
-    resultContext.textContent = result.section + " > " + result.block
+    resultContext.textContent = (result.section && result.section + " > ") + result.block
       + (result.group ? " > " + result.group : "");
 
     // Add search prompt if this is a selected search field

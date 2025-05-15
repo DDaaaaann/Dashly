@@ -10,4 +10,4 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-/tests/output/
+/tests/e2e/output/

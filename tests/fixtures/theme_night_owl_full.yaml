@@ -1,6 +1,7 @@
 title: Full Night Owl Dashboard
 theme: Night Owl
 clock: true
+liveSearch: true
 sections:
   - title: Custom Title Section 1
     blocks:

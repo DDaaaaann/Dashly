@@ -1,6 +1,7 @@
 title: Full Emerald Tides Dashboard
 theme: Emerald Tides
 clock: true
+liveSearch: true
 sections:
   - title: Custom Title Section 1
     blocks:
