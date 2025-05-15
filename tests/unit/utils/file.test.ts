@@ -39,7 +39,7 @@ describe('readFile', () => {
     (getErrorMessage as jest.Mock).mockReturnValue('Custom error message');
 
     expect(() => readFile("basepath", filePath, fileDescription)).toThrowError(
-        `Failed to read test file at basepath${path.sep}test${path.sep}file.txt: Custom error message`
+      `Failed to read test file at basepath${path.sep}test${path.sep}file.txt: Custom error message`
     );
   });
 });

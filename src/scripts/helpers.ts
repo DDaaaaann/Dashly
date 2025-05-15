@@ -23,10 +23,10 @@ function registerVariableStorage() {
 function registerMathOperators() {
   log.debug('Registering math operators')
   handlebars.registerHelper({
-        mod: (v1, v2) => v1 % v2,
-    add: (v1, v2) => v1 + v2,
-    div: (v1, v2) => v1 / v2,
-      }
+      mod: (v1, v2) => v1 % v2,
+      add: (v1, v2) => v1 + v2,
+      div: (v1, v2) => v1 / v2,
+    }
   )
 }
 

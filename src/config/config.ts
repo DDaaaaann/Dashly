@@ -60,4 +60,4 @@ function getTheme(config: DashboardConfig): string {
 }
 
 // Exported for testing purposes
-export {validateConfig, getTheme};
+export { validateConfig, getTheme };

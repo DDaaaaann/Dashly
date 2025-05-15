@@ -87,20 +87,20 @@ test.describe('Emerald Tides Dashboard', () => {
 
   test('Live search links work correctly', async () => {
     await liveSearchTest.testLiveSearchFunctionality('title link 8', [
-      { 
+      {
         title: 'Title Link 8',
         context: 'Section 2 > Title Block 3 > Title Group 1'
       }
     ]);
   });
-  
+
   test('Live search searchfields work correctly', async () => {
     await liveSearchTest.testLiveSearchFunctionality('title search field', [
-      { 
+      {
         title: 'Title Search Field 1',
         context: 'Custom Title Section 1 > Search'
       },
-      { 
+      {
         title: 'Title Search Field 2',
         context: 'Custom Title Section 1 > Search'
       },

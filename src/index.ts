@@ -22,8 +22,8 @@ if (require.main === module) {
   parseArgs();
 
   runDashboardGenerator()
-  .catch(error => {
-    log.error("An error occurred while generating your dashboard:", error);
-    process.exit(1);
-  });
+    .catch(error => {
+      log.error("An error occurred while generating your dashboard:", error);
+      process.exit(1);
+    });
 }

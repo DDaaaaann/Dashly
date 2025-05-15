@@ -19,7 +19,7 @@ test.describe('Night Owl Dashboard', () => {
     nightOwl = new NightOwlTest('theme_night_owl_full');
     await nightOwl.setup(browser);
     liveSearchTest = new LiveSearchTest(nightOwl.page);
-    
+
   });
 
   test.afterAll(async () => {
@@ -61,20 +61,20 @@ test.describe('Night Owl Dashboard', () => {
 
   test('Live search links work correctly', async () => {
     await liveSearchTest.testLiveSearchFunctionality('title link 8', [
-      { 
+      {
         title: 'Title Link 8',
         context: 'Title Block 3 > Title Group 1'
       }
     ]);
   });
-  
+
   test('Live search searchfields work correctly', async () => {
     await liveSearchTest.testLiveSearchFunctionality('title search field', [
-      { 
+      {
         title: 'Title Search Field 1',
         context: 'Custom Title Section 1 > Search'
       },
-      { 
+      {
         title: 'Title Search Field 2',
         context: 'Custom Title Section 1 > Search'
       },

@@ -9,8 +9,8 @@ const OUTPUT_PATH = path.join(__dirname, '../output');
 
 class BaseDashboardTest {
   protected static DASHBOARD_PATH: string;
-  protected context: BrowserContext;
   public page: Page;
+  protected context: BrowserContext;
 
   constructor(protected theme: string) {
     const CONFIG_PATH = path.join(FIXTURES_PATH, theme + ".yaml");
