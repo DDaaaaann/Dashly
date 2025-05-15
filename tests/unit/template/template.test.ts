@@ -16,6 +16,7 @@ describe('template.ts', () => {
   const mockDashboardConfig = {
     meta: {favicon: 'favicon.ico', copyRightYear: '2025'},
     title: 'Mock Dashboard',
+    defaultTitle: true,
     theme: 'dark',
     clock: false,
     sections: [],

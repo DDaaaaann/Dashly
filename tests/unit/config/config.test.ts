@@ -6,6 +6,7 @@ import yaml from "yaml";
 const mockConfig: DashboardConfig = {
   meta: {favicon: 'favicon.ico', copyRightYear: '2025'},
   title: 'Mock Dashboard',
+  defaultTitle: true,
   theme: 'My Theme',
   clock: false,
   sections: [],
