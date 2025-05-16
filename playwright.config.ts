@@ -5,5 +5,7 @@ export default defineConfig({
   use: {
     baseURL: `file://${process.cwd()}/dist/index.html`,
     headless: true,
-  }
+  },
+  reporter: [['html', { outputFolder: 'playwright-report', open: 'never' }]],
+
 });

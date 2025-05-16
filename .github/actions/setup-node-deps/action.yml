@@ -1,0 +1,17 @@
+name: Setup Node and Install Dependencies
+description: Common setup for Node.js and npm ci
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - run: npm ci
+      shell: bash
