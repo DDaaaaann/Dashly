@@ -59,6 +59,10 @@ jobs:
         run: npm run build
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: Ensure output directory exists
+        run: mkdir -p tests/e2e/output
+      - name: Generate dashboard
+        run: node dist/src/index.js -i tests/fixtures/theme_emerald_tides_full.yaml -o tests/e2e/output/theme_emerald_tides_full.html
 #      - uses: actions/download-artifact@v4
 #        with:
 #          name: dist
