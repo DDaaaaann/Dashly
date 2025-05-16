@@ -9,8 +9,8 @@ const OUTPUT_PATH = path.join(__dirname, '../output');
 
 class BaseDashboardTest {
   protected static DASHBOARD_PATH: string;
-  public page: Page;
-  protected context: BrowserContext;
+  public page!: Page;
+  protected context!: BrowserContext;
 
   constructor(protected theme: string) {
     const CONFIG_PATH = path.join(FIXTURES_PATH, theme + ".yaml");
@@ -20,8 +20,16 @@ class BaseDashboardTest {
     console.log('INDEX_PATH:', INDEX_PATH);
     console.log('CONFIG_PATH:', CONFIG_PATH);
     console.log('DASHBOARD_PATH:', BaseDashboardTest.DASHBOARD_PATH);
-    execSync(`node ${INDEX_PATH} -i ${CONFIG_PATH} -o ${BaseDashboardTest.DASHBOARD_PATH}`);
-  }
+    try {
+      execSync(`node ${INDEX_PATH} -i ${CONFIG_PATH} -o ${BaseDashboardTest.DASHBOARD_PATH}`);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Failed to generate dashboard:', error.message);
+      } else {
+        console.error('Failed to generate dashboard:', error);
+      }
+      throw error; // Re-throw to fail the test
+    }  }
 
   async setup(browser: Browser) {
     this.context = await browser.newContext();
