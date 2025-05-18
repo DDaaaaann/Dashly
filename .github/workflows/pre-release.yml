@@ -1,0 +1,36 @@
+# .github/workflows/release-create.yml
+name: Create Release Draft
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  create-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node
+        uses: ./.github/actions/setup-node-deps
+
+      - name: Verify tag matches package.json version
+        run: |
+          TAG_VERSION=${{ github.event.release.tag_name#v }}
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          if [ "$TAG_VERSION" != "$PACKAGE_VERSION" ]; then
+            echo "Tag version ($TAG_VERSION) does not match package.json version ($PACKAGE_VERSION)"
+            exit 1
+          fi
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: |
+          npm run test:unit
+          npm run test:e2e
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: dist
