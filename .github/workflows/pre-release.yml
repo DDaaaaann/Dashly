@@ -23,6 +23,19 @@ jobs:
       - name: Build
         run: npm run build
 
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Ensure output directory exists
+        run: mkdir -p tests/e2e/output
+
       - name: Run tests
         run: |
           npm run test:unit
