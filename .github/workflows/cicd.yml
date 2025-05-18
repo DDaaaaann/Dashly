@@ -50,11 +50,10 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-playwright-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Ensure output directory exists
-        run: mkdir -p tests/e2e/output
-      - name: Run Playwright tests
+      - name: Prepare E2E Environment
+        run: npm run prepare:e2e
+
+      - name: Run e2e test
         run: npm run test:e2e
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
