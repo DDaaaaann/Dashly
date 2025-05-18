@@ -1,0 +1,60 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      new_dev_version:
+        description: 'New development version (e.g. 1.2.4)'
+        required: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-deps
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
+
+      - name: Publish GitHub Release (make draft official)
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { Octokit } = require("@octokit/rest");
+            const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
+            const tag = process.env.GITHUB_REF.replace('refs/tags/', '');
+            const { data: releases } = await octokit.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo
+            });
+            const release = releases.find(r => r.tag_name === tag);
+            if (!release) throw new Error(`No draft release found for tag ${tag}`);
+            await octokit.repos.updateRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: release.id,
+              draft: false
+            });
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump to new dev version
+        run: |
+          NEW_VERSION="${{ github.event.inputs.new_dev_version }}"
+          echo "Bumping to version $NEW_VERSION"
+          npm version "$NEW_VERSION" --no-git-tag-version
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git commit -m "chore: start new development iteration $NEW_VERSION"
+          git push origin HEAD
