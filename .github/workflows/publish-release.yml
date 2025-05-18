@@ -24,7 +24,7 @@ jobs:
 
       - name: Bump dev version
         run: |
-          NEXT=$(node -p "require('semver').inc(require('./package.json').version, 'patch') + '-dev'")
+          NEXT=$(node -p "require('semver').inc(require('./package.json').version, 'minor')")
           npm version "$NEXT" --no-git-tag-version
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
