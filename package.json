@@ -32,7 +32,7 @@
     "ajv": "^8.17.1",
     "fs-extra": "^11.3.0",
     "handlebars": "^4.7.8",
-    "yaml": "^2.7.0"
+    "yaml": "^2.8.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.23.0",
