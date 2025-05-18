@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup Node
-        uses: ./.github/actions/setup-node-deps
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-deps
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4

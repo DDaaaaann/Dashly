@@ -8,8 +8,8 @@ jobs:
   create-draft:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node
-        uses: ./.github/actions/setup-node-deps
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup-node-deps
 
       - name: Verify tag matches package.json version
         run: |
