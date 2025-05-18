@@ -49,6 +49,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-node-deps
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: dist/
       - name: Prepare E2E Environment
         run: npm run prepare:e2e
       - name: Run E2E tests
