@@ -1,0 +1,65 @@
+<header>
+  <h1>{{title}}</h1>
+  {{#if clock}}
+    <p id="clock">00:00:00</p>
+  {{/if}}
+  {{#if liveSearch}}
+    {{> live-search }}
+  {{/if}}
+</header>
+
+{{#if (gt sections.length 1)}}
+  <nav class="section-nav">
+    {{#each sections}}
+      <a href="#" class="section-link {{#if @first}}active{{/if}}"
+         data-target="section-{{@index}}">{{#if title}}{{title}}{{else}}
+        Section {{add @index 1}}{{/if}}</a>
+    {{/each}}
+  </nav>
+{{/if}}
+
+{{#each sections as |section sectionIndex|}}
+  <section id="section-{{@index}}" class="{{#if @first}}active{{/if}}">
+    {{#if (and title (eq ../sections.length 1))}}
+      <h2 class="section-title">{{title}}</h2>
+    {{/if}}
+
+    {{#if blocks}}
+      <div class="blocks-grid">
+        {{#each blocks as |block blockIndex|}}
+          <div class="block">
+            <h3 class="block-title">{{block.title}}</h3>
+            {{> links_and_searchfields}}
+            {{#each groups}}
+              <div class="group">
+                <h4 class="group-title">{{title}}</h4>
+                {{> links_and_searchfields}}
+              </div>
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </section>
+{{/each}}
+
+{{#*inline "links_and_searchfields"}}
+  {{#each searchFields}}
+    <div class="search-field">
+      <div class="search-icon icon-sm">
+        <icon name="search"/>
+      </div>
+      <input type="text" placeholder="{{title}}" class="search-bar" autocomplete="off"
+             data-url="{{href}}">
+    </div>
+  {{/each}}
+  {{#if links}}
+    <ul class="links">
+      {{#each links}}
+        <li class="link-item">
+          <a href="{{href}}" class="link">{{title}}</a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/inline}}
