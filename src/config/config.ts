@@ -42,7 +42,7 @@ export async function loadConfig(): Promise<DashboardConfig> {
       getSearchJs(),
       getLinkJs(),
       getIconJS(),
-      ...(config.theme === 'Emerald Tides' ? [getSectionsJS()] : []),
+      ...(config.theme === 'Emerald Tides' || config.theme === 'Silent Alps' ? [getSectionsJS()] : []),
       ...(config.clock ? [getClockJs()] : []),
       ...(config.liveSearch ? [getLiveSearchJs()] : []),
       ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),

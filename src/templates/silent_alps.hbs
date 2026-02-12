@@ -1,47 +1,73 @@
-<header>
-  <h1>{{title}}</h1>
-  {{#if clock}}
-    <p id="clock">00:00:00</p>
-  {{/if}}
-  {{#if liveSearch}}
-    {{> live-search }}
-  {{/if}}
-</header>
+<div class="swiss-container">
 
-{{#if (gt sections.length 1)}}
-  <nav class="section-nav">
-    {{#each sections}}
-      <a href="#" class="section-link {{#if @first}}active{{/if}}"
-         data-target="section-{{@index}}">{{#if title}}{{title}}{{else}}
-        Section {{add @index 1}}{{/if}}</a>
-    {{/each}}
-  </nav>
-{{/if}}
+  {{! Sidebar met navigatie en titel }}
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <h1>{{title}}</h1>
+    </div>
 
-{{#each sections as |section sectionIndex|}}
-  <section id="section-{{@index}}" class="{{#if @first}}active{{/if}}">
-    {{#if (and title (eq ../sections.length 1))}}
-      <h2 class="section-title">{{title}}</h2>
+    {{#if clock}}
+      <p id="clock" class="clock">00:00:00</p>
     {{/if}}
 
-    {{#if blocks}}
-      <div class="blocks-grid">
-        {{#each blocks as |block blockIndex|}}
-          <div class="block">
-            <h3 class="block-title">{{block.title}}</h3>
-            {{> links_and_searchfields}}
-            {{#each groups}}
-              <div class="group">
-                <h4 class="group-title">{{title}}</h4>
-                {{> links_and_searchfields}}
-              </div>
-            {{/each}}
-          </div>
+    {{#if (gt sections.length 1)}}
+      <nav class="sidebar-nav">
+        {{#each sections}}
+          <a href="#" class="section-link {{#if @first}}active{{/if}}"
+             data-target="section-{{@index}}">
+            <span class="nav-indicator"></span>
+            {{#if title}}{{title}}{{else}}Section {{add @index 1}}{{/if}}
+          </a>
         {{/each}}
-      </div>
+      </nav>
     {{/if}}
-  </section>
-{{/each}}
+
+
+  </aside>
+
+  {{! Main content }}
+  <div class="main-column">
+    {{#if liveSearch}}
+      <header class="header">
+        <div class="header-search">
+          {{> live-search }}
+        </div>
+      </header>
+    {{/if}}
+    <main class="content">
+      {{#each sections as |section sectionIndex|}}
+        <section id="section-{{@index}}" class="{{#if @first}}active{{/if}}">
+          {{#if (and title (eq ../sections.length 1))}}
+            <header class="content-header">
+              <h2>{{title}}</h2>
+              <div class="header-line"></div>
+            </header>
+          {{/if}}
+
+          {{#if blocks}}
+            <div class="blocks-list">
+              {{#each blocks as |block blockIndex|}}
+                <article class="block">
+                  <div class="block-main">
+                    <h3 class="block-title">{{block.title}}</h3>
+                    {{> links_and_searchfields}}
+                    {{#each groups}}
+                      <div class="group">
+                        <h4 class="group-title">{{title}}</h4>
+                        {{> links_and_searchfields}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </article>
+              {{/each}}
+            </div>
+          {{/if}}
+        </section>
+      {{/each}}
+    </main>
+  </div>
+</div>
 
 {{#*inline "links_and_searchfields"}}
   {{#each searchFields}}
@@ -57,7 +83,10 @@
     <ul class="links">
       {{#each links}}
         <li class="link-item">
-          <a href="{{href}}" class="link">{{title}}</a>
+          <a href="{{href}}" class="link">
+            <span class="link-arrow"></span>
+            <span class="link-text">{{title}}</span>
+          </a>
         </li>
       {{/each}}
     </ul>
