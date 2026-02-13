@@ -50,7 +50,10 @@
               {{#each blocks as |block blockIndex|}}
                 <article class="block">
                   <div class="block-main">
-                    <h3 class="block-title">{{block.title}}</h3>
+                    <div class="block-title-row">
+                      <span class="block-indicator"></span>
+                      <h3 class="block-title">{{block.title}}</h3>
+                    </div>
                     {{> links_and_searchfields}}
                     {{#each groups}}
                       <div class="group">
