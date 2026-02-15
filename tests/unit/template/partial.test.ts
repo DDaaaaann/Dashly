@@ -54,6 +54,6 @@ describe('registerPartials', () => {
     (fs.existsSync as jest.Mock).mockReturnValue(false);
 
     expect(() => registerPartials(themeName))
-      .toThrowError(`Theme '${themeName}' does not exist.`);
+    .toThrow(`Theme '${themeName}' does not exist.`);
   });
 });
