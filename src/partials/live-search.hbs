@@ -6,16 +6,17 @@
     </div>
     <input
       id="search-input"
+      tabindex="1"
       type="text"
       placeholder="Search links, blocks, or sections..."
       class="search-input"
       autocomplete="off"
     >
-    <button id="clear-search" class="clear-button icon-md hidden">
+    <button id="clear-search" class="clear-button icon-md hidden" tabindex="2">
       <icon name="clear"/>
     </button>
   </div>
 
-  <!-- Search Results -->
   <div id="search-results" class="search-results hidden"></div>
+  <div id="search-empty" class="search-empty hidden">No results</div>
 </div>

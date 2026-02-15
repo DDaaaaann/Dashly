@@ -23,7 +23,8 @@ describe('registerPartials', () => {
     (path.join as jest.Mock)
       .mockReturnValueOnce(mockDashboardPath)
       .mockReturnValueOnce('mock/partials/header.hbs')
-      .mockReturnValueOnce('mock/partials/footer.hbs');
+    .mockReturnValueOnce('mock/partials/footer.hbs')
+    .mockReturnValueOnce('mock/partials/live-search.hbs');
     (fs.existsSync as jest.Mock).mockReturnValue(true);
     (fs.readFileSync as jest.Mock).mockReturnValue(mockPartialContent);
 
@@ -33,14 +34,17 @@ describe('registerPartials', () => {
     expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'templates', 'night_owl.hbs');
     expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'partials', 'header.hbs');
     expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'partials', 'footer.hbs');
+    expect(path.join).toHaveBeenCalledWith(expect.stringContaining(expectedPath), '..', 'partials', 'live-search.hbs');
 
     expect(fs.existsSync).toHaveBeenCalledWith(mockDashboardPath);
     expect(fs.readFileSync).toHaveBeenCalledWith('mock/partials/header.hbs', 'utf-8');
     expect(fs.readFileSync).toHaveBeenCalledWith('mock/partials/footer.hbs', 'utf-8');
+    expect(fs.readFileSync).toHaveBeenCalledWith('mock/partials/live-search.hbs', 'utf-8');
 
     expect(handlebars.registerPartial).toHaveBeenCalledWith('header', mockPartialContent);
     expect(handlebars.registerPartial).toHaveBeenCalledWith('footer', mockPartialContent);
     expect(handlebars.registerPartial).toHaveBeenCalledWith('dashboard', mockPartialContent);
+    expect(handlebars.registerPartial).toHaveBeenCalledWith('live-search', mockPartialContent);
   });
 
   it('should throw an error if the theme does not exist', () => {

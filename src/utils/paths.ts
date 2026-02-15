@@ -18,3 +18,6 @@ export const getLiveSearchJs = () =>
 
 export const getIconJS = () =>
   readFile(__dirname, path.join('..', '..', 'assets', 'js', 'icon.js'), 'Icon JS');
+
+export const getSectionsJS = () =>
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'sections.js'), 'Sections JS');

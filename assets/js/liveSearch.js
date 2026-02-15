@@ -4,6 +4,7 @@ const searchBox = document.getElementById("search-box")
 const searchInput = document.getElementById("search-input")
 const clearSearchButton = document.getElementById("clear-search")
 const searchResults = document.getElementById("search-results")
+const searchEmpty = document.getElementById("search-empty")
 
 // State variables
 let query = ""
@@ -79,6 +80,8 @@ function resetSearchField() {
   searchInput.blur()
   searchContainer.classList.remove("focused")
   searchResults.classList.add("hidden")
+  searchEmpty.classList.add("hidden")
+  document.body.classList.remove("search-active")
   searchBox.classList.remove("results-visible")
   clearSearchButton.classList.add("hidden")
 
@@ -95,12 +98,22 @@ function renderResults() {
   searchResults.innerHTML = ""
 
   if (results.length === 0) {
-    searchResults.classList.add("hidden")
+    if (query.trim()) {
+      searchResults.classList.add("hidden")
+      searchEmpty.classList.remove("hidden")
+      document.body.classList.add("search-active")
+    } else {
+      searchResults.classList.add("hidden")
+      searchEmpty.classList.add("hidden")
+      document.body.classList.remove("search-active")
+    }
     searchBox.classList.remove("results-visible")
     return
   }
 
   searchResults.classList.remove("hidden")
+  searchEmpty.classList.add("hidden")
+  document.body.classList.add("search-active")
   searchBox.classList.add("results-visible")
 
   results.forEach((result, index) => {
@@ -357,6 +370,8 @@ clearSearchButton.addEventListener("click", () => {
   searchFieldQuery = ""
   clearSearchButton.classList.add("hidden")
   searchResults.classList.add("hidden")
+  searchEmpty.classList.add("hidden")
+  document.body.classList.remove("search-active")
   searchBox.classList.remove("results-visible")
   searchInput.focus()
 })

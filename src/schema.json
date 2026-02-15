@@ -9,7 +9,8 @@
       "type": "string",
       "enum": [
         "Night Owl",
-        "Emerald Tides"
+        "Emerald Tides",
+        "Silent Alps"
       ]
     },
     "clock": {

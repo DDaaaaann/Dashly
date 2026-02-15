@@ -1,0 +1,97 @@
+<div class="swiss-container">
+
+  {{! Sidebar met navigatie en titel }}
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <h1>{{title}}</h1>
+    </div>
+
+    {{#if clock}}
+      <p id="clock" class="clock">00:00:00</p>
+    {{/if}}
+
+    {{#if (gt sections.length 1)}}
+      <nav class="sidebar-nav">
+        {{#each sections}}
+          <a href="#" class="section-link {{#if @first}}active{{/if}}"
+             data-target="section-{{@index}}">
+            <span class="nav-indicator"></span>
+            {{#if title}}{{title}}{{else}}Section {{add @index 1}}{{/if}}
+          </a>
+        {{/each}}
+      </nav>
+    {{/if}}
+
+
+  </aside>
+
+  {{! Main content }}
+  <div class="main-column">
+    {{#if liveSearch}}
+      <header class="header">
+        <div class="header-search">
+          {{> live-search }}
+        </div>
+      </header>
+    {{/if}}
+    <main class="content">
+      {{#each sections as |section sectionIndex|}}
+        <section id="section-{{@index}}" class="{{#if @first}}active{{/if}}">
+          {{#if (and title (eq ../sections.length 1))}}
+            <header class="content-header">
+              <h2>{{title}}</h2>
+              <div class="header-line"></div>
+            </header>
+          {{/if}}
+
+          {{#if blocks}}
+            <div class="blocks-list">
+              {{#each blocks as |block blockIndex|}}
+                <article class="block">
+                  <div class="block-main">
+                    <div class="block-title-row">
+                      <span class="block-indicator"></span>
+                      <h3 class="block-title">{{block.title}}</h3>
+                    </div>
+                    {{> links_and_searchfields}}
+                    {{#each groups}}
+                      <div class="group">
+                        <h4 class="group-title">{{title}}</h4>
+                        {{> links_and_searchfields}}
+                      </div>
+                    {{/each}}
+                  </div>
+                </article>
+              {{/each}}
+            </div>
+          {{/if}}
+        </section>
+      {{/each}}
+    </main>
+  </div>
+</div>
+
+{{#*inline "links_and_searchfields"}}
+  {{#each searchFields}}
+    <div class="search-field">
+      <div class="search-icon icon-sm">
+        <icon name="search"/>
+      </div>
+      <input type="text" placeholder="{{title}}" class="search-bar" autocomplete="off"
+             data-url="{{href}}">
+    </div>
+  {{/each}}
+  {{#if links}}
+    <ul class="links">
+      {{#each links}}
+        <li class="link-item">
+          <a href="{{href}}" class="link">
+            <span class="link-arrow"></span>
+            <span class="link-text">{{title}}</span>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/inline}}

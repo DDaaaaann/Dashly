@@ -238,6 +238,10 @@ section.active {
   z-index: 10;
 }
 
+.search-empty {
+  display: none;
+}
+
 .result-item {
   padding: 12px;
   cursor: pointer;
