@@ -210,6 +210,8 @@ Here’s an example of a generated dashboard with _Emerald Tides_ theme:
 
 Here’s an example of a generated dashboard with _Silent Alps_ theme:
 
+![Silent Alps Theme](https://github.com/user-attachments/assets/e43011c5-35cf-466f-bfc8-2bde5250ed6d)
+
 <a href="/examples/Silent Alps/index.html">Silent Alps</a>
 
 ### Bright Tangerine
