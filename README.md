@@ -188,6 +188,7 @@ You can choose between multiple pre-built themes, or create your own. The availa
 
 - **Night Owl**
 - **Emerald Tides**
+- **Silent Alps**
 - **Bright Tangerine**
 
 ### Night Owl
@@ -204,6 +205,12 @@ Here’s an example of a generated dashboard with _Emerald Tides_ theme:
 ![Emerald Tides Theme](https://github.com/user-attachments/assets/d95a4d7b-8131-40fd-bd6b-e18bf0f1dc43)
 
 <a href="/examples/Emerald Tides/index.html">Emerald Tides</a>
+
+### Silent Alps
+
+Here’s an example of a generated dashboard with _Silent Alps_ theme:
+
+<a href="/examples/Silent Alps/index.html">Silent Alps</a>
 
 ### Bright Tangerine
 

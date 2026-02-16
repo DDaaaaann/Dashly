@@ -1,0 +1,65 @@
+$schema: "https://raw.githubusercontent.com/DDaaaaann/Dashly/main/src/schema.json"
+
+title: Alpine Start
+theme: Silent Alps
+clock: true
+liveSearch: true
+
+sections:
+  - title: Focus
+    blocks:
+      - title: Writing
+        links:
+          - title: Google Docs
+            href: https://docs.google.com
+          - title: Grammarly
+            href: https://grammarly.com
+        searchFields:
+          - title: Search Zotero
+            href: https://www.zotero.org/search?q=[search-term]
+      - title: Reading
+        links:
+          - title: Pocket
+            href: https://getpocket.com
+          - title: Instapaper
+            href: https://www.instapaper.com
+          - title: Medium
+            href: https://medium.com
+      - title: Research
+        groups:
+          - title: Databases
+            links:
+              - title: Google Scholar
+                href: https://scholar.google.com
+              - title: arXiv
+                href: https://arxiv.org
+            searchFields:
+              - title: Search Scholar
+                href: https://scholar.google.com/scholar?q=[search-term]
+          - title: Design
+            links:
+              - title: Dribbble
+                href: https://dribbble.com
+              - title: Behance
+                href: https://www.behance.net
+  - title: Life
+    blocks:
+      - title: Finance
+        links:
+          - title: Wise
+            href: https://wise.com
+          - title: PayPal
+            href: https://paypal.com
+          - title: Mint
+            href: https://mint.intuit.com
+      - title: Travel
+        links:
+          - title: Google Flights
+            href: https://www.google.com/travel/flights
+          - title: Booking
+            href: https://booking.com
+          - title: Trainline
+            href: https://www.thetrainline.com
+        searchFields:
+          - title: Search Maps
+            href: https://www.google.com/maps/search/[search-term]
