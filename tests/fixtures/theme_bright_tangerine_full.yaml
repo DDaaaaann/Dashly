@@ -1,0 +1,51 @@
+title: Full Bright Tangerine Dashboard
+theme: Bright Tangerine
+clock: true
+liveSearch: true
+sections:
+  - blocks:
+      - title: Title Block 1
+        links:
+          - title: Title Link 1
+            href: http://example.com/link1
+          - title: Title Link 2
+            href: http://example.com/link2
+          - title: Title Link 3
+            href: http://example.com/link3
+      - title: Search 1
+        searchFields:
+          - title: Title Search Field 1
+            href: http://example.com/search1?q=[search-term]
+          - title: Title Search Field 2
+            href: http://example.com/search2?q=[search-term]
+        links:
+          - title: Title Link 4
+            href: http://example.com/link4
+          - title: Title Link 5
+            href: http://example.com/link5
+  - title: Custom Title Section 2
+    blocks:
+      - title: Title Block 2
+        links:
+          - title: Title Link 6
+            href: http://example.com/link6
+          - title: Title Link 7
+            href: http://example.com/link7
+      - title: Title Block 3
+        groups:
+          - title: Title Group 1
+            links:
+              - title: Title Link 8
+                href: http://example.com/link8
+              - title: Title Link 9
+                href: http://example.com/link9
+          - title: Title Group 2
+            links:
+              - title: Title Link 10
+                href: http://example.com/link10
+              - title: Title Link 11
+                href: http://example.com/link11
+          - title: Search 2
+            searchFields:
+              - title: Title Search Field 1
+                href: http://example.com/search1?q=[search-term]
