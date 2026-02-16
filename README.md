@@ -188,6 +188,7 @@ You can choose between multiple pre-built themes, or create your own. The availa
 
 - **Night Owl**
 - **Emerald Tides**
+- **Bright Tangerine**
 
 ### Night Owl
 
