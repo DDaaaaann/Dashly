@@ -67,7 +67,7 @@ sections:
 | Option     | Description                                                           | Values                                                                   | Default |
 |------------|-----------------------------------------------------------------------|--------------------------------------------------------------------------|---------|
 | title      | Title for the dashboard                                               |                                                                          | null    |
-| theme      | Theme used for the dashboard                                          | `Emerald Tides`<br/>`Night Owl`<br/>`Silent Alps`<br/>`Analog Tangerine` | none    | 
+| theme      | Theme used for the dashboard                                          | `Emerald Tides`<br/>`Night Owl`<br/>`Silent Alps`<br/>`Bright Tangerine` | none    | 
 | clock      | If true, digital clock and date are shown                             |                                                                          | false   |
 | liveSearch | If true, a search bar with live search will be added to the dashboard |                                                                          | false   |
 | sections*  | Sections of the dashboard                                             | see [Sections Configuration](#Sections Configuration)                    | null    |
@@ -188,6 +188,7 @@ You can choose between multiple pre-built themes, or create your own. The availa
 
 - **Night Owl**
 - **Emerald Tides**
+- **Bright Tangerine**
 
 ### Night Owl
 
@@ -204,13 +205,13 @@ Here’s an example of a generated dashboard with _Emerald Tides_ theme:
 
 <a href="/examples/Emerald Tides/index.html">Emerald Tides</a>
 
-### Analog Tangerine
+### Bright Tangerine
 
-Here’s an example of a generated dashboard with _Analog Tangerine_ theme:
+Here’s an example of a generated dashboard with _Bright Tangerine_ theme:
 
-![Analog Tangerine Theme](https://github.com/user-attachments/assets/cd555a46-5f9b-400c-a126-82df05dc3fe4)
+![Bright Tangerine Theme](https://github.com/user-attachments/assets/cd555a46-5f9b-400c-a126-82df05dc3fe4)
 
-<a href="/examples/Analog Tangerine/index.html">Analog Tangerine</a>
+<a href="/examples/Bright Tangerine/index.html">Bright Tangerine</a>
 
 ## Customizable Search Fields
 
