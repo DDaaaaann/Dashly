@@ -29,7 +29,8 @@ class BaseDashboardTest {
         console.error('Failed to generate dashboard:', error);
       }
       throw error; // Re-throw to fail the test
-    }  }
+    }
+  }
 
   async setup(browser: Browser) {
     this.context = await browser.newContext();
@@ -39,11 +40,9 @@ class BaseDashboardTest {
   async teardown() {
     await this.context.close();
 
-    // Clear the output folder
-    if (fs.existsSync(OUTPUT_PATH)) {
-      fs.readdirSync(OUTPUT_PATH).forEach((file) => {
-        fs.unlinkSync(path.join(OUTPUT_PATH, file));
-      });
+    // Clear the output
+    if (fs.existsSync(BaseDashboardTest.DASHBOARD_PATH)) {
+      fs.unlinkSync(BaseDashboardTest.DASHBOARD_PATH);
     }
   }
 
