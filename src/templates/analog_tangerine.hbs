@@ -1,0 +1,74 @@
+<header>
+  <div class="header-content">
+    <div class="header-accent"></div>
+    <h1>{{title}}</h1>
+    {{#if clock}}
+      <p id="clock" class="clock">00:00:00</p>
+    {{/if}}
+  </div>
+  {{#if liveSearch}}
+    {{> live-search }}
+  {{/if}}
+</header>
+
+<main>
+  {{#each sections as |section sectionIndex|}}
+    <section class="section" id="section-{{@index}}">
+      {{#if title}}
+        <div class="section-header">
+          <h2 class="section-title">{{title}}</h2>
+          <div class="section-line"></div>
+        </div>
+      {{/if}}
+
+      {{#if blocks}}
+        <div class="blocks-grid">
+          {{#each blocks as |block blockIndex|}}
+            <article class="block">
+              <div class="block-header">
+                <h3 class="block-title">{{block.title}}</h3>
+              </div>
+              <div class="block-content">
+                {{> links_and_searchfields}}
+                {{#each groups}}
+                  <div class="group">
+                    <h4 class="group-title">{{title}}</h4>
+                    {{> links_and_searchfields}}
+                  </div>
+                {{/each}}
+              </div>
+            </article>
+          {{/each}}
+        </div>
+      {{/if}}
+    </section>
+  {{/each}}
+</main>
+
+{{#*inline "links_and_searchfields"}}
+  {{#if searchFields}}
+    <div class="search-fields">
+      {{#each searchFields}}
+        <div class="search-field">
+          <div class="search-icon icon-sm">
+            <icon name="search"/>
+          </div>
+          <input type="text" placeholder="{{title}}" class="search-bar" autocomplete="off"
+                 data-url="{{href}}">
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+  {{#if links}}
+    <ul class="links">
+      {{#each links}}
+        <li class="link-item">
+          <a href="{{href}}" class="link">
+            <span class="link-indicator"></span>
+            <span class="link-text">{{title}}</span>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+{{/inline}}

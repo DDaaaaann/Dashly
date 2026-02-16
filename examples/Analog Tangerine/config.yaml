@@ -1,0 +1,79 @@
+$schema: "/src/schema.json"
+
+title: My Dashboard
+theme: Analog Tangerine
+clock: true
+liveSearch: true
+
+sections:
+  - title: Productivity
+    blocks:
+      - title: Development
+        links:
+          - title: GitHub
+            href: https://github.com
+          - title: Stack Overflow
+            href: https://stackoverflow.com
+        searchFields:
+          - title: Search on NPM
+            href: https://www.npmjs.com/search?q=[search-term]
+        groups:
+          - title: Documentation
+            links:
+              - title: MDN Web Docs
+                href: https://developer.mozilla.org
+              - title: TypeScript Docs
+                href: https://www.typescriptlang.org/docs
+            searchFields:
+              - title: Search MDN
+                href: https://developer.mozilla.org/search?q=[search-term]
+
+      - title: Notes
+        links:
+          - title: Notion
+            href: https://notion.so
+          - title: Google Keep
+            href: https://keep.google.com
+          - title: Evernote
+            href: https://evernote.com
+          - title: OneNote
+            href: https://onenote.com
+          - title: Obsidian
+            href: https://obsidian.md
+
+  - title: Media
+    blocks:
+      - title: Streaming
+        links:
+          - title: Netflix
+            href: https://netflix.com
+          - title: Spotify
+            href: https://spotify.com
+          - title: YouTube
+            href: https://youtube.com
+          - title: Disney+
+            href: https://disneyplus.com
+          - title: Prime Video
+            href: https://primevideo.com
+          - title: Apple TV+
+            href: https://tv.apple.com
+          - title: HBO Max
+            href: https://max.com
+
+      - title: News
+        links:
+          - title: BBC
+            href: https://bbc.com
+          - title: CNN
+            href: https://cnn.com
+          - title: Reuters
+            href: https://reuters.com
+          - title: The Guardian
+            href: https://theguardian.com
+          - title: Al Jazeera
+            href: https://aljazeera.com
+          - title: AP News
+            href: https://apnews.com
+        searchFields:
+          - title: Search news
+            href: https://news.google.com/search?q=[search-term]

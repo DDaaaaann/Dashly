@@ -10,12 +10,14 @@
 
 ## Features
 
-- 🛠️ **Multi-customizable**: Personalize your dashboard with ease. Just provide links or search fields
+- 🛠️ **Multi-customizable**: Personalize your dashboard with ease. Just provide links or search
+  fields
   in a simple configuration file.
 - 🗜️ **Single HTML Output**: Everything packed in a single HTML file for simplicity and portability.
 - 🎨 **Multiple Themes**: Switch between different themes.
 - 🔍 **Live Search**: Quickly find what you need with a built-in search feature.
-- 🔎 **Customizable Search Fields**: Easily add and customize search fields to find what you need with
+- 🔎 **Customizable Search Fields**: Easily add and customize search fields to find what you need
+  with
   a click.
 
 ## How It Works
@@ -59,6 +61,78 @@ sections:
           - href: https://www.facebook.com
             title: Facebook
 ```
+
+#### Configuration Options
+
+| Option     | Description                                                           | Values                                                                   | Default |
+|------------|-----------------------------------------------------------------------|--------------------------------------------------------------------------|---------|
+| title      | Title for the dashboard                                               |                                                                          | null    |
+| theme      | Theme used for the dashboard                                          | `Emerald Tides`<br/>`Night Owl`<br/>`Silent Alps`<br/>`Analog Tangerine` | none    | 
+| clock      | If true, digital clock and date are shown                             |                                                                          | false   |
+| liveSearch | If true, a search bar with live search will be added to the dashboard |                                                                          | false   |
+| sections*  | Sections of the dashboard                                             | see [Sections Configuration](#Sections Configuration)                    | null    |
+
+#### Sections Configuration
+
+<table>
+    <tr>
+        <th colspan="5">Options</th>
+        <th>Values</th>
+    </tr>
+    <tr>
+        <td rowspan="11"><b>sections:</b></td>
+        <td colspan="4" align="right"><i>title</i></td>
+        <td>title of the section</td>
+    </tr>
+    <tr>
+        <td rowspan="10"><b>blocks:</b></td>
+        <td colspan="3"><i>title</i>*</td>
+        <td>title of the blobk</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b>links:</b></td>
+        <td colspan="2"><i>title</i></td>
+        <td>title of the link</td>
+    </tr>
+    <tr>
+        <td colspan="2"><i>href</i>*</td>
+        <td>url of the link</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b>searchFields:</b></td>
+        <td colspan="2"><i>title</i>*</td>
+        <td>title of the search field</td>
+    </tr>
+    <tr>
+        <td colspan="2"><i>href</i>*</td>
+        <td>href of the search field, see: <br><a href="#customizable-search-fields">Customizable Search Fields</a></td>
+    </tr>
+    <tr>
+        <td rowspan="5"><b>groups:</b></td>
+        <td colspan="2"><i>title</i>*</td>
+        <td>title of the group</td>
+    </tr>
+    <tr>
+        <td rowspan="2"><b>links:</b></td>
+        <td><i>title</i></td>
+        <td>title of the link</td>
+    </tr>
+    <tr>
+        <td><i>href</i>*</td>
+        <td>href of the link</td>
+    </tr>
+    <tr>
+        <td rowspan="2">searchFields:</td>
+        <td><i>title</i>*</td>
+        <td>title of the search field</td>
+    </tr>
+    <tr>
+        <td><i>href</i>*</td>
+        <td>href of the search field, see: <br><a href="#customizable-search-fields">Customizable Search Fields</a></td>
+    </tr>
+</table>
+
+*\* options marked with a star are required*
 
 ### 2. **Generate the HTML Dashboard**
 
@@ -129,6 +203,14 @@ Here’s an example of a generated dashboard with _Emerald Tides_ theme:
 ![Emerald Tides Theme](https://github.com/user-attachments/assets/d95a4d7b-8131-40fd-bd6b-e18bf0f1dc43)
 
 <a href="/examples/Emerald Tides/index.html">Emerald Tides</a>
+
+### Analog Tangerine
+
+Here’s an example of a generated dashboard with _Analog Tangerine_ theme:
+
+![Analog Tangerine Theme](https://github.com/user-attachments/assets/cd555a46-5f9b-400c-a126-82df05dc3fe4)
+
+<a href="/examples/Analog Tangerine/index.html">Analog Tangerine</a>
 
 ## Customizable Search Fields
 
