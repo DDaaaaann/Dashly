@@ -208,7 +208,9 @@ Here’s an example of a generated dashboard with _Emerald Tides_ theme:
 
 Here’s an example of a generated dashboard with _Analog Tangerine_ theme:
 
-<a href="/examples/Analog Tangerine/index.html">Night Owl</a>
+![Analog Tangerine Theme](https://github.com/user-attachments/assets/cd555a46-5f9b-400c-a126-82df05dc3fe4)
+
+<a href="/examples/Analog Tangerine/index.html">Analog Tangerine</a>
 
 ## Customizable Search Fields
 
