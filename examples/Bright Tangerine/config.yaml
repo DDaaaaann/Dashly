@@ -1,7 +1,7 @@
 $schema: "/src/schema.json"
 
 title: My Dashboard
-theme: Analog Tangerine
+theme: Bright Tangerine
 clock: true
 liveSearch: true
 
