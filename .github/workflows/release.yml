@@ -86,6 +86,10 @@ jobs:
         with:
           name: build
           path: dist/
+      - name: Configure npm auth
+        run: npm config set //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish to npm
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

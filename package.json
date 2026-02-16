@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "description": "A dashboard app to create stunning start pages",
   "bin": {
-    "dashly": "./dist/src/index.js"
+    "dashly": "dist/src/index.js"
   },
   "main": "src/index.ts",
   "scripts": {
@@ -21,7 +21,6 @@
     "copy:assets": "copyfiles assets/**/* dist",
     "copy:templates": "copyfiles src/templates/** dist",
     "copy:partials": "copyfiles src/partials/** dist",
-
     "pre-commit": "npm run lint && npm run test:unit"
   },
   "keywords": [
