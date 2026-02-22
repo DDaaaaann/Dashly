@@ -45,12 +45,12 @@ export async function loadConfig(): Promise<DashboardConfig> {
       getIconJS(),
       ...(config.theme === 'Emerald Tides' || config.theme === 'Silent Alps' ? [getSectionsJS()] : []),
       ...(config.clock ? [getClockJs()] : []),
-      ...(config.liveSearch ? [getLiveSearchJs()] : []),
-      ...(config.alerts && config.alerts.length ? [
-        `window.__dashlyAlerts = ${JSON.stringify(config.alerts)};`,
-        getAlertsJs()
-      ] : []),
+
+      ...(config.alerts ? [`const alerts = ${JSON.stringify(config.alerts)}`] : []),
+      ...(config.alerts ? [getAlertsJs()] : []),
+
       ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),
+      ...(config.liveSearch ? [getLiveSearchJs()] : []),
     ].join('\n')
   };
 }
