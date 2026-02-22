@@ -20,6 +20,44 @@
     "liveSearch": {
       "type": "boolean"
     },
+    "alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning"
+            ]
+          },
+          "cron": {
+            "type": "string"
+          },
+          "durationMinutes": {
+            "type": "number",
+            "minimum": 1
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "cron"
+        ]
+      }
+    },
     "sections": {
       "type": "array",
       "items": {

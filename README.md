@@ -70,6 +70,7 @@ sections:
 | theme      | Theme used for the dashboard                                          | `Emerald Tides`<br/>`Night Owl`<br/>`Silent Alps`<br/>`Bright Tangerine` | none    | 
 | clock      | If true, digital clock and date are shown                             |                                                                          | false   |
 | liveSearch | If true, a search bar with live search will be added to the dashboard |                                                                          | false   |
+| alerts     | Scheduled header alerts                                               | see [Alerts Configuration](#Alerts Configuration)                        | none    |
 | sections*  | Sections of the dashboard                                             | see [Sections Configuration](#Sections Configuration)                    | null    |
 
 #### Sections Configuration
@@ -133,6 +134,29 @@ sections:
 </table>
 
 *\* options marked with a star are required*
+
+#### Alerts Configuration
+
+```yaml
+alerts:
+  - title: "It's Friday!"
+    message: "Log your hours."
+    type: warning
+    cron: "0 9 * * 5"
+    durationMinutes: 480
+  - title: "First of the month"
+    message: "Send invoices."
+    type: info
+    cron: "0 8 1 * *"
+    durationMinutes: 240
+```
+
+Alert fields:
+
+- `title` (required) and `message` (required).
+- `type`: `info` or `warning` (defaults to `info`).
+- `cron` (required): standard 5-field cron (`min hour day month weekday`).
+- `durationMinutes`: how long the alert stays visible after it triggers.
 
 ### 2. **Generate the HTML Dashboard**
 

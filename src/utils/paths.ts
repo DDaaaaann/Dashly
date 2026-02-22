@@ -21,3 +21,6 @@ export const getIconJS = () =>
 
 export const getSectionsJS = () =>
     readFile(__dirname, path.join('..', '..', 'assets', 'js', 'sections.js'), 'Sections JS');
+
+export const getAlertsJs = () =>
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alert.js'), 'Alert JS');

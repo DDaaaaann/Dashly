@@ -34,6 +34,16 @@ export interface Meta {
   copyRightYear: string;
 }
 
+export interface Alert {
+  id?: string;
+  title: string;
+  message: string;
+  type?: 'info' | 'warning'
+  cron: string;
+  durationMinutes?: number;
+  enabled?: boolean;
+}
+
 export interface DashboardConfig {
   meta: Meta;
   sections: Section[];
@@ -42,6 +52,7 @@ export interface DashboardConfig {
   defaultTitle: boolean;
   clock?: boolean;
   liveSearch?: boolean;
+  alerts?: Alert[];
   inlineCss?: string;
   bundleJs?: string;
 }
