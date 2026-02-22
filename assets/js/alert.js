@@ -5,7 +5,7 @@
     return;
   }
 
-  const host = document.getElementById('dashly-alerts');
+  const host = document.getElementById('alerts');
   if (!host) {
     return;
   }
@@ -70,9 +70,9 @@
       : null;
     const message = typeof alert.message === 'string' && alert.message.trim()
       ? alert.message.trim()
-      : null;
+      : '';
 
-    if (!title || !message) {
+    if (!title) {
       return null;
     }
 
@@ -235,7 +235,7 @@
 
   function renderAlert(alert) {
     const container = document.createElement('div');
-    container.className = `dashly-alert ${alert.type}`;
+    container.className = `alert ${alert.type}`;
     container.dataset.alertId = alert.id;
     if (alert.type === 'warning' && !animatedIds.has(alert.id)) {
       container.classList.add('animate');
@@ -249,12 +249,13 @@
     title.className = 'alert-title';
     title.textContent = alert.title;
 
-    const message = document.createElement('span');
-    message.className = 'alert-message';
-    message.textContent = alert.message;
-
     content.appendChild(title);
-    content.appendChild(message);
+    if (alert.message) {
+      const message = document.createElement('span');
+      message.className = 'alert-message';
+      message.textContent = alert.message;
+      content.appendChild(message);
+    }
 
     const dismiss = document.createElement('button');
     dismiss.type = 'button';
@@ -326,7 +327,7 @@
     if (!button) {
       return;
     }
-    const container = button.closest('.dashly-alert');
+    const container = button.closest('.alert');
     if (!container) {
       return;
     }
@@ -341,7 +342,7 @@
     dismissed[alert.id] = expiresAt.toISOString();
     storeDismissed(dismissed);
     container.remove();
-    if (!host.querySelector('.dashly-alert')) {
+    if (!host.querySelector('.alert')) {
       host.hidden = true;
     }
   });

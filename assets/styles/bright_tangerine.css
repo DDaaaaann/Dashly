@@ -115,14 +115,14 @@ header {
   border-bottom: 3px solid var(--color-black);
 }
 
-.dashly-alerts {
+.alerts {
   margin: var(--spacing-md) 0 var(--spacing-lg);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-sm);
 }
 
-.dashly-alert {
+.alert {
   padding: var(--spacing-sm) var(--spacing-md);
   border-radius: var(--border-radius);
   background: var(--color-gray-100);
@@ -132,14 +132,14 @@ header {
   align-items: baseline;
 }
 
-.dashly-alert .alert-content {
+.alert .alert-content {
   display: flex;
   gap: var(--spacing-sm);
   align-items: baseline;
   flex: 1;
 }
 
-.dashly-alert .alert-dismiss {
+.alert .alert-dismiss {
   background: transparent;
   border: none;
   color: inherit;
@@ -148,26 +148,26 @@ header {
   display: inline-flex;
 }
 
-.dashly-alert .alert-dismiss svg {
+.alert .alert-dismiss svg {
   width: 14px;
   height: 14px;
 }
 
-.dashly-alert .alert-title {
+.alert .alert-title {
   font-weight: var(--font-weight-bold);
   text-transform: uppercase;
 }
 
-.dashly-alert.warning {
+.alert.warning {
   background: #fff2e8;
   border-color: var(--color-accent-primary);
 }
 
-.dashly-alert.warning.animate {
-  animation: dashly-alert-pop 600ms ease;
+.alert.warning.animate {
+  animation: alert-pop 600ms ease;
 }
 
-@keyframes dashly-alert-pop {
+@keyframes alert-pop {
   0% {
     opacity: 0;
     transform: translateY(-6px);
