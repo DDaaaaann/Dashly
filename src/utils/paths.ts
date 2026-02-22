@@ -2,25 +2,28 @@ import path from 'path';
 import { readFile } from "./file";
 
 export const getInlineCss = (theme: string) =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'styles', `${theme}.css`), 'CSS file');
+    readFile(__dirname, path.join('..', '..', 'assets', 'styles', `${theme}.css`), 'CSS file');
 
 export const getClockJs = () =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'clock.js'), 'Clock JS');
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'clock.js'), 'Clock JS');
 
 export const getSearchJs = () =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'search.js'), 'Search JS');
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'search.js'), 'Search JS');
 
 export const getLinkJs = () =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'link.js'), 'Link JS');
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'link.js'), 'Link JS');
 
 export const getLiveSearchJs = () =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'liveSearch.js'), 'Live Search JS');
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'liveSearch.js'), 'Live Search JS');
 
 export const getIconJS = () =>
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'icon.js'), 'Icon JS');
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'icon.js'), 'Icon JS');
 
 export const getSectionsJS = () =>
     readFile(__dirname, path.join('..', '..', 'assets', 'js', 'sections.js'), 'Sections JS');
 
 export const getAlertsJs = () =>
     readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alert.js'), 'Alert JS');
+
+export const getCronJs = () =>
+    readFile(__dirname, path.join('..', '..', 'assets', 'js', 'cron.js'), 'Cron JS');
