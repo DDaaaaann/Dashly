@@ -7,9 +7,8 @@ import log from "../logger/logger";
 import { readFile } from "../utils/file";
 import schema from "../schema.json";
 import {
-  getAlertsJs,
+  getAlertsJS,
   getClockJs,
-  getCronJs,
   getIconJS,
   getInlineCss,
   getLinkJs,
@@ -47,11 +46,8 @@ export async function loadConfig(): Promise<DashboardConfig> {
       ...(config.theme === 'Emerald Tides' || config.theme === 'Silent Alps' ? [getSectionsJS()] : []),
       ...(config.clock ? [getClockJs()] : []),
 
-      ...(config.alerts ? [
-        `window.__dashlyAlerts = ${JSON.stringify(config.alerts)};`,
-        getCronJs(),
-        getAlertsJs()
-      ] : []),
+      ...(config.alerts ? [`const alerts = ${JSON.stringify(config.alerts)}`] : []),
+      ...(config.alerts ? [getAlertsJS()] : []),
 
       ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),
       ...(config.liveSearch ? [getLiveSearchJs()] : []),

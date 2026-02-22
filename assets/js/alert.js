@@ -158,7 +158,6 @@ function handleDismiss(event, normalizedAlerts) {
 }
 
 if (alertsHost) {
-  var alerts = window.__dashlyAlerts || [];
   var normalizedAlerts = alerts.map(normalizeAlert);
 
   updateAlerts(normalizedAlerts);
