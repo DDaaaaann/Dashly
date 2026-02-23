@@ -1,39 +1,26 @@
-var alertsHost = document.getElementById("alerts");
+var alertsElement = document.getElementById("alerts");
 var dismissedKey = "alerts.dismissed";
 var animatedIds = new Set();
 
-function normalizeAlert(alert, index) {
-  var cronParts = parseCron(alert.cron);
-  return {
-    id: alert.id || "alert-" + index,
-    title: alert.title,
-    message: alert.message || "",
-    type: alert.type === "warning" ? "warning" : "info",
-    durationMinutes: alert.durationMinutes ? Math.max(1,
-      Math.round(alert.durationMinutes)) : 120,
-    cronParts: cronParts
-  };
-}
-
-function updateAlerts(normalizedAlerts) {
+function renderAlerts(normalizedAlerts) {
   var now = new Date();
   var dismissed = loadDismissed(now);
   var activeAlerts = findActiveAlerts(normalizedAlerts, now, dismissed);
 
   if (!activeAlerts.length) {
-    alertsHost.hidden = true;
-    alertsHost.innerHTML = "";
+    alertsElement.hidden = true;
+    alertsElement.innerHTML = "";
     return;
   }
 
-  alertsHost.hidden = false;
-  alertsHost.innerHTML = "";
+  alertsElement.hidden = false;
+  alertsElement.innerHTML = "";
   activeAlerts.forEach(function (alert) {
-    alertsHost.appendChild(renderAlert(alert));
+    alertsElement.appendChild(renderAlert(alert));
   });
 
   if (window.dashlyReplaceIcons) {
-    window.dashlyReplaceIcons(alertsHost);
+    window.dashlyReplaceIcons(alertsElement);
   }
 }
 
@@ -50,7 +37,7 @@ function isWithinWindow(alert, now) {
   var maxScan = Math.min(alert.durationMinutes, 10080);
   for (var offset = 0; offset <= maxScan; offset += 1) {
     var candidate = new Date(now.getTime() - offset * 60 * 1000);
-    if (cronMatches(alert.cronParts, candidate)) {
+    if (cronMatches(alert.cron, candidate)) {
       return true;
     }
   }
@@ -133,7 +120,7 @@ function pruneDismissed(dismissed) {
   });
 }
 
-function handleDismiss(event, normalizedAlerts) {
+function dismissAlert(event, normalizedAlerts) {
   var button = event.target.closest(".alert-dismiss");
   if (!button) {
     return;
@@ -152,21 +139,17 @@ function handleDismiss(event, normalizedAlerts) {
   dismissed[alert.id] = expiresAt.toISOString();
   storeDismissed(dismissed);
   container.remove();
-  if (!alertsHost.querySelector(".alert")) {
-    alertsHost.hidden = true;
+  if (!alertsElement.querySelector(".alert")) {
+    alertsElement.hidden = true;
   }
 }
 
-if (alertsHost) {
-  var normalizedAlerts = alerts.map(normalizeAlert);
+alertsElement.addEventListener("click", function (event) {
+  dismissAlert(event, alerts);
+});
 
-  updateAlerts(normalizedAlerts);
+renderAlerts(alerts);
 
-  setInterval(function () {
-    updateAlerts(normalizedAlerts);
-  }, 60 * 1000);
-
-  alertsHost.addEventListener("click", function (event) {
-    handleDismiss(event, normalizedAlerts);
-  });
-}
+setInterval(function () {
+  renderAlerts(alerts);
+}, 60 * 1000);

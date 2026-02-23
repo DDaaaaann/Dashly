@@ -18,6 +18,7 @@ import {
 } from "../utils/paths";
 import { generateLookupTable } from "../scripts/search";
 import path from "path";
+import { setupAlerts } from "../scripts/alert";
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
@@ -46,7 +47,7 @@ export async function loadConfig(): Promise<DashboardConfig> {
       ...(config.theme === 'Emerald Tides' || config.theme === 'Silent Alps' ? [getSectionsJS()] : []),
       ...(config.clock ? [getClockJs()] : []),
 
-      ...(config.alerts ? [`const alerts = ${JSON.stringify(config.alerts)}`] : []),
+      ...(config.alerts ? [`const alerts = ${JSON.stringify(setupAlerts(config.alerts))}`] : []),
       ...(config.alerts ? [getAlertsJS()] : []),
 
       ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),
