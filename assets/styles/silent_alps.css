@@ -613,7 +613,7 @@ section.active {
 }
 
 /* ========== Utility ========== */
-.hidden {
+.hidden, [hidden] {
   display: none !important;
 }
 

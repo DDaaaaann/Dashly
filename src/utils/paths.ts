@@ -23,6 +23,6 @@ export const getSectionsJS = () =>
     readFile(__dirname, path.join('..', '..', 'assets', 'js', 'sections.js'), 'Sections JS');
 
 export const getAlertsJS = () => [
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alert.js'), 'Alert JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts.js'), 'Alert JS'),
   readFile(__dirname, path.join('..', '..', 'assets', 'js', 'cron.js'), 'Cron JS'),
 ].join('\n');
