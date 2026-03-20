@@ -1,3 +1,4 @@
+var timeout = (60 - new Date().getSeconds()) * 1000;
 var alertsElement = document.getElementById("alerts");
 var alertElements = alertsElement.querySelectorAll(".alert");
 
@@ -14,12 +15,16 @@ function renderAlerts() {
   alertsElement.hidden = allInactive;
 }
 
-function isActive(alert, now) {
-  return Math.random() < 0.5;
+function isActive(alertElement, now) {
+  var alert = findAlert(alertElement.dataset.alertId);
+  return isScheduleActive(alert.schedule, now);
+}
+
+function findAlert(alertId) {
+  return alerts.find((alert) => (alert.id === alertId))
 }
 
 renderAlerts();
-
-setInterval(function () {
-  renderAlerts();
-}, 60 * 1000);
+setTimeout(() =>
+    setInterval(() => renderAlerts(), 60 * 1000)
+  , timeout);

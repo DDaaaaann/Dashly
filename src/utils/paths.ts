@@ -22,7 +22,15 @@ export const getIconJS = () =>
 export const getSectionsJS = () =>
     readFile(__dirname, path.join('..', '..', 'assets', 'js', 'sections.js'), 'Sections JS');
 
+// export const getAlertsJS = () => [
+//   readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts.js'), 'Alert JS'),
+//   readFile(__dirname, path.join('..', '..', 'assets', 'js', 'schedule-engine.js'), 'Schedule JS'),
+// ].join('\n');
+
 export const getAlertsJS = () => [
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts.js'), 'Alert JS'),
-  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'cron.js'), 'Cron JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts', 'utils.js'), 'Utils JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts', 'filters.js'), 'Filters JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts', 'generators.js'), 'Generator JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts', 'schedule.js'), 'Schedule JS'),
+  readFile(__dirname, path.join('..', '..', 'assets', 'js', 'alerts', 'alerts.js'), 'Alert JS'),
 ].join('\n');
