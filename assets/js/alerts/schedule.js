@@ -14,7 +14,7 @@
  */
 
 // Conditionele import voor Node.js (negeer in browser)
-let buildGenerator, buildFilters;
+var buildGenerator, buildFilters;
 
 if (typeof require !== 'undefined') {
   var generators = require('./generators.js');
