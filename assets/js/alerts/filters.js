@@ -1,4 +1,4 @@
-// Conditionele import voor Node.js (negeer in browser)
+// Conditional import for Node.js (ignore in browser)
 var startOfDay, daysInRange, startOfWeek, startOfMonth, daysInMonth,
   getWeekdayName;
 
@@ -21,26 +21,6 @@ const dayOfWeekFilter = ({dayOfWeek}) => ({
   apply: date => date.getDay() === dayOfWeek
 });
 
-// function daysOfMonthFilter() {
-//   return {
-//     appliesTo(daysOfMonth) {
-//       return Array.isArray(daysOfMonth) && daysOfMonth.length > 0;
-//     },
-//     apply(daysOfMonth, date) {
-//       return daysOfMonth.includes(date.getDate());
-//     }
-//   };
-// }
-
-// const daysOfMonthFilter = () => ({
-//   appliesTo(schedule) {
-//     return Array.isArray(schedule.daysOfMonth) && schedule.daysOfMonth.length > 0;
-//   },
-//   apply(daysOfMonth, date) {
-//     return daysOfMonth.includes(date.getDate());
-//   }
-// });
-
 function daysOfMonthFilter(schedule) {
   const daysOfMonth = schedule.daysOfMonth;
   return {
@@ -56,7 +36,6 @@ function daysOfMonthFilter(schedule) {
 
 function daysOfWeekFilter(schedule) {
   const daysOfWeek = schedule.daysOfWeek;
-  console.log(daysOfWeek)
   return {
     applies() {
       return daysOfWeek && daysOfWeek.length > 0;
@@ -66,16 +45,6 @@ function daysOfWeekFilter(schedule) {
     }
   };
 }
-
-// const daysOfMonthFilter = ({daysOfMonth}) => ({
-//   applies: () => Array.isArray(schedule.daysOfMonth) && schedule.daysOfMonth.length > 0,
-//   apply: date => daysOfMonth.includes(date.getDate())
-// });
-//
-// const daysOfWeekFilter = ({daysOfWeek}) => ({
-//   applies: () => daysOfWeek && daysOfWeek.length > 0,
-//   apply: date => date.getDay() === daysOfWeek
-// });
 
 function buildFilters(schedule) {
   const filters = []

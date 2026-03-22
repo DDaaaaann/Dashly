@@ -13,7 +13,7 @@
  * position werkt zoals RRULE BYSETPOS
  */
 
-// Conditionele import voor Node.js (negeer in browser)
+// Conditional import for Node.js (ignore in browser)
 var buildGenerator, buildFilters;
 
 if (typeof require !== 'undefined') {

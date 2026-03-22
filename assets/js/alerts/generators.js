@@ -1,4 +1,4 @@
-// Conditionele import voor Node.js (negeer in browser)
+// Conditional import for Node.js (ignore in browser)
 var daysInRange, startOfDay, startOfWeek, startOfMonth, daysInMonth,
   getWeekdayName;
 
