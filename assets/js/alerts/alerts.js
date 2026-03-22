@@ -25,6 +25,7 @@ function findAlert(alertId) {
 }
 
 renderAlerts();
-setTimeout(() =>
-    setInterval(() => renderAlerts(), 60 * 1000)
-  , timeout);
+setTimeout(() => {
+  renderAlerts();
+  setInterval(() => renderAlerts(), 60 * 1000);
+}, timeout);
