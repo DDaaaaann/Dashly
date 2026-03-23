@@ -1,19 +1,33 @@
-const {
-  isScheduleActive,
-} = require('../../../../assets/js/alerts/schedule.js')
+import { loadBrowserScripts } from "./helper";
+
+interface Schedule {
+  frequency: string;
+  time?: string;
+  durationMinutes?: number;
+  daysOfWeek?: string[];
+  daysOfMonth?: number[];
+}
 
 describe("Recurrence Module (assets/js/recurrence.js)", () => {
 
   function date(str: string): Date {
-    var date = new Date(str);
-    var timezoneOffset = date.getTimezoneOffset();
+    const date = new Date(str);
+    const timezoneOffset = date.getTimezoneOffset();
     date.setMinutes(date.getMinutes() + timezoneOffset);
     return date;
   }
 
   describe("isScheduleActive", () => {
+    const getIsScheduleActive = () =>
+        (loadBrowserScripts([
+          'assets/js/alerts/utils.js',
+          'assets/js/alerts/filters.js',
+          'assets/js/alerts/generators.js',
+          'assets/js/alerts/schedule.js',
+        ]) as { isScheduleActive: (schedule: Schedule, now?: Date) => boolean }).isScheduleActive;
 
     test("actief tijdens duratie", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "daily",
@@ -26,6 +40,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("inactief voor starttijd", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "daily",
@@ -39,6 +54,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("inactief na duratie", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "daily",
@@ -51,6 +67,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("weekly actief op correcte weekdag", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "weekly",
@@ -65,6 +82,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("monthly dayOfMonth", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "monthly",
@@ -79,6 +97,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("actief precies op starttijd", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "daily",
@@ -91,6 +110,7 @@ describe("Recurrence Module (assets/js/recurrence.js)", () => {
     })
 
     test("inactief precies op eindtijd", () => {
+      const isScheduleActive = getIsScheduleActive()
       const config = {
         schedule: {
           frequency: "daily",

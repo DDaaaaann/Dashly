@@ -1,12 +1,19 @@
-type AlertElement = {
+import { loadBrowserScripts } from "./helper";
+
+interface AlertElement {
   dataset: { alertId: string };
   hidden: boolean;
-};
+}
 
-type AlertsRootElement = {
+interface AlertsRootElement {
   hidden: boolean;
   querySelectorAll: (selector: string) => AlertElement[];
-};
+}
+
+interface AlertConfig {
+  id: string;
+  schedule: { id: string }
+}
 
 describe('Alerts Module (assets/js/alerts/alerts.js)', () => {
   function loadModule({
@@ -15,7 +22,7 @@ describe('Alerts Module (assets/js/alerts/alerts.js)', () => {
                         activeById,
                       }: {
     now: Date;
-    alertsConfig: Array<{ id: string; schedule: { id: string } }>;
+    alertsConfig: AlertConfig[];
     activeById: Record<string, boolean>;
   }) {
     const alertElements: AlertElement[] = alertsConfig.map((alert) => ({
@@ -31,29 +38,35 @@ describe('Alerts Module (assets/js/alerts/alerts.js)', () => {
       }),
     };
 
-    (global as any).document = {
-      getElementById: jest.fn((id: string) => {
-        expect(id).toBe('alerts');
-        return alertsElement;
-      }),
-    };
-
-    (global as any).alerts = alertsConfig;
-    (global as any).isScheduleActive = jest.fn((schedule: { id: string }, currentNow: Date) => {
+    const isScheduleActiveMock = jest.fn<boolean, [{
+      id: string
+    }, Date]>((schedule, currentNow) => {
       expect(currentNow.getTime()).toBe(Date.now());
       return activeById[schedule.id];
     });
 
     jest.setSystemTime(now);
 
-    jest.isolateModules(() => {
-      require('../../../../assets/js/alerts/alerts.js');
+    loadBrowserScripts([
+      'assets/js/alerts/alerts.js',
+    ], {
+      document: {
+        getElementById: jest.fn((id: string) => {
+          expect(id).toBe('alerts');
+          return alertsElement;
+        }),
+      },
+      alerts: alertsConfig,
+      isScheduleActive: isScheduleActiveMock,
+      Date,
+      setTimeout,
+      setInterval,
     });
 
     return {
       alertElements,
       alertsElement,
-      isScheduleActiveMock: (global as any).isScheduleActive as jest.Mock,
+      isScheduleActiveMock,
     };
   }
 
@@ -64,9 +77,6 @@ describe('Alerts Module (assets/js/alerts/alerts.js)', () => {
 
   afterEach(() => {
     jest.useRealTimers();
-    delete (global as any).document;
-    delete (global as any).alerts;
-    delete (global as any).isScheduleActive;
     jest.restoreAllMocks();
   });
 

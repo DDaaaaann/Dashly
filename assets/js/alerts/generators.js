@@ -1,21 +1,7 @@
-// Conditional import for Node.js (ignore in browser)
-var daysInRange, startOfDay, startOfWeek, startOfMonth, daysInMonth,
-  getWeekdayName;
-
-if (typeof require !== 'undefined') {
-  var utils = require('./utils.js');
-  daysInRange = utils.daysInRange;
-  startOfDay = utils.startOfDay;
-  startOfWeek = utils.startOfWeek;
-  startOfMonth = utils.startOfMonth;
-  daysInMonth = utils.daysInMonth;
-  getWeekdayName = utils.getWeekdayName;
-}
-
 function dailyGenerator() {
   return {
     generate(date) {
-      return [startOfDay(date)];
+      return [globalThis.startOfDay(date)];
     }
   }
 }
@@ -23,7 +9,7 @@ function dailyGenerator() {
 function weeklyGenerator() {
   return {
     generate(date) {
-      return daysInRange(startOfWeek(date), 7);
+      return globalThis.daysInRange(globalThis.startOfWeek(date), 7);
     }
   }
 }
@@ -31,8 +17,8 @@ function weeklyGenerator() {
 function monthlyGenerator() {
   return {
     generate(date) {
-      var start = startOfMonth(date);
-      return daysInRange(start, daysInMonth(start));
+      var start = globalThis.startOfMonth(date);
+      return globalThis.daysInRange(start, globalThis.daysInMonth(start));
     }
   }
 }
@@ -48,12 +34,9 @@ function buildGenerator(schedule) {
   }
 }
 
-// Export voor Node.js/Jest (negeer in browser)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    dailyGenerator,
-    weeklyGenerator,
-    monthlyGenerator,
-    buildGenerator,
-  }
-}
+Object.assign(globalThis, {
+  dailyGenerator,
+  weeklyGenerator,
+  monthlyGenerator,
+  buildGenerator,
+});

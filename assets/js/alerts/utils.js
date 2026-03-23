@@ -49,15 +49,12 @@ function getWeekdayName(date) {
   ][date.getDay()];
 }
 
-// Export voor Node.js/Jest (negeer in browser)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    daysInRange,
-    addDays,
-    startOfDay,
-    startOfWeek,
-    startOfMonth,
-    daysInMonth,
-    getWeekdayName,
-  };
-}
+Object.assign(globalThis, {
+  daysInRange,
+  addDays,
+  startOfDay,
+  startOfWeek,
+  startOfMonth,
+  daysInMonth,
+  getWeekdayName,
+});

@@ -1,6 +1,7 @@
 var timeout = (60 - new Date().getSeconds()) * 1000;
 var alertsElement = document.getElementById("alerts");
-var alertElements = alertsElement.querySelectorAll(".alert");
+var alertElements = alertsElement ? alertsElement.querySelectorAll(".alert")
+  : [];
 
 function renderAlerts() {
   var now = new Date();
@@ -17,15 +18,17 @@ function renderAlerts() {
 
 function isActive(alertElement, now) {
   var alert = findAlert(alertElement.dataset.alertId);
-  return isScheduleActive(alert.schedule, now);
+  return Boolean(alert) && globalThis.isScheduleActive(alert.schedule, now);
 }
 
 function findAlert(alertId) {
-  return alerts.find((alert) => (alert.id === alertId))
+  return globalThis.alerts.find((alert) => (alert.id === alertId))
 }
 
-renderAlerts();
-setTimeout(() => {
+if (alertsElement) {
   renderAlerts();
-  setInterval(() => renderAlerts(), 60 * 1000);
-}, timeout);
+  setTimeout(() => {
+    renderAlerts();
+    setInterval(() => renderAlerts(), 60 * 1000);
+  }, timeout);
+}
