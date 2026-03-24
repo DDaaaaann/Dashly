@@ -1,26 +1,23 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-const operaCtrlKeyCode = 17;
-const webkitCtrlLeftKeyCode = 91;
-const webkitCtrlRightKeyCode = 93;
-const firefoxCtrlKeyCode = 224;
+const OPERA_CTRL_KEY_CODE = 17;
+const WEBKIT_CTRL_LEFT_KEY_CODE = 91;
+const WEBKIT_CTRL_RIGHT_KEY_CODE = 93;
+const FIREFOX_CTRL_KEY_CODE = 224;
 
 function openUrl(url, modifierKey = false) {
-  if (modifierKey) {
-    window.open(url, "_blank")
-  } else {
-    window.open(url, "_self")
-  }
+  const target = modifierKey ? "_blank" : "_self";
+  window.open(url, target);
 }
 
 function isModifierKey(e) {
-  var keyCode = e.keyCode;
+  const keyCode = e.keyCode;
   return e.metaKey
     || e.ctrlKey
-    || keyCode === operaCtrlKeyCode
-    || keyCode === firefoxCtrlKeyCode
-    || keyCode === webkitCtrlLeftKeyCode
-    || keyCode === webkitCtrlRightKeyCode
+    || keyCode === OPERA_CTRL_KEY_CODE
+    || keyCode === FIREFOX_CTRL_KEY_CODE
+    || keyCode === WEBKIT_CTRL_LEFT_KEY_CODE
+    || keyCode === WEBKIT_CTRL_RIGHT_KEY_CODE;
 }
 
 function replaceSearchTerm(url, term) {

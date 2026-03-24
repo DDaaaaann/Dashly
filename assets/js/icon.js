@@ -12,13 +12,20 @@ const htmlIcon = {
   arrowOut: Icon.ArrowOut
 }
 
-document.querySelectorAll("icon[name]").forEach(el => {
-  const name = el.getAttribute("name");
-  const svg = htmlIcon[name];
-  if (svg) {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = svg.trim();
-    const svgElement = wrapper.firstChild;
-    el.replaceWith(svgElement);
-  }
-});
+function replaceIcons(root = document) {
+  root.querySelectorAll("icon[name]").forEach(el => {
+    const name = el.getAttribute("name");
+    const svg = htmlIcon[name];
+    if (svg) {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = svg.trim();
+      const svgElement = wrapper.firstChild;
+      el.replaceWith(svgElement);
+    }
+  });
+}
+
+replaceIcons();
+
+window.DashlyIcons = htmlIcon;
+window.dashlyReplaceIcons = replaceIcons;

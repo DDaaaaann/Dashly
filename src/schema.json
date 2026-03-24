@@ -20,6 +20,142 @@
     "liveSearch": {
       "type": "boolean"
     },
+    "alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "info",
+              "warning"
+            ]
+          },
+          "schedule": {
+            "type": "object",
+            "required": [
+              "frequency"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "frequency": {
+                "type": "string",
+                "enum": [
+                  "daily",
+                  "weekly",
+                  "monthly"
+                ]
+              },
+              "time": {
+                "type": "string",
+                "pattern": "^([01]\\d|2[0-3]):[0-5]\\d$",
+                "description": "HH:mm format"
+              },
+              "daysOfWeek": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday",
+                    "sunday"
+                  ]
+                }
+              },
+              "daysOfMonth": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 31
+              },
+              "position": {
+                "type": "integer",
+                "minimum": -5,
+                "maximum": 5,
+                "not": {
+                  "const": 0
+                },
+                "description": "Select nth match within period, negative from end"
+              },
+              "durationMinutes": {
+                "type": "number",
+                "minimum": 1
+              }
+            },
+            "oneOf": [
+              {
+                "title": "Daily schedule",
+                "properties": {
+                  "frequency": {
+                    "const": "daily"
+                  }
+                },
+                "required": [
+                  "time"
+                ],
+                "additionalProperties": true
+              },
+              {
+                "title": "Weekly schedule",
+                "properties": {
+                  "frequency": {
+                    "const": "weekly"
+                  }
+                },
+                "required": [
+                  "daysOfWeek"
+                ],
+                "additionalProperties": true
+              },
+              {
+                "title": "Monthly schedule (specific day)",
+                "properties": {
+                  "frequency": {
+                    "const": "monthly"
+                  }
+                },
+                "required": [
+                  "daysOfMonth"
+                ],
+                "additionalProperties": true
+              },
+              {
+                "title": "Monthly schedule (ordinal weekday)",
+                "properties": {
+                  "frequency": {
+                    "const": "monthly"
+                  }
+                },
+                "required": [
+                  "daysOfWeek",
+                  "position"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      }
+    },
     "sections": {
       "type": "array",
       "items": {

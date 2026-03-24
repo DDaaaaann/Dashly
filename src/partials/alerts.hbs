@@ -1,0 +1,21 @@
+{{#if alerts}}
+  <div id="alerts" class="alerts" hidden>
+    {{#each alerts}}
+      <div
+        class="alert {{#if (eq type "warning")}}warning{{/if}}"
+        data-alert-id="{{#if id}}{{id}}{{else}}alert-{{@index}}{{/if}}"
+        hidden
+      >
+        <div class="alert-content">
+          <span class="alert-title">{{title}}</span>
+          {{#if message}}
+            <span class="alert-message">{{message}}</span>
+          {{/if}}
+        </div>
+        <button type="button" class="alert-dismiss" aria-label="Dismiss alert">
+          <icon name="clear"></icon>
+        </button>
+      </div>
+    {{/each}}
+  </div>
+{{/if}}

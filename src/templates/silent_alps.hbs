@@ -11,6 +11,8 @@
       <p id="clock" class="clock">00:00:00</p>
     {{/if}}
 
+    {{> alerts }}
+
     {{#if (gt sections.length 1)}}
       <nav class="sidebar-nav">
         {{#each sections}}

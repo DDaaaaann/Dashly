@@ -285,7 +285,7 @@ function handleKeyDown(e) {
     if (selected.type === "search-field" && isSearchFieldActive) {
       // If search field is active and has query, use that query
       // searchForField(selected.href, searchFieldQuery, "_blank")
-      var searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
+      const searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
       openUrl(searchUrl, isModifierPressed);
     } else if (selected.type === "search-field") {
       // If search field is selected but not active, activate it
@@ -324,8 +324,7 @@ function handleSearchFieldKeyDown(e) {
   } else if (e.key === "Enter" && selectedIndex >= 0) {
     e.preventDefault()
     const selected = results[selectedIndex]
-    console.log("modifier pressed", isModifierPressed);
-    var searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
+    const searchUrl = replaceSearchTerm(selected.href, searchFieldQuery);
     openUrl(searchUrl, isModifierPressed);
   }
 

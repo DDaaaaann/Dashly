@@ -1,15 +1,14 @@
-let searchBars = document.getElementsByClassName("search-bar");
+const searchBars = document.getElementsByClassName("search-bar");
 
-Array.from(searchBars).forEach(function (searchBar) {
-  searchBar.addEventListener("keydown", function (e) {
-    var urlWithPlaceholder = searchBar.dataset.url;
-    var searchTerm = this.value;
-    var searchUrl = replaceSearchTerm(urlWithPlaceholder, searchTerm);
+Array.from(searchBars).forEach((searchBar) => {
+  searchBar.addEventListener("keydown", (e) => {
+    const urlWithPlaceholder = searchBar.dataset.url;
+    const searchTerm = searchBar.value;
+    const searchUrl = replaceSearchTerm(urlWithPlaceholder, searchTerm);
+    const modifierKeyPressed = isModifierKey(e);
 
-    var modifierKeyPressed = isModifierKey(e);
-
-    if (e.keyCode === 13) {
+    if (e.key === "Enter") {
       openUrl(searchUrl, modifierKeyPressed);
     }
-  })
-})
+  });
+});

@@ -7,6 +7,7 @@ import log from "../logger/logger";
 import { readFile } from "../utils/file";
 import schema from "../schema.json";
 import {
+  getAlertsJS,
   getClockJs,
   getIconJS,
   getInlineCss,
@@ -17,6 +18,7 @@ import {
 } from "../utils/paths";
 import { generateLookupTable } from "../scripts/search";
 import path from "path";
+import { setupAlerts } from "../scripts/alert";
 
 export async function loadConfig(): Promise<DashboardConfig> {
   log.info('Loading configuration...');
@@ -44,8 +46,12 @@ export async function loadConfig(): Promise<DashboardConfig> {
       getIconJS(),
       ...(config.theme === 'Emerald Tides' || config.theme === 'Silent Alps' ? [getSectionsJS()] : []),
       ...(config.clock ? [getClockJs()] : []),
-      ...(config.liveSearch ? [getLiveSearchJs()] : []),
+
+      ...(config.alerts ? [`const alerts = ${JSON.stringify(setupAlerts(config.alerts))}`] : []),
+      ...(config.alerts ? [getAlertsJS()] : []),
+
       ...(config.liveSearch ? [`const lookupTable = ${JSON.stringify(generateLookupTable(config))}`] : []),
+      ...(config.liveSearch ? [getLiveSearchJs()] : []),
     ].join('\n')
   };
 }

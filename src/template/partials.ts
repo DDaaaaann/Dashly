@@ -10,6 +10,7 @@ export function registerPartials(themeName: string) {
   registerHeader();
   registerFooter();
   registerLiveSearch();
+  registerAlerts();
 }
 
 function registerHeader() {
@@ -38,6 +39,11 @@ function registerFooter() {
 function registerLiveSearch() {
   log.debug('Registering live-search')
   partials('live-search')
+}
+
+function registerAlerts() {
+  log.debug('Registering alerts')
+  partials('alerts')
 }
 
 function partials(partialName: string) {
