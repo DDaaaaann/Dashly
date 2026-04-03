@@ -1,22 +1,18 @@
-import { expectDateParts, loadBrowserScripts } from "./helper";
+import { expectDateParts } from "./helper";
 
-interface UtilsContext {
-  daysInMonth: (date: Date) => number;
-  daysInRange: (start: Date, count: number) => Date[];
-  addDays: (date: Date, days: number) => Date;
-  startOfDay: (date: Date) => Date;
-  startOfWeek: (date: Date) => Date;
-  startOfMonth: (date: Date) => Date;
-}
+const {
+  daysInMonth,
+  daysInRange,
+  addDays,
+  startOfDay,
+  startOfWeek,
+  startOfMonth,
+} = require('../../../../assets/js/alerts/utils.js');
 
 describe('Generators Module (assets/js/alerts/generators.js)', () => {
-  const loadUtils = () => loadBrowserScripts([
-    'assets/js/alerts/utils.js',
-  ]) as unknown as UtilsContext;
 
   describe('startOfDay', () => {
     test('resets time components to midnight', () => {
-      const {startOfDay} = loadUtils();
       const input = new Date(2026, 2, 5, 13, 45, 30, 123);
       const result = startOfDay(input);
       expectDateParts(result, 2026, 2, 5, 0, 0, 0, 0);
@@ -25,7 +21,6 @@ describe('Generators Module (assets/js/alerts/generators.js)', () => {
 
   describe('addDays', () => {
     test('adds days and normalizes to start of day', () => {
-      const {addDays} = loadUtils();
       const input = new Date(2026, 2, 5, 22, 10, 5, 900);
       const result = addDays(input, 3);
 
@@ -35,7 +30,6 @@ describe('Generators Module (assets/js/alerts/generators.js)', () => {
 
   describe('startOfWeek', () => {
     test('returns Monday as the start of the week', () => {
-      const {startOfWeek} = loadUtils();
       const input = new Date(2026, 2, 4, 9, 0, 0, 0); // Wednesday
       const result = startOfWeek(input);
 
@@ -46,7 +40,6 @@ describe('Generators Module (assets/js/alerts/generators.js)', () => {
 
   describe('startOfMonth', () => {
     test('returns the first day of the month at midnight', () => {
-      const {startOfMonth} = loadUtils();
       const input = new Date(2026, 5, 20, 18, 0, 0, 0);
       const result = startOfMonth(input);
 
@@ -56,19 +49,16 @@ describe('Generators Module (assets/js/alerts/generators.js)', () => {
 
   describe('daysInMonth', () => {
     test('handles 30-day months', () => {
-      const {daysInMonth} = loadUtils();
       expect(daysInMonth(new Date(2026, 3, 1))).toBe(30); // April
     });
 
     test('handles leap years', () => {
-      const {daysInMonth} = loadUtils();
       expect(daysInMonth(new Date(2024, 1, 1))).toBe(29); // February 2024
     });
   });
 
   describe('daysInRange', () => {
     test('returns a contiguous range starting at midnight', () => {
-      const {daysInRange} = loadUtils();
       const start = new Date(2026, 2, 1, 10, 0, 0, 0);
       const result = daysInRange(start, 3);
 

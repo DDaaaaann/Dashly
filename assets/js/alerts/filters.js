@@ -1,3 +1,26 @@
+// Conditional import for Node.js (ignore in browser)
+var startOfDay, daysInRange, startOfWeek, startOfMonth, daysInMonth,
+  getWeekdayName;
+
+if (typeof require !== 'undefined') {
+  var utils = require('./utils.js');
+  startOfDay = utils.startOfDay;
+  daysInRange = utils.daysInRange;
+  startOfWeek = utils.startOfWeek;
+  startOfMonth = utils.startOfMonth;
+  daysInMonth = utils.daysInMonth;
+  getWeekdayName = utils.getWeekdayName;
+}
+
+const dayOfMonthFilter = ({dayOfMonth}) => ({
+  apply: date => date.getDate() === dayOfMonth
+});
+
+const dayOfWeekFilter = ({dayOfWeek}) => ({
+  appliesTo: dayOfWeek => dayOfWeek !== undefined,
+  apply: date => date.getDay() === dayOfWeek
+});
+
 function daysOfMonthFilter(schedule) {
   const daysOfMonth = schedule.daysOfMonth;
   return {
@@ -18,7 +41,7 @@ function daysOfWeekFilter(schedule) {
       return daysOfWeek && daysOfWeek.length > 0;
     },
     apply(date) {
-      return daysOfWeek.includes(globalThis.getWeekdayName(date));
+      return daysOfWeek.includes(getWeekdayName(date));
     }
   };
 }
@@ -36,4 +59,9 @@ function buildFilters(schedule) {
   return filters
 }
 
-globalThis.buildFilters = buildFilters;
+// Export voor Node.js/Jest (negeer in browser)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    buildFilters,
+  }
+}

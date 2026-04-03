@@ -13,6 +13,17 @@
  * position werkt zoals RRULE BYSETPOS
  */
 
+// Conditional import for Node.js (ignore in browser)
+var buildGenerator, buildFilters;
+
+if (typeof require !== 'undefined') {
+  var generators = require('./generators.js');
+  buildGenerator = generators.buildGenerator;
+
+  var filters = require('./filters.js');
+  buildFilters = filters.buildFilters;
+}
+
 function isScheduleActive(schedule, now = new Date()) {
 
   return pipeline(schedule)
@@ -29,8 +40,8 @@ function pipeline(schedule) {
   return {
 
     build() {
-      generator = globalThis.buildGenerator(schedule);
-      filters = globalThis.buildFilters(schedule);
+      generator = buildGenerator(schedule);
+      filters = buildFilters(schedule);
       return this;
     },
     generate(now) {
@@ -84,4 +95,9 @@ function applyTime(schedule, dates) {
   });
 }
 
-globalThis.isScheduleActive = isScheduleActive;
+// Export voor Node.js/Jest (negeer in browser)
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    isScheduleActive
+  }
+}

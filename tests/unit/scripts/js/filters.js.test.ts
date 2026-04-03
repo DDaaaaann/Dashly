@@ -1,17 +1,10 @@
-import { loadBrowserScripts } from "./helper";
-
-interface BuiltFilter {
-  apply: (date: Date) => boolean;
-}
+const {
+  buildFilters,
+} = require('../../../../assets/js/alerts/filters.js');
 
 describe('Filters Module (assets/js/alerts/filters.js)', () => {
   describe('buildFilters', () => {
     test('returns no filters when the schedule has no day constraints', () => {
-      const {buildFilters} = loadBrowserScripts([
-        'assets/js/alerts/utils.js',
-        'assets/js/alerts/filters.js',
-      ]) as { buildFilters: (schedule: Record<string, unknown>) => BuiltFilter[] };
-
       const filters = buildFilters({
         frequency: 'daily',
       });
@@ -20,11 +13,6 @@ describe('Filters Module (assets/js/alerts/filters.js)', () => {
     });
 
     test('builds a day-of-week filter that matches configured weekdays', () => {
-      const {buildFilters} = loadBrowserScripts([
-        'assets/js/alerts/utils.js',
-        'assets/js/alerts/filters.js',
-      ]) as { buildFilters: (schedule: Record<string, unknown>) => BuiltFilter[] };
-
       const filters = buildFilters({
         frequency: 'weekly',
         daysOfWeek: ['monday', 'wednesday'],
@@ -36,11 +24,6 @@ describe('Filters Module (assets/js/alerts/filters.js)', () => {
     });
 
     test('builds a day-of-month filter that matches configured month days', () => {
-      const {buildFilters} = loadBrowserScripts([
-        'assets/js/alerts/utils.js',
-        'assets/js/alerts/filters.js',
-      ]) as { buildFilters: (schedule: Record<string, unknown>) => BuiltFilter[] };
-
       const filters = buildFilters({
         frequency: 'monthly',
         daysOfMonth: [5, 15],
@@ -52,11 +35,6 @@ describe('Filters Module (assets/js/alerts/filters.js)', () => {
     });
 
     test('returns both filters when the schedule combines weekday and month-day rules', () => {
-      const {buildFilters} = loadBrowserScripts([
-        'assets/js/alerts/utils.js',
-        'assets/js/alerts/filters.js',
-      ]) as { buildFilters: (schedule: Record<string, unknown>) => BuiltFilter[] };
-
       const filters = buildFilters({
         frequency: 'monthly',
         daysOfWeek: ['monday'],
@@ -69,9 +47,15 @@ describe('Filters Module (assets/js/alerts/filters.js)', () => {
       const wrongWeekday = new Date(2026, 2, 10, 12, 0, 0, 0); // Tuesday the 10th
       const wrongMonthDay = new Date(2026, 2, 16, 12, 0, 0, 0); // Monday the 16th
 
-      expect(filters.every((filter) => filter.apply(matchingDate))).toBe(true);
-      expect(filters.every((filter) => filter.apply(wrongWeekday))).toBe(false);
-      expect(filters.every((filter) => filter.apply(wrongMonthDay))).toBe(false);
+      expect(filters.every((filter: {
+        apply: (date: Date) => boolean
+      }) => filter.apply(matchingDate))).toBe(true);
+      expect(filters.every((filter: {
+        apply: (date: Date) => boolean
+      }) => filter.apply(wrongWeekday))).toBe(false);
+      expect(filters.every((filter: {
+        apply: (date: Date) => boolean
+      }) => filter.apply(wrongMonthDay))).toBe(false);
     });
   });
 });
