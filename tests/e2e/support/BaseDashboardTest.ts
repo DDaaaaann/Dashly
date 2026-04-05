@@ -8,7 +8,7 @@ const FIXTURES_PATH = path.join(__dirname, '../../fixtures');
 const OUTPUT_PATH = path.join(__dirname, '../output');
 
 class BaseDashboardTest {
-  protected static DASHBOARD_PATH: string;
+  public static DASHBOARD_PATH: string;
   public page!: Page;
   protected context!: BrowserContext;
 
