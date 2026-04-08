@@ -43,16 +43,6 @@ export interface Alert {
   enabled?: boolean;
 }
 
-// export interface Schedule {
-//   frequency: 'daily' | 'weekly' | 'monthly' | 'yearly' | 'hourly' | 'minutely' | 'secondly';
-//   interval?: number;
-//   dayOfWeek?: Array<'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday'>;
-//   dayOfMonth?: number;
-//   position?: number;
-//   time?: string;
-//   durationMinutes?: number;
-// }
-
 type Frequency = 'daily' | 'weekly' | 'monthly';
 
 interface Schedule {
@@ -69,24 +59,6 @@ interface Schedule {
 
   durationMinutes?: number;
 }
-
-// type Schedule =
-//   | { frequency: 'daily'; time: string }
-//   | { frequency: 'weekly'; dayOfWeek: number; time?: string }
-//   | { frequency: 'monthly'; dayOfMonth: number; time?: string }
-//   | { frequency: 'monthly'; dayOfWeek: number; position?: number; time?: string}
-
-
-// type Recurrence =
-//     | { type: "weekly"; weekday: number; time: string }
-//     | { type: "monthly"; day: number; time: string }
-//     | { type: "monthly-weekday"; weekday: number; position: number; time: string }
-//
-//
-// type Schedule = {
-//   recurrence: Recurrence
-//   durationMinutes: number
-// }
 
 export interface DashboardConfig {
   meta: Meta;

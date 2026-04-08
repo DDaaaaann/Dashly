@@ -13,6 +13,7 @@ export async function runDashboardGenerator() {
   generateHtml(config);
 
   log.success(`Dashboard generated successfully.`);
+  console.log(config)
 }
 
 if (require.main === module) {

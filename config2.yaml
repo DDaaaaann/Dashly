@@ -1,0 +1,166 @@
+title: Full Emerald Tides Dashboard
+theme: Emerald Tides
+clock: true
+liveSearch: true
+alerts:
+  - id: daily-alert
+    title: "Daily Info Alert"
+    message: "This alert runs daily at 2 PM"
+    type: info
+    schedule:
+      frequency: 'daily'
+      time: 14:00
+      durationMinutes: 60
+    enabled: true
+  - id: weekly-alert
+    title: "Weekly Warning Alert"
+    message: "This alert runs every Monday"
+    type: warning
+    schedule:
+      frequency: 'weekly'
+      daysOfWeek: [ 'monday', 'wednesday', 'friday' ]
+      time: '09:00'
+      durationMinutes: 120
+  - id: monthly-specific-day
+    title: "Monthly Alert (Specific Day)"
+    message: "This alert runs on the 15th of each month"
+    type: info
+    schedule:
+      frequency: 'monthly'
+      daysOfMonth: 15
+      time: '10:00'
+      durationMinutes: 30
+  - id: monthly-ordinal
+    title: "Monthly Alert (Ordinal Weekday)"
+    message: "This alert runs on the first Monday of each month"
+    type: warning
+    schedule:
+      frequency: 'monthly'
+      daysOfWeek: [ 'monday' ]
+      position: 1
+      time: '08:00'
+      durationMinutes: 45
+  - title: "Simple Alert Without ID"
+    message: "This alert has no ID or schedule"
+    type: info
+
+sections:
+  - title: "Section with Title and Mixed Content"
+    blocks:
+      - title: "Block with Only Links"
+        links:
+          - title: "Link 1"
+            href: "http://example.com/link1"
+          - title: "Link 2"
+            href: "http://example.com/link2"
+          - title: "Link 3"
+            href: "http://example.com/link3"
+      - title: "Block with Only SearchFields"
+        searchFields:
+          - title: "Google Search"
+            href: "https://www.google.com/search?q=[search-term]"
+          - title: "GitHub Search"
+            parameter: "q"
+            href: "https://github.com/search?q=[search-term]"
+      - title: "Block with Links and SearchFields"
+        links:
+          - title: "Static Link A"
+            href: "http://example.com/a"
+          - title: "Static Link B"
+            href: "http://example.com/b"
+        searchFields:
+          - title: "Search Field 1"
+            href: "http://example.com/search?term=[search-term]"
+      - title: "Block with Groups Only"
+        groups:
+          - title: "Group 1 - With Links"
+            links:
+              - title: "Group Link 1"
+                href: "http://example.com/group-link1"
+              - title: "Group Link 2"
+                href: "http://example.com/group-link2"
+          - title: "Group 2 - With SearchFields"
+            searchFields:
+              - title: "Group Search 1"
+                href: "http://example.com/group-search?q=[search-term]"
+          - title: "Group 3 - With Both Links and SearchFields"
+            links:
+              - title: "Group Link 3"
+                href: "http://example.com/group-link3"
+            searchFields:
+              - title: "Group Search 2"
+                href: "http://example.com/group-search2?term=[search-term]"
+      - title: "Block with Links and Groups"
+        links:
+          - title: "Block Level Link"
+            href: "http://example.com/block-link"
+        groups:
+          - title: "Nested Group with Links"
+            links:
+              - title: "Nested Link 1"
+                href: "http://example.com/nested-link1"
+              - title: "Nested Link 2"
+                href: "http://example.com/nested-link2"
+      - title: "Block with SearchFields and Groups"
+        searchFields:
+          - title: "Block Level Search"
+            href: "http://example.com/block-search?q=[search-term]"
+        groups:
+          - title: "Group with SearchFields"
+            searchFields:
+              - title: "Nested Search"
+                href: "http://example.com/nested-search?q=[search-term]"
+
+  - title: "Section with Title and Comprehensive Groups"
+    blocks:
+      - title: "Complex Block with Multiple Group Types"
+        links:
+          - title: "Top Level Link"
+            href: "http://example.com/top-link"
+        groups:
+          - title: "Group A - Links Only"
+            links:
+              - title: "Group A Link 1"
+                href: "http://example.com/ga-l1"
+              - title: "Group A Link 2"
+                href: "http://example.com/ga-l2"
+              - title: "Group A Link 3"
+                href: "http://example.com/ga-l3"
+          - title: "Group B - SearchFields Only"
+            searchFields:
+              - title: "Group B Search 1"
+                href: "http://example.com/gb-search1?q=[search-term]"
+              - title: "Group B Search 2"
+                parameter: "query"
+                href: "http://example.com/gb-search2?query=[search-term]"
+          - title: "Group C - Mixed"
+            links:
+              - title: "Group C Link"
+                href: "http://example.com/gc-link"
+            searchFields:
+              - title: "Group C Search"
+                href: "http://example.com/gc-search?q=[search-term]"
+
+  - blocks:
+      - title: "Block in Section Without Title 1"
+        links:
+          - title: "Link A"
+            href: "http://example.com/no-section-title-a"
+          - title: "Link B"
+            href: "http://example.com/no-section-title-b"
+      - title: "Block in Section Without Title 2"
+        searchFields:
+          - title: "Search in untitled section"
+            href: "http://example.com/search?q=[search-term]"
+        groups:
+          - title: "Group in untitled section"
+            links:
+              - title: "Nested link in untitled section"
+                href: "http://example.com/untitled-nested"
+
+  - title: "Minimal Section"
+    blocks:
+      - title: "Minimal Block"
+        links:
+          - title: "Single Link"
+            href: "http://example.com/minimal"
